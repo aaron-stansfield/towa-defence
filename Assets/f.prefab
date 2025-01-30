@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2528641208253979339, guid: f9e5069d68e321646a9256a170b55c7f, type: 3}
+  - {fileID: -876546973899608171, guid: 22c5d67362296b4409bd94d7ef9649ee, type: 3}
   - {fileID: 2925383016096360751, guid: f9e5069d68e321646a9256a170b55c7f, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -145,7 +145,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -5240224847165048150, guid: f9e5069d68e321646a9256a170b55c7f, type: 3}
+  - {fileID: -876546973899608171, guid: efa5d0583a411224088bc2766e31273c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -264,7 +264,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &8090406311858726363
 CapsuleCollider:
