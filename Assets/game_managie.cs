@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using TMPro;
 using UnityEngine;
 
 public class game_managie : MonoBehaviour
 {
 
-
+    private TextMeshProUGUI healthText;
     public GameObject enmy;
     public GameObject spawnpoint;
     // Start is called before the first frame update
     void Start()
     {
+        healthText = GameObject.Find("healthAmount").GetComponent<TextMeshProUGUI>();
         StartCoroutine(enmy_spawner());
     }
 
@@ -28,4 +30,10 @@ public class game_managie : MonoBehaviour
         StartCoroutine(enmy_spawner());
     }
 
+    public void Damage()
+    {
+        int amount = int.Parse(healthText.text);
+        amount -= 1;
+        healthText.text = amount.ToString();
+    }
 }
