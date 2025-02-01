@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7797254872131672792}
   - component: {fileID: 4819288473986722649}
   - component: {fileID: 2098962737764768603}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: leave_lef1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7353409664985358487}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   - component: {fileID: 6186081420421358371}
   - component: {fileID: 2435831788794980742}
   - component: {fileID: 3026177502523230336}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pSphere9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 6249781994813982980}
   - component: {fileID: 4088444137420532643}
   - component: {fileID: 375525756654044708}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pSphere7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,9 +297,9 @@ GameObject:
   - component: {fileID: 7101370721373528038}
   - component: {fileID: 5902818809770763021}
   - component: {fileID: 5944635241537046727}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: f 1
-  m_TagString: Untagged
+  m_TagString: dude
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -312,7 +312,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7871673202437345191}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.016202988, y: 0.8527579, z: -0.025689976, w: 0.5214226}
+  m_LocalRotation: {x: -0.016204907, y: 0.852757, z: -0.025686696, w: 0.5214242}
   m_LocalPosition: {x: 1.66, y: 3.81, z: 35.82}
   m_LocalScale: {x: 0.69064, y: 0.69064, z: 0.69064}
   m_ConstrainProportionsScale: 1
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 2219106521587532420}
   - component: {fileID: 3843265559624735631}
   - component: {fileID: 4191692832384641487}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pSphere8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 6616088914353865522}
   - component: {fileID: 4051397797976723530}
   - component: {fileID: 6034575067000912027}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pSphere5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 4951683122502533262}
   - component: {fileID: 1835641757133744763}
   - component: {fileID: 3446417104645315740}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pSphere10
   m_TagString: Untagged
   m_Icon: {fileID: 0}

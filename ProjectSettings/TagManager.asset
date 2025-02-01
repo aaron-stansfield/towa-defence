@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - goal
+  - dude
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - dude
   - Water
   - UI
-  - 
+  - ground
   - 
   - 
   - 
