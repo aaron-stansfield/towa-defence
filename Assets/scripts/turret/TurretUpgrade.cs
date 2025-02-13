@@ -7,13 +7,14 @@ using UnityEngine.EventSystems;
 public class TurretUpgrade : MonoBehaviour
 {
     // Start is called before the first frame update
-     public GameObject turret;
+     private GameObject turret;
      public GameObject upgradeMenu;
 
     // Start is called before the first frame update
     void Start()
     {
-        upgradeMenu.gameObject.SetActive(false);
+     turret = this.gameObject;
+     upgradeMenu.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -25,6 +26,7 @@ public class TurretUpgrade : MonoBehaviour
             {
                 print("clicked/touched!");
                 upgradeMenu.gameObject.SetActive(true);
+
                 //if time stops add here
             }
         }

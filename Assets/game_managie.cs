@@ -10,6 +10,7 @@ public class game_managie : MonoBehaviour
     private TextMeshProUGUI healthText;
     public GameObject enmy;
     public GameObject spawnpoint;
+    public GameObject activeTurret;
     // Start is called before the first frame update
     void Start()
     {
