@@ -10,7 +10,8 @@ public class game_managie : MonoBehaviour
     private TextMeshProUGUI healthText;
     public GameObject enmy;
     public GameObject spawnpoint;
-    public GameObject activeTurret;
+    private int enmyCount = 0;
+    public float spawnDelay;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,8 +27,10 @@ public class game_managie : MonoBehaviour
 
     IEnumerator enmy_spawner()
     {
-        yield return new WaitForSeconds(1);
-        Instantiate(enmy,spawnpoint.transform);
+        yield return new WaitForSeconds(spawnDelay);
+        GameObject dude = Instantiate(enmy,spawnpoint.transform);
+        dude.gameObject.name = enmyCount.ToString();
+        enmyCount++;
         StartCoroutine(enmy_spawner());
     }
 
