@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public float bulletLifeTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,7 +13,7 @@ public class Bullet : MonoBehaviour
 
     public IEnumerator BulletLifeTime()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(bulletLifeTime);
         Destroy(gameObject);
     }
 

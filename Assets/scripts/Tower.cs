@@ -23,8 +23,9 @@ public class Tower : MonoBehaviour
     private GameObject parentObject;
     private GameObject turret;
     private GameObject upgradeMenu;
-
+    private GameObject mouseColliderObject;
     public targetState currentTargetState;
+    private cameraScript cameraScript;
     public enum targetState
     {
         first,
@@ -34,11 +35,11 @@ public class Tower : MonoBehaviour
     }
 
     
-
     void Start()
     {
-        //  StartCoroutine("ReachCheck");
-        upgradeMenu = transform.GetChild(0).gameObject;
+        cameraScript = GameObject.Find("Main Camera").GetComponent<cameraScript>();
+        mouseColliderObject = transform.GetChild(0).gameObject;
+        upgradeMenu = transform.GetChild(1).gameObject;
         turret = this.gameObject;
         upgradeMenu.gameObject.SetActive(false);
         parentObject = transform.parent.gameObject;
@@ -63,8 +64,6 @@ public class Tower : MonoBehaviour
         { 
         
         }
-     
-
 
         if (enemysInRange.Count != 0)
         {
@@ -101,11 +100,9 @@ public class Tower : MonoBehaviour
 
         }
 
-
-
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && cameraScript.currentMouseState == cameraScript.mouseState.normal)
         {
-            if (turret == GetClickedObject(out RaycastHit hit))
+            if (mouseColliderObject == GetClickedObject())
             {
                 print("clicked/touched!");
                 upgradeMenu.gameObject.SetActive(true);
@@ -113,23 +110,25 @@ public class Tower : MonoBehaviour
                 //if time stops add here
             }
         }
-
     }
 
-
-
-    GameObject GetClickedObject(out RaycastHit hit)
+    GameObject GetClickedObject()
     {
+        
         GameObject target = null;
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray.origin, ray.direction * 10, out hit))
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity);
+        foreach(RaycastHit hit in hits)
         {
-            if (!isPointerOverUIObject())
+            Debug.Log(hit.collider.gameObject.name);
+            if (!isPointerOverUIObject() && hit.collider.CompareTag("mouseCollider"))
             {
                 target = hit.collider.gameObject;
-            } 
-            //might need to add if (!isPointerOverUIObject()) {}
+                return target;
+            }
         }
+            //might need to add if (!isPointerOverUIObject()) {}
+        
         return target;
     }
 

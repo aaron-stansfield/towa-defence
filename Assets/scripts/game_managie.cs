@@ -12,9 +12,12 @@ public class game_managie : MonoBehaviour
     public GameObject spawnpoint;
     private int enmyCount = 0;
     public float spawnDelay;
+    public List<GameObject> towerList;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         healthText = GameObject.Find("healthAmount").GetComponent<TextMeshProUGUI>();
         StartCoroutine(enmy_spawner());
     }
@@ -22,7 +25,7 @@ public class game_managie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        
     }
 
     IEnumerator enmy_spawner()
@@ -40,4 +43,7 @@ public class game_managie : MonoBehaviour
         amount -= 1;
         healthText.text = amount.ToString();
     }
+
+
+    
 }
