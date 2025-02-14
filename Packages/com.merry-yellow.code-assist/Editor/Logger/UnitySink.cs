@@ -33,25 +33,25 @@ namespace Meryel.UnityCodeAssist.Editor.Logger
             if (logEvent == null)
                 return;
 
-            var message = logEvent.RenderMessage(_formatProvider);
+            //var message = logEvent.RenderMessage(_formatProvider);
 
-            switch (logEvent.Level)
-            {
-                //case LogEventLevel.Verbose:
-                //case LogEventLevel.Debug:
-                case LogEventLevel.Information:
-                    UnityEngine.Debug.Log(message);
-                    break;
-                case LogEventLevel.Warning:
-                    UnityEngine.Debug.LogWarning(message);
-                    break;
-                case LogEventLevel.Error:
-                case LogEventLevel.Fatal:
-                    UnityEngine.Debug.LogError(message);
-                    break;
-                default:
-                    break;
-            }
+            //switch (logEvent.Level)
+            //{
+            //    //case LogEventLevel.Verbose:
+            //    //case LogEventLevel.Debug:
+            //    case LogEventLevel.Information:
+            //        UnityEngine.Debug.Log(message);
+            //        break;
+            //    case LogEventLevel.Warning:
+            //        UnityEngine.Debug.LogWarning(message);
+            //        break;
+            //    case LogEventLevel.Error:
+            //    case LogEventLevel.Fatal:
+            //        UnityEngine.Debug.LogError(message);
+            //        break;
+            //    default:
+            //        break;
+            //}
         }
 
         public void Dispose()

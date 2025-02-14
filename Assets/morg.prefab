@@ -579,7 +579,7 @@ Transform:
   m_GameObject: {fileID: 4567004126064950789}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.26078534, z: -0, w: 0.9653969}
-  m_LocalPosition: {x: 14.55, y: 0, z: 10.01}
+  m_LocalPosition: {x: 14.55, y: -0.55, z: 10.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -615,7 +615,7 @@ Transform:
   m_GameObject: {fileID: 4757895850222638914}
   serializedVersion: 2
   m_LocalRotation: {x: 0.022536429, y: -0.8310286, z: 0.00992442, w: -0.55568445}
-  m_LocalPosition: {x: -0.42, y: 2.48, z: -0.84}
+  m_LocalPosition: {x: -0.11, y: 2.61, z: -0.33}
   m_LocalScale: {x: 0.94000006, y: 0.94, z: 0.93999994}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -694,7 +694,7 @@ MonoBehaviour:
   Bullet: {fileID: 8032492240239803107, guid: 9db8052a3f2ed6c4da8d51d6f5c01963, type: 3}
   BSpawn: {fileID: 2276943037582974931}
   attackRadius: 30.1
-  projectileSpeed: 60
+  projectileSpeed: 64.5
   fireRate: 0.8
   currentTargetedObject: {fileID: 0}
   enemysInRange: []

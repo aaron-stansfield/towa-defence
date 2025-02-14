@@ -32,7 +32,7 @@ public class game_managie : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnDelay);
         GameObject dude = Instantiate(enmy,spawnpoint.transform);
-        dude.gameObject.name = enmyCount.ToString();
+        dude.name = enmyCount.ToString();
         enmyCount++;
         StartCoroutine(enmy_spawner());
     }

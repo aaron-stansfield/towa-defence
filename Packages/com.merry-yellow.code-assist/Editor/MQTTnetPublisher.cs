@@ -450,6 +450,18 @@ namespace Meryel.UnityCodeAssist.Editor
                 );
         }
 
+        public void SendSceneList(string[] sceneNames, string[] scenePaths, string[] sceneBuildIndices,
+            string[] sceneNamesAndPaths, string[] scenePathsAndNames)
+        {
+            SendStringArrayContainerAux(
+                (Synchronizer.Model.Ids.SceneNames, sceneNames),
+                (Synchronizer.Model.Ids.ScenePaths, scenePaths),
+                (Synchronizer.Model.Ids.SceneBuildIndices, sceneBuildIndices),
+                (Synchronizer.Model.Ids.SceneNamesAndPaths, sceneNamesAndPaths),
+                (Synchronizer.Model.Ids.ScenePathsAndNames, scenePathsAndNames)
+                );
+        }
+
         public void SendScriptMissing(string component)
         {
             var scriptMissing = new Synchronizer.Model.ScriptMissing()

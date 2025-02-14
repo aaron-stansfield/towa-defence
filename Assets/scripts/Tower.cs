@@ -79,36 +79,38 @@ public class Tower : MonoBehaviour
                 }
 
             }
-            if (Vector3.Distance(transform.position, target.position) <= attackRadius)
+
+            try
             {
-                
-                if (Time.time >= lastFireTime + fireRate)
+                if (Vector3.Distance(transform.position, target.position) <= attackRadius)
                 {
-                    Vector3 interceptPoint = CalculateInterceptPoint();
-                    if (interceptPoint != Vector3.zero)
+
+                    if (Time.time >= lastFireTime + fireRate)
                     {
-                        FireProjectile(interceptPoint);
-                        lastFireTime = Time.time; // Update the last fire time
+                        //Vector3 interceptPoint = CalculateInterceptPoint();
+                        //if (interceptPoint != Vector3.zero)
+                        //{
+                            FireProjectile(target.transform.position);
+                            lastFireTime = Time.time; // Update the last fire time
+                        //}
+
                     }
-                    
+
+                    parentObject.transform.LookAt(target.transform, Vector3.up);
                 }
-
-                parentObject.transform.LookAt(target.transform, Vector3.up);
             }
+            catch (MissingReferenceException)
+            {
 
-            
-
+            }
         }
 
-        if (Input.GetMouseButtonDown(0) && cameraScript.currentMouseState == cameraScript.mouseState.normal)
+        if (Input.GetMouseButtonDown(0) && cameraScript.currentMouseState == cameraScript.mouseState.normal && mouseColliderObject == GetClickedObject())
         {
-            if (mouseColliderObject == GetClickedObject())
-            {
-                print("clicked/touched!");
-                upgradeMenu.gameObject.SetActive(true);
+            print("clicked/touched!");
+            upgradeMenu.gameObject.SetActive(true);
 
-                //if time stops add here
-            }
+            //if time stops add here
         }
     }
 
@@ -121,7 +123,7 @@ public class Tower : MonoBehaviour
         foreach(RaycastHit hit in hits)
         {
             Debug.Log(hit.collider.gameObject.name);
-            if (!isPointerOverUIObject() && hit.collider.CompareTag("mouseCollider"))
+            if (!isPointerOverUIObject() && hit.collider.CompareTag("towerCollider"))
             {
                 target = hit.collider.gameObject;
                 return target;
@@ -145,7 +147,7 @@ public class Tower : MonoBehaviour
 
     Vector3 CalculateInterceptPoint()
     {
-        Vector3 toTarget = target.position - transform.position;
+        Vector3 toTarget = new Vector3(target.position.x,0,target.position.z) - transform.position;
         Vector3 targetVelocity = target.GetComponent<Rigidbody>().velocity;
 
         float a = Vector3.Dot(targetVelocity, targetVelocity) - projectileSpeed * projectileSpeed;
@@ -163,12 +165,12 @@ public class Tower : MonoBehaviour
         float t2 = (-b + Mathf.Sqrt(discriminant)) / (2 * a);
 
         float interceptTime = Mathf.Min(t1, t2);
-        return target.position + targetVelocity * interceptTime;
+        return target.position /*+ targetVelocity * interceptTime*/;
     }
 
     void FireProjectile(Vector3 interceptPoint)
     {
-        Vector3 direction = (interceptPoint - transform.position).normalized;
+        Vector3 direction = (target.transform.position - transform.position).normalized;
         Transform projectile = Instantiate(Bullet.transform, transform.position, Quaternion.identity);
         projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
     }
@@ -219,7 +221,7 @@ public class Tower : MonoBehaviour
         {
             try
             {
-                if (int.Parse(enemy.name) < int.Parse(firstEnemy.name))
+                if (int.Parse(enemy.transform.GetChild(0).name) < int.Parse(firstEnemy.name))
                 {
                     firstEnemy = enemy;
                 }

@@ -12,6 +12,7 @@ public class cameraScript : MonoBehaviour
     private game_managie manager;
     private GameObject towerGhost;
     public mouseState currentMouseState;
+    private float checkRadius = 1.3f;
     
     public enum mouseState
     {
@@ -40,16 +41,36 @@ public class cameraScript : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundMask))
             {
+                //creates ghost of tower to be placed if in placing mode
+                //Vector3 tempPos = hit.point;
                 towerGhost.transform.position = hit.point;
-                if (Input.GetMouseButtonDown(0))
+                if (!placementCheck(hit.point))
                 {
-                    GameObject newTower = Instantiate(towerToPlace);
-                    newTower.transform.position = hit.point;
-                    Destroy(towerGhost);
-                    changeMouseState();
+                    towerGhost.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.red;
                 }
+                else
+                {
+                    towerGhost.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.black;
+                    towerGhost.gameObject.SetActive(true);
+                    if (Input.GetMouseButtonUp(0))
+                    {
+                        GameObject newTower = Instantiate(towerToPlace);
+                        newTower.transform.position = hit.point;
+                        Destroy(towerGhost);
+                        changeMouseState();
+
+                    }
+                }
+
+                
+                
             }
             
+            if (Input.GetMouseButton(1))
+            {
+                Destroy(towerGhost);
+                changeMouseState();
+            }
         }
         
     }
@@ -67,11 +88,34 @@ public class cameraScript : MonoBehaviour
 
     }
 
+    public bool placementCheck(Vector3 pos)
+    {
+        Collider[] currentObjects = Physics.OverlapSphere(pos, checkRadius);
+        
+        foreach(Collider col in currentObjects)
+        {
+            if (col.gameObject.CompareTag("towerCollider") || col.gameObject.CompareTag("navMesh"))
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
 
     public void baseTowerSelect()
     {
-        towerToPlace = manager.towerList[0];
-        towerGhost = Instantiate(manager.towerList[1]);
-        changeMouseState();
+        if (currentMouseState != mouseState.placing)
+        {
+            towerToPlace = manager.towerList[0];
+            towerGhost = Instantiate(manager.towerList[1]);
+            towerGhost.gameObject.SetActive(false);
+            changeMouseState();
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(towerGhost.transform.position, checkRadius);
     }
 }
