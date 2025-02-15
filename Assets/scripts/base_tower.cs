@@ -1,31 +1,46 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.GraphicsBuffer;
 
 public class Tower : MonoBehaviour
 {
     private Transform target;
-    private bool ActiveTower;
-    public float MaxShootTime;
-    public GameObject Bullet;
-    public GameObject BSpawn;
+    private GameObject parentObject; // this gameObject's parent
+    private GameObject turret; // this gameObject
+    private GameObject upgradeMenu; // upgrade menu canvas
+    private GameObject mouseColliderObject; // collider used for mouse raycasts
+    private cameraScript cameraScript; // reference to the camera's script
+    private game_managie manager;
+    private bool isActive; // true if the tower is currently highlighted
+    private float lastFireTime; // time since last shit
+
+    public TextMeshProUGUI fireModeText;
+    private int upgrade1Tier = 0;
+    public TextMeshProUGUI upgrade1Text;
+    private int upgrade2Tier = 0;
+    public TextMeshProUGUI upgrade2Text;
+    private int upgrade3Tier = 0;
+    public TextMeshProUGUI upgrade3Text;
+    private int bulletHealth = 1;
+    public int baseCost = 5;
+
     public float attackRadius = 30f;
     public float projectileSpeed = 60f;
     public float fireRate = 1f; // Time in seconds between shots
-    private float lastFireTime;
+    public GameObject Bullet;
+    public GameObject BSpawn;
     public GameObject currentTargetedObject;
+    public GameObject highlightRing; // gameObject under the tower that spawns when the tower is highlighted
     public List<GameObject> enemysInRange;
 
-    private GameObject parentObject;
-    private GameObject turret;
-    private GameObject upgradeMenu;
-    private GameObject mouseColliderObject;
     public targetState currentTargetState;
-    private cameraScript cameraScript;
     public enum targetState
     {
         first,
@@ -37,6 +52,7 @@ public class Tower : MonoBehaviour
     
     void Start()
     {
+        manager = GameObject.Find("game managie").GetComponent<game_managie>();
         cameraScript = GameObject.Find("Main Camera").GetComponent<cameraScript>();
         mouseColliderObject = transform.GetChild(0).gameObject;
         upgradeMenu = transform.GetChild(1).gameObject;
@@ -51,6 +67,7 @@ public class Tower : MonoBehaviour
     {
         try
         {
+            // purging enemy list of destroyed/ null enemies
             foreach (GameObject dude in enemysInRange)
             {
                 if (dude == null)
@@ -71,7 +88,7 @@ public class Tower : MonoBehaviour
             {
                 try
                 {
-                    target = getFirstEnemy(enemysInRange).transform;
+                    target = getFirstEnemy(enemysInRange, false).transform;
                 }
                 catch (MissingReferenceException)
                 {
@@ -79,23 +96,30 @@ public class Tower : MonoBehaviour
                 }
 
             }
+            else if (currentTargetState == targetState.last)
+            {
+                try
+                {
+                    target = getFirstEnemy(enemysInRange, true).transform;
+                }
+                catch (MissingReferenceException)
+                {
+
+                }
+                
+            }
 
             try
             {
-                if (Vector3.Distance(transform.position, target.position) <= attackRadius)
+                //fire shot
+                if (Vector3.Distance(transform.position, target.position) <= attackRadius && Time.time >= lastFireTime + fireRate)
                 {
-
-                    if (Time.time >= lastFireTime + fireRate)
-                    {
-                        //Vector3 interceptPoint = CalculateInterceptPoint();
-                        //if (interceptPoint != Vector3.zero)
-                        //{
-                            FireProjectile(target.transform.position);
-                            lastFireTime = Time.time; // Update the last fire time
-                        //}
-
-                    }
-
+                    //Vector3 interceptPoint = CalculateInterceptPoint();
+                    //if (interceptPoint != Vector3.zero)
+                    //{
+                    FireProjectile(target.transform.position);
+                    lastFireTime = Time.time; // Update the last fire time
+                    //}
                     parentObject.transform.LookAt(target.transform, Vector3.up);
                 }
             }
@@ -105,18 +129,26 @@ public class Tower : MonoBehaviour
             }
         }
 
-        if (Input.GetMouseButtonDown(0) && cameraScript.currentMouseState == cameraScript.mouseState.normal && mouseColliderObject == GetClickedObject())
+        // if player clicks tower open upgrade menu
+        if (Input.GetMouseButtonDown(0) && cameraScript.currentMouseState == cameraScript.mouseState.normal && mouseColliderObject == GetClickedObject() && !manager.anyUpgradeMenuOpen)
         {
             print("clicked/touched!");
             upgradeMenu.gameObject.SetActive(true);
+            highlightRing.SetActive(true);
+            isActive = true;
+            manager.anyUpgradeMenuOpen = true;
 
             //if time stops add here
+        }
+
+        if (Input.GetMouseButton(1) && isActive)
+        {
+            close();
         }
     }
 
     GameObject GetClickedObject()
     {
-        
         GameObject target = null;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity);
@@ -130,11 +162,10 @@ public class Tower : MonoBehaviour
             }
         }
             //might need to add if (!isPointerOverUIObject()) {}
-        
         return target;
     }
 
-    private bool isPointerOverUIObject()     //avoids the click interacting with ui
+    private bool isPointerOverUIObject()  //avoids the click interacting with ui
     {
         PointerEventData ped = new PointerEventData(EventSystem.current);
         ped.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
@@ -172,12 +203,27 @@ public class Tower : MonoBehaviour
     {
         Vector3 direction = (target.transform.position - transform.position).normalized;
         Transform projectile = Instantiate(Bullet.transform, transform.position, Quaternion.identity);
+        projectile.GetComponent<Bullet>().health = bulletHealth;
         projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
     }
+
     public void Upgrade1()
     {
-        print("upgrade 1");
-        //input whatever upgrade we want
+        if (upgrade1Tier == 0 && manager.money >= 10)
+        {
+            manager.money -= 10;
+            fireRate = fireRate / 1.5f;
+            upgrade1Tier++;
+            upgrade1Text.text = "Tier 2 - cost 25\n further increases firerate";
+        }
+        else if (upgrade1Tier == 1 && manager.money >= 25)
+        {
+            manager.money -= 25;
+            fireRate = fireRate / 1.3f;
+            bulletHealth++;
+            upgrade1Tier++;
+            upgrade1Text.text = "fully upgraded";
+        }
     }
 
     public void Upgrade2()
@@ -192,21 +238,38 @@ public class Tower : MonoBehaviour
         //input whatever upgrade we want
     }
 
+    public void FireMode()
+    {
+        int currentIndex = Array.IndexOf(Enum.GetValues(typeof(targetState)), currentTargetState);
+        if (currentIndex < 3)
+        {
+
+            currentTargetState++;
+            
+        }
+        else
+        {
+            currentTargetState = 0;
+        }
+        fireModeText.text = currentTargetState.ToString();
+    }
     public void close()
     {
+        isActive = false;
+        manager.anyUpgradeMenuOpen = false;
         upgradeMenu.gameObject.SetActive(false);
+        highlightRing.gameObject.SetActive(false);
     }
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other) // adds enemy to enemylist
     {
-        //sets current target only if its not already targeting something
         if (other.CompareTag("dude"))
         {
             enemysInRange.Add(other.gameObject);
         }
     }
 
-    public void OnTriggerExit(Collider other)
+    public void OnTriggerExit(Collider other) // removes enemy from enemylist
     {
         if(enemysInRange.Contains(other.gameObject))
         {
@@ -214,17 +277,23 @@ public class Tower : MonoBehaviour
         }
     }
 
-    GameObject getFirstEnemy(List<GameObject> wap)
+    GameObject getFirstEnemy(List<GameObject> wap, bool swap) // if swap = true then function returns last enemy instead
     {
         GameObject firstEnemy = wap[0];
         foreach (GameObject enemy in wap)
         {
             try
             {
-                if (int.Parse(enemy.transform.GetChild(0).name) < int.Parse(firstEnemy.name))
+                if (int.Parse(enemy.name) < int.Parse(firstEnemy.name) && !swap)
                 {
                     firstEnemy = enemy;
                 }
+
+                else if (int.Parse(enemy.name) > int.Parse(firstEnemy.name) && swap)
+                {
+                    firstEnemy = enemy;
+                }
+
             }
             catch (FormatException)
             {
@@ -232,11 +301,9 @@ public class Tower : MonoBehaviour
             }
             catch (MissingReferenceException)
             {
-
             }
-            
-            
         }
+
         return firstEnemy;
     }
 }

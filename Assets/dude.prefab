@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 0}
+  health: 4
 --- !u!195 &5769725439821876568
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -110,7 +111,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 66862539164753587}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.41
+  m_Radius: 1.17
   m_Speed: 16.37
   m_Acceleration: 21.57
   avoidancePriority: 50

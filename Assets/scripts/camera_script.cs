@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using static game_managie;
 
 public class cameraScript : MonoBehaviour
@@ -52,11 +53,14 @@ public class cameraScript : MonoBehaviour
                 {
                     towerGhost.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.black;
                     towerGhost.gameObject.SetActive(true);
-                    if (Input.GetMouseButtonUp(0))
+                    if (Input.GetMouseButtonUp(0) && !isPointerOverUIObject())
                     {
                         GameObject newTower = Instantiate(towerToPlace);
+                        manager.money -= manager.baseTowerCost;
+                        //manager.baseTowerCost += Mathf.RoundToInt(manager.baseTowerCost / 0.8f);
                         newTower.transform.position = hit.point;
                         Destroy(towerGhost);
+                        
                         changeMouseState();
 
                     }
@@ -108,14 +112,27 @@ public class cameraScript : MonoBehaviour
         if (currentMouseState != mouseState.placing)
         {
             towerToPlace = manager.towerList[0];
-            towerGhost = Instantiate(manager.towerList[1]);
-            towerGhost.gameObject.SetActive(false);
-            changeMouseState();
+            if (manager.money >= manager.baseTowerCost)
+            {
+                towerGhost = Instantiate(manager.towerList[1]);
+                towerGhost.gameObject.SetActive(false);
+                changeMouseState();
+            }
+            
         }
     }
 
-    private void OnDrawGizmos()
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawSphere(towerGhost.transform.position, checkRadius);
+    //}
+
+    private bool isPointerOverUIObject()  //avoids the click interacting with ui
     {
-        Gizmos.DrawSphere(towerGhost.transform.position, checkRadius);
+        PointerEventData ped = new PointerEventData(EventSystem.current);
+        ped.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(ped, results);
+        return results.Count > 0;
     }
 }

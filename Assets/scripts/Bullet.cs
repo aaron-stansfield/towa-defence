@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    public int health;
     private Rigidbody rb;
     public float bulletLifeTime;
     // Start is called before the first frame update
@@ -26,10 +27,17 @@ public class Bullet : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "dude")
+        
+        if (other.gameObject.tag == "dude" && health > 0)
         {
-            Destroy(other.gameObject);
+            other.gameObject.GetComponent<enmy_scrip>().damaged();
+            health--;
+        }
+
+        if (health <= 0)
+        {
             Destroy(gameObject);
         }
+        
     }
 }
