@@ -777,7 +777,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7194957354738330821}
   m_Layer: 0
-  m_Name: morg
+  m_Name: gumballer parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -948,7 +948,7 @@ GameObject:
   - component: {fileID: 9048594798595543377}
   - component: {fileID: 8282042698306909337}
   m_Layer: 0
-  m_Name: morgy
+  m_Name: gumballer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1037,6 +1037,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeMenu: {fileID: 8623056582159176157}
+  parabolic: 0
+  launchSpeed: 8.02
+  arcerTargetObj: {fileID: 0}
   fireModeText: {fileID: 1319404841053781717}
   upgrade1Text: {fileID: 1037574858065203098}
   upgrade2Text: {fileID: 5100076462422771998}

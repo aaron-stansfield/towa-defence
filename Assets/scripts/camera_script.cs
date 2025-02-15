@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static game_managie;
@@ -11,9 +12,10 @@ public class cameraScript : MonoBehaviour
     public GameObject towerToPlace;
     public GameObject managerTemp;
     private game_managie manager;
-    private GameObject towerGhost;
+    public GameObject towerGhost;
     public mouseState currentMouseState;
     private float checkRadius = 1.3f;
+    public bool movingArcerTarget;
     
     public enum mouseState
     {
@@ -43,34 +45,40 @@ public class cameraScript : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundMask))
             {
                 //creates ghost of tower to be placed if in placing mode
-                //Vector3 tempPos = hit.point;
                 towerGhost.transform.position = hit.point;
-                if (!placementCheck(hit.point))
+                if (!placementCheck(hit.point) && !movingArcerTarget)
                 {
                     towerGhost.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.red;
                 }
                 else
                 {
-                    towerGhost.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.black;
+                    if (!movingArcerTarget)
+                    {
+                        towerGhost.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.black;
+                    }
                     towerGhost.gameObject.SetActive(true);
-                    if (Input.GetMouseButtonUp(0) && !isPointerOverUIObject())
+                    if (Input.GetMouseButtonUp(0) && !isPointerOverUIObject() && !movingArcerTarget)
                     {
                         GameObject newTower = Instantiate(towerToPlace);
                         manager.money -= manager.baseTowerCost;
                         //manager.baseTowerCost += Mathf.RoundToInt(manager.baseTowerCost / 0.8f);
                         newTower.transform.position = hit.point;
                         Destroy(towerGhost);
-                        
-                        changeMouseState();
 
+                        changeMouseState();
                     }
                 }
+                if (Input.GetMouseButtonUp(0) && movingArcerTarget && !isPointerOverUIObject())
+                {
+                    Debug.Log("huh");
+                    movingArcerTarget = false;
+                    towerGhost = null;
 
-                
-                
+                    changeMouseState();
+                }
+
             }
-            
-            if (Input.GetMouseButton(1))
+            if (Input.GetMouseButton(1) && !movingArcerTarget)
             {
                 Destroy(towerGhost);
                 changeMouseState();
@@ -119,6 +127,21 @@ public class cameraScript : MonoBehaviour
                 changeMouseState();
             }
             
+        }
+    }
+
+    public void arcerTowerSelect()
+    {
+        if (currentMouseState != mouseState.placing)
+        {
+            towerToPlace = manager.towerList[2];
+            if (manager.money >= manager.baseTowerCost)
+            {
+                towerGhost = Instantiate(manager.towerList[3]);
+                towerGhost.gameObject.SetActive(false);
+                changeMouseState();
+            }
+
         }
     }
 

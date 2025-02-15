@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -21,6 +22,10 @@ public class Tower : MonoBehaviour
     private bool isActive; // true if the tower is currently highlighted
     private float lastFireTime; // time since last shit
     private bool explosionUpgrade;
+    public bool parabolic; // if true projectile will shoot in an arc
+    public float launchSpeed;
+    public GameObject arcerTargetObj;
+
 
     public TextMeshProUGUI fireModeText;
     private int upgrade1Tier = 0;
@@ -31,7 +36,7 @@ public class Tower : MonoBehaviour
     public TextMeshProUGUI upgrade3Text;
     private int bulletHealth = 1;
     public int baseCost = 5;
-    public GameObject shooterPart;
+    public GameObject shooterPart; // part of gumballer that animates when it shoots
 
     public float attackRadius = 30f;
     public float projectileSpeed = 60f;
@@ -48,7 +53,8 @@ public class Tower : MonoBehaviour
         first,
         last,
         strong,
-        weak
+        weak,
+        user_set
     }
 
     
@@ -61,7 +67,6 @@ public class Tower : MonoBehaviour
         turret = this.gameObject;
         upgradeMenu.gameObject.SetActive(false);
         parentObject = transform.parent.gameObject;
-        currentTargetState = targetState.first;
     }
 
     
@@ -84,52 +89,55 @@ public class Tower : MonoBehaviour
         
         }
 
-        if (enemysInRange.Count != 0)
+        if (currentTargetState == targetState.first && enemysInRange.Count != 0)
         {
-            if (currentTargetState == targetState.first)
-            {
-                try
-                {
-                    target = getFirstEnemy(enemysInRange, false).transform;
-                }
-                catch (MissingReferenceException)
-                {
-                
-                }
-
-            }
-            else if (currentTargetState == targetState.last)
-            {
-                try
-                {
-                    target = getFirstEnemy(enemysInRange, true).transform;
-                }
-                catch (MissingReferenceException)
-                {
-
-                }
-                
-            }
-
             try
             {
-                //fire shot
-                if (Vector3.Distance(transform.position, target.position) <= attackRadius && Time.time >= lastFireTime + fireRate)
-                {
-                    //Vector3 interceptPoint = CalculateInterceptPoint();
-                    //if (interceptPoint != Vector3.zero)
-                    //{
-                    FireProjectile(target.transform.position);
-                    shooterPart.GetComponent<Animation>().Play();
-                    lastFireTime = Time.time; // Update the last fire time
-                    //}
-                    parentObject.transform.LookAt(new Vector3(target.transform.position.x,0,target.transform.position.z), Vector3.up);
-                }
+                target = getFirstEnemy(enemysInRange, false).transform;
             }
             catch (MissingReferenceException)
             {
 
             }
+
+        }
+        else if (currentTargetState == targetState.last && enemysInRange.Count != 0)
+        {
+            try
+            {
+                target = getFirstEnemy(enemysInRange, true).transform;
+            }
+            catch (MissingReferenceException)
+            {
+
+            }
+        }
+        else if (currentTargetState == targetState.user_set)
+        {
+            target = arcerTargetObj.transform;
+        }
+
+        try
+        {
+            //fire shot
+            if (Vector3.Distance(transform.position, target.position) <= attackRadius && Time.time >= lastFireTime + fireRate)
+            {
+                //Vector3 interceptPoint = CalculateInterceptPoint();
+                //if (interceptPoint != Vector3.zero)
+                //{
+                FireProjectile(target.transform.position);
+                if (!parabolic)
+                {
+                    shooterPart.GetComponent<Animation>().Play();
+                }
+                lastFireTime = Time.time; // Update the last fire time
+
+                transform.LookAt(new Vector3(target.transform.position.x, (this.GetComponent<Renderer>().bounds.center.y), target.transform.position.z), Vector3.up);
+            }
+        }
+        catch (MissingReferenceException)
+        {
+
         }
 
         // if player clicks tower open upgrade menu
@@ -140,6 +148,11 @@ public class Tower : MonoBehaviour
             highlightRing.SetActive(true);
             isActive = true;
             manager.anyUpgradeMenuOpen = true;
+            if (parabolic)
+            {
+                arcerTargetObj.SetActive(true);
+            }
+
 
             //if time stops add here
         }
@@ -147,6 +160,11 @@ public class Tower : MonoBehaviour
         if (Input.GetMouseButton(1) && isActive)
         {
             close();
+            if (cameraScript.movingArcerTarget)
+            {
+                cameraScript.changeMouseState();
+                cameraScript.movingArcerTarget = false;
+            }
         }
     }
 
@@ -208,7 +226,33 @@ public class Tower : MonoBehaviour
         Transform projectile = Instantiate(Bullet.transform, transform.position, Quaternion.identity);
         projectile.GetComponent<Bullet>().health = bulletHealth;
         projectile.GetComponent<Bullet>().explosive = explosionUpgrade;
-        projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
+        if (!parabolic)
+        {
+            projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
+        }
+        else
+        {
+            projectile.GetComponent <Rigidbody>().useGravity = true;
+            projectile.GetComponent<Bullet>().parabolic = true;
+            projectile.GetComponent<Bullet>().bulletLifeTime = 100f;
+            Vector3 force = (this.transform.position - target.transform.position).normalized;
+            // from 5 - 90 to 3 - 16.5
+            float targetDistance = Vector3.Distance(this.transform.position, target.transform.position);
+            launchSpeed = Remap(targetDistance, 5, 90, 5, 16.5f);
+            launchSpeed = launchSpeed * 1.13f;
+            projectile.GetComponent<Rigidbody>().AddForce(new Vector3(-force.x, 1.5f, -force.z) * launchSpeed, ForceMode.Impulse);  
+            Debug.DrawLine(this.transform.position, new Vector3(force.x,force.y,force.z),Color.yellow,100f);
+        }
+    }
+
+    float Remap(float value, float from1, float to1, float from2, float to2)
+    {
+        return (float)((value - from1) / (to1 - from1) * (to2 - from2) + from2);
+    }
+
+    void Trajectory(Vector3 end)
+    {
+        //Vector3 initialVelocity = new Vector3(;
     }
 
     public void Upgrade1()
@@ -268,6 +312,10 @@ public class Tower : MonoBehaviour
         manager.anyUpgradeMenuOpen = false;
         upgradeMenu.gameObject.SetActive(false);
         highlightRing.gameObject.SetActive(false);
+        if (parabolic)
+        {
+            arcerTargetObj.SetActive(false);
+        }
     }
 
     public void OnTriggerEnter(Collider other) // adds enemy to enemylist
@@ -284,6 +332,14 @@ public class Tower : MonoBehaviour
         {
             enemysInRange.Remove(other.gameObject);
         }
+    }
+
+
+    public void changeArcerTarget()
+    {
+        cameraScript.movingArcerTarget = true;
+        cameraScript.towerGhost = arcerTargetObj;
+        cameraScript.changeMouseState();
     }
 
     GameObject getFirstEnemy(List<GameObject> wap, bool swap) // if swap = true then function returns last enemy instead

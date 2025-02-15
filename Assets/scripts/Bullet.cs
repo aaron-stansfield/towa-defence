@@ -10,6 +10,7 @@ public class Bullet : MonoBehaviour
     public bool isExplosion; // true if this bullet is the explosion from another bullet
     public GameObject bigBullet;
     public float bulletLifeTime;
+    public bool parabolic; // if true projectile will shoot in arc
     private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,11 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        this.rb.velocity = new Vector3(this.rb.velocity.x, 0 , this.rb.velocity.z);
+        if (!parabolic)
+        {
+            this.rb.velocity = new Vector3(this.rb.velocity.x, 0, this.rb.velocity.z);
+        }
+        
     }
     public IEnumerator BulletLifeTime()
     {
@@ -46,7 +51,6 @@ public class Bullet : MonoBehaviour
                     explosion.GetComponent<Bullet>().isExplosion = true;
                     explosion.GetComponent<Bullet>().health = 20;
                     explosion.GetComponent<Bullet>().bulletLifeTime = 0.3f;
-                    //StartCoroutine(timer(explosion));
                 
                }
             }
@@ -60,9 +64,4 @@ public class Bullet : MonoBehaviour
         
     }
 
-    //IEnumerator timer(GameObject bulletToDestroy)
-    //{
-    //    yield return new WaitForSeconds(0.5f);
-    //    Destroy(bulletToDestroy);
-    //}
 }
