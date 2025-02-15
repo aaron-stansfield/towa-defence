@@ -14,7 +14,7 @@ public class Tower : MonoBehaviour
     private Transform target;
     private GameObject parentObject; // this gameObject's parent
     private GameObject turret; // this gameObject
-    private GameObject upgradeMenu; // upgrade menu canvas
+    public GameObject upgradeMenu; // upgrade menu canvas
     private GameObject mouseColliderObject; // collider used for mouse raycasts
     private cameraScript cameraScript; // reference to the camera's script
     private game_managie manager;
@@ -31,6 +31,7 @@ public class Tower : MonoBehaviour
     public TextMeshProUGUI upgrade3Text;
     private int bulletHealth = 1;
     public int baseCost = 5;
+    public GameObject shooterPart;
 
     public float attackRadius = 30f;
     public float projectileSpeed = 60f;
@@ -56,7 +57,7 @@ public class Tower : MonoBehaviour
         manager = GameObject.Find("game managie").GetComponent<game_managie>();
         cameraScript = GameObject.Find("Main Camera").GetComponent<cameraScript>();
         mouseColliderObject = transform.GetChild(0).gameObject;
-        upgradeMenu = transform.GetChild(1).gameObject;
+        //upgradeMenu = transform.GetChild(1).gameObject;
         turret = this.gameObject;
         upgradeMenu.gameObject.SetActive(false);
         parentObject = transform.parent.gameObject;
@@ -119,9 +120,10 @@ public class Tower : MonoBehaviour
                     //if (interceptPoint != Vector3.zero)
                     //{
                     FireProjectile(target.transform.position);
+                    shooterPart.GetComponent<Animation>().Play();
                     lastFireTime = Time.time; // Update the last fire time
                     //}
-                    parentObject.transform.LookAt(target.transform, Vector3.up);
+                    parentObject.transform.LookAt(new Vector3(target.transform.position.x,0,target.transform.position.z), Vector3.up);
                 }
             }
             catch (MissingReferenceException)

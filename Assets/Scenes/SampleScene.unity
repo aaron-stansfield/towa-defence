@@ -1431,7 +1431,7 @@ MonoBehaviour:
   spawnDelay: 0.58
   towerList:
   - {fileID: 4567004126064950789, guid: 669fcf404198fdb4c807f64d1be7c774, type: 3}
-  - {fileID: 2203910953829748053, guid: 56b65252e68d7ba439942d462b5fa449, type: 3}
+  - {fileID: 4567004126064950789, guid: 3e41d06195fb46543a0b161ee7016e71, type: 3}
   baseTowerCost: 5
   baseTowerCostText: {fileID: 1062672121}
   anyUpgradeMenuOpen: 0
