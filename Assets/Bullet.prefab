@@ -119,6 +119,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ac94e54afdbb29459db706f5a276358, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
+  explosive: 0
+  bigBullet: {fileID: 8032492240239803107}
   bulletLifeTime: 0.95
 --- !u!54 &2533173997609582988
 Rigidbody:

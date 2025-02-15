@@ -49,7 +49,7 @@ public class enmy_scrip : MonoBehaviour
         if (health <= 0)
         {
             gameManager.deathCount++;
-            gameManager.money += 1;
+            gameManager.money += 2;
             Destroy(this.gameObject);
         }
     }

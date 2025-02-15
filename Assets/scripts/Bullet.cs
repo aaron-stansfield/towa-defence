@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Bullet : MonoBehaviour
 {
-    public int health;
-    private Rigidbody rb;
+    public int health; // how many enemies a bullet can hit before dying
+    public bool explosive; //if true bullet has a chance to explode on contact
+    public bool isExplosion; // true if this bullet is the explosion from another bullet
+    public GameObject bigBullet;
     public float bulletLifeTime;
+    private Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +35,21 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == "dude" && health > 0)
         {
             other.gameObject.GetComponent<enmy_scrip>().damaged();
+            if (explosive && !isExplosion)
+            {
+               System.Random random = new System.Random();
+               int chance = random.Next(0,5);
+               if (chance == 0)
+               {
+                    Transform explosion = Instantiate(bigBullet.transform);
+                    explosion.gameObject.transform.localScale = new Vector3(10, 10, 10);
+                    explosion.GetComponent<Bullet>().isExplosion = true;
+                    explosion.GetComponent<Bullet>().health = 20;
+                    explosion.GetComponent<Bullet>().bulletLifeTime = 0.3f;
+                    //StartCoroutine(timer(explosion));
+                
+               }
+            }
             health--;
         }
 
@@ -40,4 +59,10 @@ public class Bullet : MonoBehaviour
         }
         
     }
+
+    //IEnumerator timer(GameObject bulletToDestroy)
+    //{
+    //    yield return new WaitForSeconds(0.5f);
+    //    Destroy(bulletToDestroy);
+    //}
 }

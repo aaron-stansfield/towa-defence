@@ -20,6 +20,7 @@ public class Tower : MonoBehaviour
     private game_managie manager;
     private bool isActive; // true if the tower is currently highlighted
     private float lastFireTime; // time since last shit
+    private bool explosionUpgrade;
 
     public TextMeshProUGUI fireModeText;
     private int upgrade1Tier = 0;
@@ -204,6 +205,7 @@ public class Tower : MonoBehaviour
         Vector3 direction = (target.transform.position - transform.position).normalized;
         Transform projectile = Instantiate(Bullet.transform, transform.position, Quaternion.identity);
         projectile.GetComponent<Bullet>().health = bulletHealth;
+        projectile.GetComponent<Bullet>().explosive = explosionUpgrade;
         projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
     }
 
@@ -228,8 +230,13 @@ public class Tower : MonoBehaviour
 
     public void Upgrade2()
     {
-        print("upgrade 2");
-        //input whatever upgrade we want
+        if (upgrade2Tier == 0 && manager.money >= 20)
+        {
+            manager.money -= 20;
+            explosionUpgrade = true;
+            upgrade2Tier++;
+            upgrade2Text.text = "fully upgraded";
+        }
     }
 
     public void Upgrade3()
