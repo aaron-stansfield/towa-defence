@@ -66,8 +66,8 @@ Transform:
   m_GameObject: {fileID: 2158675289000859363}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 0, z: -1.02}
-  m_LocalScale: {x: 7.8674417, y: 7.8674417, z: 7.8674417}
+  m_LocalPosition: {x: -0.53, y: 0, z: 0.05}
+  m_LocalScale: {x: 12.119794, y: 7.8674417, z: 7.8674417}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1286149504622555602}
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tier 1 - cost 10\n increase fire rate\n"
+  m_text: "Tier 1 - cost 100\n increase fire rate, lower damage\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -688,7 +688,7 @@ Transform:
   m_GameObject: {fileID: 4504112826932447034}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0048121978, y: -0.83134794, z: -0.0043550376, w: -0.5557144}
-  m_LocalPosition: {x: -0.12, y: 0.26, z: -0.5}
+  m_LocalPosition: {x: -0.18, y: 0.25, z: 0.13}
   m_LocalScale: {x: 3.557076, y: 0.14221162, z: 3.5570753}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -963,8 +963,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4757895850222638914}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.707107, z: -0, w: 0.70710665}
-  m_LocalPosition: {x: -0.08, y: 3.4, z: -0.07}
+  m_LocalRotation: {x: -0, y: -0.06814691, z: -0, w: -0.9976753}
+  m_LocalPosition: {x: -0.08, y: 3.08, z: -0.07}
   m_LocalScale: {x: 0.40673494, y: 0.40673494, z: 0.4067349}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -972,7 +972,7 @@ Transform:
   - {fileID: 5088540942565442288}
   - {fileID: 3252958950419118632}
   m_Father: {fileID: 7194957354738330821}
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -352.185, z: 0}
 --- !u!33 &460520380619634193
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1041,18 +1041,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeMenu: {fileID: 8623056582159176157}
-  parabolic: 1
+  arcer: 1
   launchSpeed: 8.02
   arcerTargetObj: {fileID: 8729668000710921197}
+  slowOnHit: 0
+  gumballer: 0
   fireModeText: {fileID: 1319404841053781717}
   upgrade1Text: {fileID: 1037574858065203098}
   upgrade2Text: {fileID: 5100076462422771998}
   upgrade3Text: {fileID: 4169396019399641164}
   baseCost: 5
   shooterPart: {fileID: 0}
-  attackRadius: 45.5
+  attackRadius: 134.7
   projectileSpeed: 73.6
-  fireRate: 0.8
+  fireRate: 3
   Bullet: {fileID: 8032492240239803107, guid: 9db8052a3f2ed6c4da8d51d6f5c01963, type: 3}
   BSpawn: {fileID: 2276943037582974931}
   currentTargetedObject: {fileID: 0}
@@ -1413,9 +1415,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Tier 1 - cost 20
+  m_text: 'Tier 1 - cost 200
 
-    explosive rounds'
+    sauce lasts longer'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1682,7 +1684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: close
+  m_text: exit menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1881,7 +1883,7 @@ Transform:
   m_GameObject: {fileID: 8729668000710921197}
   serializedVersion: 2
   m_LocalRotation: {x: -0.0048121978, y: -0.83134794, z: -0.0043550376, w: -0.5557144}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 4.84, y: -0.02, z: 0.53}
   m_LocalScale: {x: 3.557076, y: 0.14221162, z: 3.5570753}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - towerCollider
   - navMesh
+  - ground
   layers:
   - Default
   - TransparentFX

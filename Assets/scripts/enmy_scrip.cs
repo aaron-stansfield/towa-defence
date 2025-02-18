@@ -10,6 +10,10 @@ public class enmy_scrip : MonoBehaviour
     private NavMeshAgent agent;
     private game_managie gameManager;
     public int health;
+    public int moneyOnDeath;
+    public int moneyOnHit;
+    public float slowTime;
+    public GameObject slowFX;
     // Start is called before the first frame update
     public void Start()
     {
@@ -25,9 +29,12 @@ public class enmy_scrip : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveEnmy();
     }
 
+    private void FixedUpdate()
+    {
+        moveEnmy();
+    }
     public void moveEnmy()
     {
         agent.SetDestination(goal.transform.position);
@@ -39,6 +46,10 @@ public class enmy_scrip : MonoBehaviour
         if (other.CompareTag("goal"))
         {
             gameManager.Damage();
+            if (gameManager.enemyList.Contains(this.gameObject))
+            {
+                gameManager.enemyList.Remove(this.gameObject);
+            }
             Destroy(this.gameObject);
         }
     }
@@ -49,8 +60,30 @@ public class enmy_scrip : MonoBehaviour
         if (health <= 0)
         {
             gameManager.deathCount++;
-            gameManager.money += 2;
+            gameManager.money += moneyOnDeath;
+            if (gameManager.enemyList.Contains(this.gameObject))
+            {
+                gameManager.enemyList.Remove(this.gameObject);
+            }
             Destroy(this.gameObject);
         }
+        gameManager.money += moneyOnHit;
     }
+
+    public void slowed()
+    {
+        StartCoroutine(slowedIEnum());
+    }
+    private IEnumerator slowedIEnum()
+    {
+        if (!slowFX.activeInHierarchy)
+        {
+            this.GetComponent<NavMeshAgent>().speed = this.GetComponent<NavMeshAgent>().speed / 2;
+            slowFX.gameObject.SetActive(true);
+            yield return new WaitForSeconds(slowTime);
+            this.GetComponent<NavMeshAgent>().speed = this.GetComponent<NavMeshAgent>().speed * 2;
+            slowFX.gameObject.SetActive(false);
+        }
+    }
+
 }

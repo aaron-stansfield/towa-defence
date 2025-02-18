@@ -13,6 +13,7 @@ public class game_managie : MonoBehaviour
     private int enmyCount = 0;
     public float spawnDelay;
     public List<GameObject> towerList;
+    public List<GameObject> enemyList;
     public int baseTowerCost = 5;
     public TextMeshProUGUI baseTowerCostText;
     public bool anyUpgradeMenuOpen;
@@ -31,7 +32,8 @@ public class game_managie : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    
+    void FixedUpdate()
     {
         if (deathCount < 20)
         {

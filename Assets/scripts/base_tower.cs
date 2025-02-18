@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.EventSystems;
 using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.GraphicsBuffer;
@@ -22,9 +24,14 @@ public class Tower : MonoBehaviour
     private bool isActive; // true if the tower is currently highlighted
     private float lastFireTime; // time since last shit
     private bool explosionUpgrade;
-    public bool parabolic; // if true projectile will shoot in an arc
+    public bool arcer; // if this tower shoots in an arc
     public float launchSpeed;
     public GameObject arcerTargetObj;
+    public bool slowOnHit;
+    private bool extraSlowChance;
+    private int explosionDamage;
+    [SerializeField] bool gumballer;
+    private float sauceLifeSpan = 3;
 
 
     public TextMeshProUGUI fireModeText;
@@ -34,7 +41,7 @@ public class Tower : MonoBehaviour
     public TextMeshProUGUI upgrade2Text;
     private int upgrade3Tier = 0;
     public TextMeshProUGUI upgrade3Text;
-    private int bulletHealth = 1;
+    private int bulletHealth;
     public int baseCost = 5;
     public GameObject shooterPart; // part of gumballer that animates when it shoots
 
@@ -67,78 +74,21 @@ public class Tower : MonoBehaviour
         turret = this.gameObject;
         upgradeMenu.gameObject.SetActive(false);
         parentObject = transform.parent.gameObject;
+        if (gumballer)
+        {
+            explosionDamage = 15;
+            bulletHealth = 2;
+        }
+        else if (arcer)
+        {
+            explosionDamage = 7;
+            bulletHealth = 1;
+        }
     }
 
     
     void Update()
     {
-        try
-        {
-            // purging enemy list of destroyed/ null enemies
-            foreach (GameObject dude in enemysInRange)
-            {
-                if (dude == null)
-                {
-                    enemysInRange.Remove(dude);
-                }
-            }
-        }
-
-        catch(InvalidOperationException)
-        { 
-        
-        }
-
-        if (currentTargetState == targetState.first && enemysInRange.Count != 0)
-        {
-            try
-            {
-                target = getFirstEnemy(enemysInRange, false).transform;
-            }
-            catch (MissingReferenceException)
-            {
-
-            }
-
-        }
-        else if (currentTargetState == targetState.last && enemysInRange.Count != 0)
-        {
-            try
-            {
-                target = getFirstEnemy(enemysInRange, true).transform;
-            }
-            catch (MissingReferenceException)
-            {
-
-            }
-        }
-        else if (currentTargetState == targetState.user_set)
-        {
-            target = arcerTargetObj.transform;
-        }
-
-        try
-        {
-            //fire shot
-            if (Vector3.Distance(transform.position, target.position) <= attackRadius && Time.time >= lastFireTime + fireRate)
-            {
-                //Vector3 interceptPoint = CalculateInterceptPoint();
-                //if (interceptPoint != Vector3.zero)
-                //{
-                FireProjectile(target.transform.position);
-                if (!parabolic)
-                {
-                    shooterPart.GetComponent<Animation>().Play();
-                }
-                lastFireTime = Time.time; // Update the last fire time
-
-                transform.LookAt(new Vector3(target.transform.position.x, (this.GetComponent<Renderer>().bounds.center.y), target.transform.position.z), Vector3.up);
-            }
-        }
-        catch (MissingReferenceException)
-        {
-
-        }
 
         // if player clicks tower open upgrade menu
         if (Input.GetMouseButtonDown(0) && cameraScript.currentMouseState == cameraScript.mouseState.normal && mouseColliderObject == GetClickedObject() && !manager.anyUpgradeMenuOpen)
@@ -148,7 +98,7 @@ public class Tower : MonoBehaviour
             highlightRing.SetActive(true);
             isActive = true;
             manager.anyUpgradeMenuOpen = true;
-            if (parabolic)
+            if (arcer)
             {
                 arcerTargetObj.SetActive(true);
             }
@@ -166,14 +116,78 @@ public class Tower : MonoBehaviour
                 cameraScript.movingArcerTarget = false;
             }
         }
+
     }
 
+    public void FixedUpdate()
+    {
+        // purging enemy list of destroyed/ null enemies
+        try
+        {
+            foreach (GameObject dude in enemysInRange)
+            {
+                if (dude == null)
+                {
+                    enemysInRange.Remove(dude);
+                }
+            }
+        }
+        catch (InvalidOperationException)
+        {
+
+        }
+
+        //fire shot
+        if (Time.time >= lastFireTime + fireRate)
+        {
+            //Vector3 interceptPoint = CalculateInterceptPoint();
+            //if (interceptPoint != Vector3.zero){}
+            if (currentTargetState == targetState.first && enemysInRange.Count != 0)
+            {
+
+                target = getFirstEnemy(enemysInRange, false).transform;
+
+
+            }
+            else if (currentTargetState == targetState.last && enemysInRange.Count != 0)
+            {
+
+                target = getFirstEnemy(enemysInRange, true).transform;
+
+            }
+            else if (currentTargetState == targetState.user_set)
+            {
+                target = arcerTargetObj.transform;
+            }
+            else
+            {
+                return;
+            }
+
+            if (target != null && Vector3.Distance(transform.position, target.position) <= attackRadius)
+            {
+                FireProjectile(target.transform.position);
+                if (gumballer)
+                {
+                    shooterPart.GetComponent<Animation>().Play();
+                }
+
+                lastFireTime = Time.time; // Update the last fire time
+
+                transform.LookAt(new Vector3(target.transform.position.x, (this.GetComponent<Renderer>().bounds.center.y), target.transform.position.z), Vector3.up);
+            }
+            
+        }
+    }
+
+
+        
     GameObject GetClickedObject()
     {
         GameObject target = null;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity);
-        foreach(RaycastHit hit in hits)
+        foreach (RaycastHit hit in hits)
         {
             Debug.Log(hit.collider.gameObject.name);
             if (!isPointerOverUIObject() && hit.collider.CompareTag("towerCollider"))
@@ -182,7 +196,7 @@ public class Tower : MonoBehaviour
                 return target;
             }
         }
-            //might need to add if (!isPointerOverUIObject()) {}
+        //might need to add if (!isPointerOverUIObject()) {}
         return target;
     }
 
@@ -198,51 +212,61 @@ public class Tower : MonoBehaviour
 
 
     Vector3 CalculateInterceptPoint()
-    {
-        Vector3 toTarget = new Vector3(target.position.x,0,target.position.z) - transform.position;
-        Vector3 targetVelocity = target.GetComponent<Rigidbody>().velocity;
-
-        float a = Vector3.Dot(targetVelocity, targetVelocity) - projectileSpeed * projectileSpeed;
-        float b = 2 * Vector3.Dot(targetVelocity, toTarget);
-        float c = Vector3.Dot(toTarget, toTarget);
-
-        float discriminant = b * b - 4 * a * c;
-        if (discriminant < 0)
         {
-            // No valid interception
-            return Vector3.zero;
+            Vector3 toTarget = new Vector3(target.position.x, 0, target.position.z) - transform.position;
+            Vector3 targetVelocity = target.GetComponent<Rigidbody>().velocity;
+
+            float a = Vector3.Dot(targetVelocity, targetVelocity) - projectileSpeed * projectileSpeed;
+            float b = 2 * Vector3.Dot(targetVelocity, toTarget);
+            float c = Vector3.Dot(toTarget, toTarget);
+
+            float discriminant = b * b - 4 * a * c;
+            if (discriminant < 0)
+            {
+                // No valid interception
+                return Vector3.zero;
+            }
+
+            float t1 = (-b - Mathf.Sqrt(discriminant)) / (2 * a);
+            float t2 = (-b + Mathf.Sqrt(discriminant)) / (2 * a);
+
+            float interceptTime = Mathf.Min(t1, t2);
+            return target.position /*+ targetVelocity * interceptTime*/;
         }
-
-        float t1 = (-b - Mathf.Sqrt(discriminant)) / (2 * a);
-        float t2 = (-b + Mathf.Sqrt(discriminant)) / (2 * a);
-
-        float interceptTime = Mathf.Min(t1, t2);
-        return target.position /*+ targetVelocity * interceptTime*/;
-    }
 
     void FireProjectile(Vector3 interceptPoint)
     {
         Vector3 direction = (target.transform.position - transform.position).normalized;
         Transform projectile = Instantiate(Bullet.transform, transform.position, Quaternion.identity);
-        projectile.GetComponent<Bullet>().health = bulletHealth;
-        projectile.GetComponent<Bullet>().explosive = explosionUpgrade;
-        if (!parabolic)
+        Bullet bulletScript = projectile.GetComponent<Bullet>();
+        bulletScript.explosionDamage = explosionDamage;
+        bulletScript.health = bulletHealth;
+        bulletScript.slows = slowOnHit;
+        bulletScript.extraSlowChance = extraSlowChance;
+       
+        if (gumballer)
         {
             projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
+            bulletScript.chanceExplosive = explosionUpgrade;
         }
-        else
+        else if(arcer)
         {
-            projectile.GetComponent <Rigidbody>().useGravity = true;
-            projectile.GetComponent<Bullet>().parabolic = true;
-            projectile.GetComponent<Bullet>().bulletLifeTime = 100f;
+            bulletScript.sauceLifeSpan = sauceLifeSpan;
+            bulletScript.slows = slowOnHit;
+            bulletScript.extraSlowChance = extraSlowChance;
+            projectile.GetComponent<Rigidbody>().useGravity = true;
+            bulletScript.explosive = true;
+            bulletScript.parabolic = true;
+            bulletScript.bulletLifeTime = 10f;
             Vector3 force = (this.transform.position - target.transform.position).normalized;
             // from 5 - 90 to 3 - 16.5
             float targetDistance = Vector3.Distance(this.transform.position, target.transform.position);
+            Debug.Log("losing my mind");
             launchSpeed = Remap(targetDistance, 5, 90, 5, 16.5f);
             launchSpeed = launchSpeed * 1.13f;
-            projectile.GetComponent<Rigidbody>().AddForce(new Vector3(-force.x, 1.5f, -force.z) * launchSpeed, ForceMode.Impulse);  
-            Debug.DrawLine(this.transform.position, new Vector3(force.x,force.y,force.z),Color.yellow,100f);
+            projectile.GetComponent<Rigidbody>().AddForce(new Vector3(-force.x, 1.5f, -force.z) * launchSpeed, ForceMode.Impulse);
         }
+
     }
 
     float Remap(float value, float from1, float to1, float from2, float to2)
@@ -257,38 +281,97 @@ public class Tower : MonoBehaviour
 
     public void Upgrade1()
     {
-        if (upgrade1Tier == 0 && manager.money >= 10)
+        if (gumballer)
         {
-            manager.money -= 10;
-            fireRate = fireRate / 1.5f;
-            upgrade1Tier++;
-            upgrade1Text.text = "Tier 2 - cost 25\n further increases firerate";
+            // upgrades for the gumballer
+            if (upgrade1Tier == 0 && manager.money >= 100)
+            {
+                manager.money -= 100;
+                fireRate = fireRate / 1.5f;
+                upgrade1Tier++;
+                upgrade1Text.text = "Tier 2 - cost 250\n further increases firerate";
+            }
+            else if (upgrade1Tier == 1 && manager.money >= 250)
+            {
+                manager.money -= 250;
+                fireRate = fireRate / 1.3f;
+                bulletHealth++;
+                upgrade1Tier++;
+                upgrade1Text.text = "fully upgraded \n :)";
+            }
         }
-        else if (upgrade1Tier == 1 && manager.money >= 25)
+
+        else
         {
-            manager.money -= 25;
-            fireRate = fireRate / 1.3f;
-            bulletHealth++;
-            upgrade1Tier++;
-            upgrade1Text.text = "fully upgraded";
+            // upgrades for the dogger
+            if (upgrade1Tier == 0 && manager.money >= 100)
+            {
+                manager.money -= 100;
+                fireRate = fireRate / 1.5f;
+                explosionDamage = 7;
+                upgrade1Tier++;
+                upgrade1Text.text = "Tier 2 - cost 250\n further increases firerate";
+            }
+            else if(upgrade1Tier == 1 && manager.money >= 250)
+            {
+                manager.money -= 250;
+                fireRate = fireRate / 1.5f;
+                upgrade1Tier++;
+                upgrade1Text.text = "fully upgraded \n :)";
+            }
         }
+        
     }
 
     public void Upgrade2()
     {
-        if (upgrade2Tier == 0 && manager.money >= 20)
+
+        // upgrades for the gumballer
+        if (gumballer)
         {
-            manager.money -= 20;
-            explosionUpgrade = true;
-            upgrade2Tier++;
-            upgrade2Text.text = "fully upgraded";
+            if (upgrade2Tier == 0 && manager.money >= 200)
+            {
+                manager.money -= 200;
+                explosionUpgrade = true;
+                upgrade2Tier++;
+                upgrade2Text.text = "fully upgraded \n :)";
+            }
+        }
+        
+        else if (arcer)
+        {
+            if (upgrade2Tier == 0 && manager.money >= 200)
+            {
+                manager.money -= 200;
+                sauceLifeSpan = 6;
+                upgrade2Tier++;
+                upgrade2Text.text = "fully upgraded \n :)";
+            }
+            //if (upgrade2Tier == 1 && manager.money >= 150)
         }
     }
 
     public void Upgrade3()
     {
-        print("upgrade 3");
-        //input whatever upgrade we want
+        if (gumballer)
+        {
+            // upgrades for the gumballer
+            if (upgrade3Tier == 0 && manager.money >= 150)
+            {
+                //manager.money -= 150;
+                //slowOnHit = true;
+                //upgrade3Tier++;
+                //upgrade3Text.text = "tier 2 - cost 200 \n increase chance to slow enemies";
+            }
+            else if (upgrade3Tier == 1 && manager.money >= 250)
+            {
+                //manager.money -= 200;
+                //extraSlowChance = true;
+                //upgrade3Tier++;
+                //upgrade3Text.text = "fully upgraded \n :)";
+            }
+        }
+        
     }
 
     public void FireMode()
@@ -312,10 +395,10 @@ public class Tower : MonoBehaviour
         manager.anyUpgradeMenuOpen = false;
         upgradeMenu.gameObject.SetActive(false);
         highlightRing.gameObject.SetActive(false);
-        if (parabolic)
+        if (arcer)
         {
             arcerTargetObj.SetActive(false);
-        }
+        }   
     }
 
     public void OnTriggerEnter(Collider other) // adds enemy to enemylist
@@ -345,30 +428,33 @@ public class Tower : MonoBehaviour
     GameObject getFirstEnemy(List<GameObject> wap, bool swap) // if swap = true then function returns last enemy instead
     {
         GameObject firstEnemy = wap[0];
+        NavMeshAgent enmyNav;
         foreach (GameObject enemy in wap)
         {
-            try
+            enmyNav = enemy.GetComponent<NavMeshAgent>();
+            if (int.Parse(enemy.name) < int.Parse(firstEnemy.name) && !swap)
             {
-                if (int.Parse(enemy.name) < int.Parse(firstEnemy.name) && !swap)
-                {
-                    firstEnemy = enemy;
-                }
-
-                else if (int.Parse(enemy.name) > int.Parse(firstEnemy.name) && swap)
-                {
-                    firstEnemy = enemy;
-                }
-
+                firstEnemy = enemy;
             }
-            catch (FormatException)
+
+            else if (int.Parse(enemy.name) > int.Parse(firstEnemy.name) && swap)
             {
+                firstEnemy = enemy;
+            }
 
-            }
-            catch (MissingReferenceException)
-            {
-            }
         }
 
         return firstEnemy;
-    }
+    }   
+
+    //public float GetPathRemainingDistance(NavMeshAgent navMeshAgent)
+    //{
+    //    float distance = 0.0f;
+    //    for (int i = 0; i < navMeshAgent.path.corners.Length - 1; ++i)
+    //    {
+    //        distance += Vector3.Distance(navMeshAgent.path.corners[i - 1], navMeshAgent.path.corners[i]); ;
+    //    }
+    //    Debug.Log(distance);
+    //    return distance;
+    //}
 }
