@@ -235,7 +235,6 @@ public class Tower : MonoBehaviour
             return target.position /*+ targetVelocity * interceptTime*/;
         }
 
-    void FireProjectile(Vector3 interceptPoint)
 void FireProjectile(Vector3 interceptPoint)
 {
     // Calculate the direction from the current position to the target position, normalized to get a unit vector
