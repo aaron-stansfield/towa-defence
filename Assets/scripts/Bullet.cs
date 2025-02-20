@@ -19,6 +19,7 @@ public class Bullet : MonoBehaviour
     public bool sauce;
     public GameObject sauceObj;
     public float sauceLifeSpan;
+    public Vector3 angle;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +34,11 @@ public class Bullet : MonoBehaviour
         {
             this.rb.velocity = new Vector3(this.rb.velocity.x, 0, this.rb.velocity.z);
         }
-
+        else
+        {
+            //this.transform.rotation = Quaternion.Euler(this.rb.velocity.y * 5, this.transform.rotation.y - 40, 0);
+            this.transform.rotation = Quaternion.LookRotation(rb.velocity);
+        }
         if (health <= 0)
         {
             Destroy(gameObject);

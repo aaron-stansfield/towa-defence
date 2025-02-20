@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class game_managie : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class game_managie : MonoBehaviour
     public int deathCount = 0;
     public GameObject towerPurchaseButtons;
     public TextMeshProUGUI moneyText;
+    public float enmySpeed;
 
     public int enemyHealth;
     // Start is called before the first frame update
@@ -37,32 +39,33 @@ public class game_managie : MonoBehaviour
     {
         if (deathCount < 20)
         {
-            spawnDelay = 0.7f;
-            enemyHealth = 1;
+            spawnDelay = 1.7f;
+            enemyHealth = 5;
+
         }
 
         else if (deathCount < 50)
         {
             spawnDelay = 0.6f;
-            enemyHealth = 2;
+            enemyHealth = 7;
         }
 
         else if (deathCount < 100)
         {
             spawnDelay = 0.5f;
-            enemyHealth = 3;
+            enemyHealth = 12;
         }
 
         else if (deathCount < 300)
         {
             spawnDelay = 0.2f;
-            enemyHealth = 5;
+            enemyHealth = 12;
         }
 
         else if (deathCount < 500)
         {
             spawnDelay = 0.05f;
-            enemyHealth = 7;
+            enemyHealth = 12    ;
         }
 
         moneyText.text = money.ToString();
@@ -82,6 +85,7 @@ public class game_managie : MonoBehaviour
         yield return new WaitForSeconds(spawnDelay);
         GameObject dude = Instantiate(enmy,spawnpoint.transform);
         dude.name = enmyCount.ToString();
+        dude.GetComponent<NavMeshAgent>().speed = enmySpeed;
         enmyCount++;
         StartCoroutine(enmy_spawner());
     }

@@ -32,6 +32,7 @@ public class Tower : MonoBehaviour
     private int explosionDamage;
     [SerializeField] bool gumballer;
     private float sauceLifeSpan = 3;
+    public Mesh hotDogProjectileMesh;
 
 
     public TextMeshProUGUI fireModeText;
@@ -237,7 +238,7 @@ public class Tower : MonoBehaviour
     void FireProjectile(Vector3 interceptPoint)
     {
         Vector3 direction = (target.transform.position - transform.position).normalized;
-        Transform projectile = Instantiate(Bullet.transform, transform.position, Quaternion.identity);
+        Transform projectile = Instantiate(Bullet.transform, BSpawn.transform.position, Quaternion.identity);
         Bullet bulletScript = projectile.GetComponent<Bullet>();
         bulletScript.explosionDamage = explosionDamage;
         bulletScript.health = bulletHealth;
@@ -251,6 +252,7 @@ public class Tower : MonoBehaviour
         }
         else if(arcer)
         {
+            projectile.GetComponent<MeshFilter>().mesh = hotDogProjectileMesh;
             bulletScript.sauceLifeSpan = sauceLifeSpan;
             bulletScript.slows = slowOnHit;
             bulletScript.extraSlowChance = extraSlowChance;
@@ -258,12 +260,14 @@ public class Tower : MonoBehaviour
             bulletScript.explosive = true;
             bulletScript.parabolic = true;
             bulletScript.bulletLifeTime = 10f;
+            projectile.transform.rotation = this.transform.rotation;
+            bulletScript.angle = target.position - this.transform.position;
             Vector3 force = (this.transform.position - target.transform.position).normalized;
             // from 5 - 90 to 3 - 16.5
             float targetDistance = Vector3.Distance(this.transform.position, target.transform.position);
             Debug.Log("losing my mind");
             launchSpeed = Remap(targetDistance, 5, 90, 5, 16.5f);
-            launchSpeed = launchSpeed * 1.13f;
+            launchSpeed = launchSpeed * 1.05f;
             projectile.GetComponent<Rigidbody>().AddForce(new Vector3(-force.x, 1.5f, -force.z) * launchSpeed, ForceMode.Impulse);
         }
 
@@ -301,7 +305,7 @@ public class Tower : MonoBehaviour
             }
         }
 
-        else
+        else if(arcer)
         {
             // upgrades for the dogger
             if (upgrade1Tier == 0 && manager.money >= 100)
