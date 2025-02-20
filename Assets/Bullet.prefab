@@ -64,7 +64,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 15303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2eecfdde3f0100142bd5aa66514bbfcf, type: 2}
+  - {fileID: 2100000, guid: f7bf528f632d83645afa51e317cf37a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -132,6 +133,8 @@ MonoBehaviour:
   sauce: 0
   sauceObj: {fileID: 4575040511139974441, guid: f58f7ac1b09357744993ab40e723b42d, type: 3}
   sauceLifeSpan: 1.39
+  angle: {x: 0, y: 0, z: 0}
+  hotdogMesh: {fileID: 6521660093582238644, guid: a466a9dbe22dd9a42a2689782de9453b, type: 3}
 --- !u!54 &2533173997609582988
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -271,7 +271,8 @@ void FireProjectile(Vector3 interceptPoint)
         }
         else if(arcer)
         {
-            projectile.GetComponent<MeshFilter>().mesh = hotDogProjectileMesh;
+
+            //projectile.GetComponent<MeshFilter>().mesh = hotDogProjectileMesh;
             bulletScript.sauceLifeSpan = sauceLifeSpan;
             bulletScript.slows = slowOnHit;
             bulletScript.extraSlowChance = extraSlowChance;
@@ -288,7 +289,7 @@ void FireProjectile(Vector3 interceptPoint)
             launchSpeed = Remap(targetDistance, 5, 90, 5, 16.5f);
             launchSpeed = launchSpeed * 1.05f;
             projectile.GetComponent<Rigidbody>().AddForce(new Vector3(-force.x, 1.5f, -force.z) * launchSpeed, ForceMode.Impulse);
-        }
+            }
 
         // Set the velocity of the projectile's Rigidbody to move it towards the target
         projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;

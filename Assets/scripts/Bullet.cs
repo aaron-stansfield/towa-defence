@@ -20,6 +20,7 @@ public class Bullet : MonoBehaviour
     public GameObject sauceObj;
     public float sauceLifeSpan;
     public Vector3 angle;
+    public Mesh hotdogMesh;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +39,7 @@ public class Bullet : MonoBehaviour
         {
             //this.transform.rotation = Quaternion.Euler(this.rb.velocity.y * 5, this.transform.rotation.y - 40, 0);
             this.transform.rotation = Quaternion.LookRotation(rb.velocity);
+            this.GetComponent<MeshFilter>().mesh = hotdogMesh;
         }
         if (health <= 0)
         {
