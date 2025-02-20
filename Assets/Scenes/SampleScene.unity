@@ -1443,7 +1443,9 @@ MonoBehaviour:
   deathCount: 0
   towerPurchaseButtons: {fileID: 59510834}
   moneyText: {fileID: 1491612734}
+  enmySpeed: 5
   enemyHealth: 0
+  pauseMenuUI: {fileID: 0}
 --- !u!4 &635267554
 Transform:
   m_ObjectHideFlags: 0

@@ -963,7 +963,7 @@ Transform:
   m_GameObject: {fileID: 4757895850222638914}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.4, z: 0}
+  m_LocalPosition: {x: 0, y: 3.22, z: 0}
   m_LocalScale: {x: 0.40673494, y: 0.40673494, z: 0.4067349}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1042,6 +1042,7 @@ MonoBehaviour:
   arcerTargetObj: {fileID: 0}
   slowOnHit: 0
   gumballer: 1
+  hotDogProjectileMesh: {fileID: 0}
   fireModeText: {fileID: 1319404841053781717}
   upgrade1Text: {fileID: 1037574858065203098}
   upgrade2Text: {fileID: 5100076462422771998}
