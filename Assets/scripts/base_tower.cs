@@ -273,6 +273,7 @@ void FireProjectile(Vector3 interceptPoint)
         {
 
             //projectile.GetComponent<MeshFilter>().mesh = hotDogProjectileMesh;
+            projectile.GetComponent<MeshFilter>().mesh = hotDogProjectileMesh;
             bulletScript.sauceLifeSpan = sauceLifeSpan;
             bulletScript.slows = slowOnHit;
             bulletScript.extraSlowChance = extraSlowChance;
