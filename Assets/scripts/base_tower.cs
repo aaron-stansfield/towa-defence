@@ -252,13 +252,13 @@ void FireProjectile(Vector3 interceptPoint)
     bulletScript.slows = slowOnHit;
     bulletScript.extraSlowChance = extraSlowChance;
    
-    // Check if the projectile is a "gumballer"
+    // Check if the tower is a "gumballer"
     if (gumballer)
     {
-<<<<<<< HEAD
-        Vector3 direction = (target.transform.position - transform.position).normalized;
-        Transform projectile = Instantiate(Bullet.transform, BSpawn.transform.position, Quaternion.identity);
-        Bullet bulletScript = projectile.GetComponent<Bullet>();
+
+        direction = (target.transform.position - transform.position).normalized;
+        projectile = Instantiate(Bullet.transform, BSpawn.transform.position, Quaternion.identity);
+        bulletScript = projectile.GetComponent<Bullet>();
         bulletScript.explosionDamage = explosionDamage;
         bulletScript.health = bulletHealth;
         bulletScript.slows = slowOnHit;
@@ -289,7 +289,7 @@ void FireProjectile(Vector3 interceptPoint)
             launchSpeed = launchSpeed * 1.05f;
             projectile.GetComponent<Rigidbody>().AddForce(new Vector3(-force.x, 1.5f, -force.z) * launchSpeed, ForceMode.Impulse);
         }
-=======
+
         // Set the velocity of the projectile's Rigidbody to move it towards the target
         projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
         
@@ -307,7 +307,6 @@ void FireProjectile(Vector3 interceptPoint)
         bulletScript.explosive = true;
         bulletScript.parabolic = true;
         bulletScript.bulletLifeTime = 10f;
->>>>>>> 25f86de769295b70441cfd17b20b2c27b3493cfe
 
         // Calculate the force direction for the projectile
         Vector3 force = (this.transform.position - target.transform.position).normalized;

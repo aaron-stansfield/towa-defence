@@ -59,7 +59,7 @@ public class Bullet : MonoBehaviour
 
         if (other.CompareTag("dude") && health > 0 && !explosive)
         {
-            other.gameObject.GetComponent<enmy_scrip>().damaged();
+            other.gameObject.GetComponent<enmy_scrip>().damaged(1);
             
             if (chanceExplosive && !isExplosion)
             {
@@ -108,7 +108,7 @@ public class Bullet : MonoBehaviour
     {
         if (isExplosion && other.CompareTag("dude") && health >= 0)
         {
-            other.gameObject.GetComponent<enmy_scrip>().damaged();
+            other.gameObject.GetComponent<enmy_scrip>().damaged(1);
             health--;
         }
     }

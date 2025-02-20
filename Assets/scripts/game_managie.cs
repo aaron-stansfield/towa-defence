@@ -20,11 +20,10 @@ public class game_managie : MonoBehaviour
     public int deathCount = 0;
     public GameObject towerPurchaseButtons;
     public TextMeshProUGUI moneyText;
-<<<<<<< HEAD
+
     public float enmySpeed;
 
-=======
->>>>>>> 25f86de769295b70441cfd17b20b2c27b3493cfe
+
     public int enemyHealth;
 
     // Added for pause functionality
