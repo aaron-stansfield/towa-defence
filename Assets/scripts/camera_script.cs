@@ -126,8 +126,6 @@ public class cameraScript : MonoBehaviour
                 towerGhost.gameObject.SetActive(false);
                 changeMouseState();
             }
-
-
             
         }
     }

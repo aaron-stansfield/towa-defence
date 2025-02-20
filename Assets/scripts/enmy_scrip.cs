@@ -54,9 +54,9 @@ public class enmy_scrip : MonoBehaviour
         }
     }
 
-    public void damaged(int damageDone)
+    public void damaged()
     {
-        health-= damageDone;
+        health--;
         if (health <= 0)
         {
             gameManager.deathCount++;
