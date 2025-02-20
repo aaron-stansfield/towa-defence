@@ -17,7 +17,7 @@ public class enmy_scrip : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
-        
+
         GameObject gameManagerObj = GameObject.Find("game managie");
         gameManager = gameManagerObj.GetComponent<game_managie>();
         goal = GameObject.FindGameObjectWithTag("goal");
@@ -56,20 +56,20 @@ public class enmy_scrip : MonoBehaviour
 
     public void damaged(int damageDone)
     {
-        health-= damageDone;
-    {
-        health -= damage;
-        if (health <= 0)
+        health -= damageDone;
         {
-            gameManager.deathCount++;
-            gameManager.money += moneyOnDeath;
-            if (gameManager.enemyList.Contains(this.gameObject))
+            if (health <= 0)
             {
-                gameManager.enemyList.Remove(this.gameObject);
+                gameManager.deathCount++;
+                gameManager.money += moneyOnDeath;
+                if (gameManager.enemyList.Contains(this.gameObject))
+                {
+                    gameManager.enemyList.Remove(this.gameObject);
+                }
+                Destroy(this.gameObject);
             }
-            Destroy(this.gameObject);
+            gameManager.money += moneyOnHit;
         }
-        gameManager.money += moneyOnHit;
     }
 
     public void slowed()
@@ -87,5 +87,6 @@ public class enmy_scrip : MonoBehaviour
             slowFX.gameObject.SetActive(false);
         }
     }
-
 }
+
+    

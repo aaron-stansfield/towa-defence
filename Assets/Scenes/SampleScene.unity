@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.26566544, g: 0.22181451, b: 0.21121883, a: 1}
+  m_IndirectSpecularColor: {r: 0.2658953, g: 0.22204179, b: 0.21151143, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1429,7 +1429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enmy: {fileID: 66862539164753587, guid: 0fdb072d48c37f745ab3fb980e5238e6, type: 3}
   spawnpoint: {fileID: 110796458}
-  spawnDelay: 0.58
+  spawnDelay: 0.81
   towerList:
   - {fileID: 4567004126064950789, guid: 669fcf404198fdb4c807f64d1be7c774, type: 3}
   - {fileID: 4567004126064950789, guid: 3e41d06195fb46543a0b161ee7016e71, type: 3}
@@ -1443,7 +1443,7 @@ MonoBehaviour:
   deathCount: 0
   towerPurchaseButtons: {fileID: 59510834}
   moneyText: {fileID: 1491612734}
-  enmySpeed: 5
+  enmySpeed: 7.03
   enemyHealth: 0
   pauseMenuUI: {fileID: 0}
 --- !u!4 &635267554
