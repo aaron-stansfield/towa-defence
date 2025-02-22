@@ -10,6 +10,8 @@ TagManager:
   - towerCollider
   - navMesh
   - ground
+  - stunZone
+  - hammer
   layers:
   - Default
   - TransparentFX

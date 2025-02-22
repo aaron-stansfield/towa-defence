@@ -6,6 +6,10 @@ using UnityEngine.AI;
 
 public class enmy_scrip : MonoBehaviour
 {
+    //for hammer tower
+    hammerScript hammerTowerScript;
+
+
     public GameObject goal;
     private NavMeshAgent agent;
     private game_managie gameManager;
@@ -14,9 +18,15 @@ public class enmy_scrip : MonoBehaviour
     public int moneyOnHit;
     public float slowTime;
     public GameObject slowFX;
+    public bool toStun;
+    public float stunTime;
+    public bool inStunZone;
+
     // Start is called before the first frame update
     public void Start()
     {
+        //hammer tower
+        hammerTowerScript = GameObject.FindGameObjectWithTag("hammer").GetComponent<hammerScript>();
 
         GameObject gameManagerObj = GameObject.Find("game managie");
         gameManager = gameManagerObj.GetComponent<game_managie>();
@@ -52,6 +62,19 @@ public class enmy_scrip : MonoBehaviour
             }
             Destroy(this.gameObject);
         }
+
+        if (other.CompareTag("stunZone") && hammerTowerScript.toStun == true)
+        {
+            print("should Stun");
+            this.GetComponent<NavMeshAgent>().speed = 0;
+        
+            Invoke(nameof(Unstun),stunTime);
+        }
+
+        if (other.CompareTag("stunZone"))
+        {
+            inStunZone = true;
+        }
     }
 
     public void damaged(int damageDone)
@@ -86,6 +109,22 @@ public class enmy_scrip : MonoBehaviour
             this.GetComponent<NavMeshAgent>().speed = this.GetComponent<NavMeshAgent>().speed * 2;
             slowFX.gameObject.SetActive(false);
         }
+    }
+
+    public void Stun()
+    {
+        print("should Stun");
+        this.GetComponent<NavMeshAgent>().speed = 0;
+        
+        Invoke(nameof(Unstun),stunTime);
+
+    }
+
+    public void Unstun()
+    {
+        this.GetComponent<NavMeshAgent>().speed = this.GetComponent<NavMeshAgent>().speed * 2;
+        hammerTowerScript.toStun = false;
+
     }
 }
 

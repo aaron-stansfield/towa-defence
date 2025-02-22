@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class hammerScript : MonoBehaviour
 {
-    public enmy_scrip enemy;
+    
 
     public Transform target;
 
@@ -15,36 +15,35 @@ public class hammerScript : MonoBehaviour
     public bool attacking, toStun;
 
 
-
+    
 
 
     public void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("dude") && attacking == false)
         {
-            currentAttack = 0;
+            
             Hit();
-            other.gameObject.GetComponent<enmy_scrip>().damaged(1);
+            other.gameObject.GetComponent<enmy_scrip>().damaged(5);
+            print("damage to deal");
+            
 
         }
     }
+
+     void ResetAttack()
+    {
+        attacking = false;                        //allows a delay between attacks
+
+    }
+
 
     public void Hit()
     {
-
-        attacking = true;
-        currentAttack = Time.deltaTime;
-
-        if (currentAttack >= fireRate)
-        {
-            attacking = false;
-            currentAttack = 0;
-        }
-
-    }
-
-    public void Stun()
-    {
         toStun = true;
+        attacking = true;
+        Invoke(nameof(ResetAttack),fireRate);
+
     }
+
 }
