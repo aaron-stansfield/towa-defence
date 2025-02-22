@@ -20,6 +20,8 @@ public class game_managie : MonoBehaviour
     public int deathCount = 0;
     public GameObject towerPurchaseButtons;
     public TextMeshProUGUI moneyText;
+    public GameObject gameUI;
+    
 
     public float enmySpeed;
 
@@ -27,8 +29,9 @@ public class game_managie : MonoBehaviour
     public int enemyHealth;
 
     // Added for pause functionality
-    public GameObject pauseMenuUI; // Assign a UI Panel in Unity for pause menu
-    private bool isPaused = false;
+    public GameObject pauseMenuUI;
+    [SerializeField] private bool isPaused = false; // for when the player uses the UI pause button just to stop time
+    public bool isProperPaused = false; // for when the player presses escape and the whole game stops && menu is shown
 
     void Start()
     {
@@ -41,7 +44,7 @@ public class game_managie : MonoBehaviour
         // Toggle pause when ESC key is pressed
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            TogglePause();
+            TogglePause(true);
         }
     }
 
@@ -70,7 +73,7 @@ public class game_managie : MonoBehaviour
         }
         else if (deathCount < 500)
         {
-            spawnDelay = 0.05f;
+            spawnDelay = 0.1f;
             enemyHealth = 12    ;
         }
 
@@ -124,19 +127,29 @@ public class game_managie : MonoBehaviour
         // This is temp for now, I want to be able to load a scene eg game over scene or main menu scene 
     }
 
-    public void TogglePause()
+    public void TogglePause(bool properPause)
     {
-        isPaused = !isPaused;
-
-        if (isPaused)
+        if (properPause)
         {
-            Time.timeScale = 0; // Pause game
-            if (pauseMenuUI != null) pauseMenuUI.SetActive(true);
+            if (!isProperPaused) // pause and show menu
+            {
+                pauseMenuUI.SetActive(true);
+                isProperPaused = true;
+                gameUI.SetActive(false);
+                Time.timeScale = 0;
+            }
+            else //unpause and hide menu
+            {
+                pauseMenuUI.SetActive(false);
+                isProperPaused = false;
+                gameUI.SetActive(true);
+                Time.timeScale = !isPaused ? 1 : 0;
+            }
         }
         else
         {
-            Time.timeScale = 1; // Resume game
-            if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
+            Time.timeScale = isPaused ? 1 : 0; // toggle time pause
+            isPaused = !isPaused;
         }
     }
 
@@ -145,5 +158,6 @@ public class game_managie : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1; // Unpause game
         if (pauseMenuUI != null) pauseMenuUI.SetActive(false);
+
     }
 }

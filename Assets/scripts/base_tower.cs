@@ -108,7 +108,7 @@ public class Tower : MonoBehaviour
             //if time stops add here
         }
 
-        if (Input.GetMouseButton(1) && isActive)
+        if (Input.GetMouseButton(1) && isActive || manager.isProperPaused)
         {
             close();
             if (cameraScript.movingArcerTarget)
@@ -272,7 +272,6 @@ void FireProjectile(Vector3 interceptPoint)
         else if(arcer)
         {
 
-            //projectile.GetComponent<MeshFilter>().mesh = hotDogProjectileMesh;
             projectile.GetComponent<MeshFilter>().mesh = hotDogProjectileMesh;
             bulletScript.sauceLifeSpan = sauceLifeSpan;
             bulletScript.slows = slowOnHit;
@@ -298,7 +297,7 @@ void FireProjectile(Vector3 interceptPoint)
         // Set the explosive chance upgrade for the bullet
         bulletScript.chanceExplosive = explosionUpgrade;
     }
-    // Check if the projectile is an "arcer"
+    // Check if the tower is an "arcer"
     else if(arcer)
     {
         // Set additional properties specific to "arcer" projectiles

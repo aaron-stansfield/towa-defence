@@ -38,11 +38,11 @@ public class cameraScript : MonoBehaviour
 
     private void inputStuff()
     {
-        if(currentMouseState == mouseState.placing)
+        if(currentMouseState == mouseState.placing && !manager.isProperPaused)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundMask))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundMask) )
             {
                 //creates ghost of tower to be placed if in placing mode
                 towerGhost.transform.position = hit.point;
@@ -117,7 +117,7 @@ public class cameraScript : MonoBehaviour
 
     public void baseTowerSelect()
     {
-        if (currentMouseState != mouseState.placing)
+        if (currentMouseState != mouseState.placing && !manager.isProperPaused)
         {
             towerToPlace = manager.towerList[0];
             if (manager.money >= manager.baseTowerCost)
@@ -134,7 +134,7 @@ public class cameraScript : MonoBehaviour
 
     public void arcerTowerSelect()
     {
-        if (currentMouseState != mouseState.placing)
+        if (currentMouseState != mouseState.placing && !manager.isProperPaused)
         {
             towerToPlace = manager.towerList[2];
             if (manager.money >= manager.baseTowerCost)
