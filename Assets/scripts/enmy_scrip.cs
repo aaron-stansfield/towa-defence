@@ -42,8 +42,7 @@ public class enmy_scrip : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-    }
+    {}
 
     private void FixedUpdate()
     {
@@ -66,29 +65,21 @@ public class enmy_scrip : MonoBehaviour
             }
             Destroy(this.gameObject);
         }
+    }
 
-        if (other.CompareTag("stunZone") && hammerTowerScript.toStun == true)
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("stunZone"))
         {
-            print("should Stun");
-            this.GetComponent<NavMeshAgent>().speed = 0;
-        
-            Invoke(nameof(Unstun),stunTime);
+           Stun();
+           inStunZone = true;
         }
 
         //if (other.CompareTag("stunZone") && hammerTowerScript.toStun == true)
         //{
-        //   Stun();
-        //   inStunZone = true;
+           //Stun();
+           //inStunZone = true;
         //}
-    }
-
-    private void OnCollisionEnter3D(Collider other)
-    {
-        if (other.CompareTag("stunZone") && hammerTowerScript.toStun == true)
-        {
-            Stun();
-            inStunZone = true;
-        }
     }
 
 
