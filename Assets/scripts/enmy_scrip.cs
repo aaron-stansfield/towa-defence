@@ -18,7 +18,6 @@ public class enmy_scrip : MonoBehaviour
     public int moneyOnHit;
     public float slowTime;
     public GameObject slowFX;
-    public bool toStun;
     public float stunTime;
     public bool inStunZone;
     public float givenSpeed;
@@ -27,7 +26,7 @@ public class enmy_scrip : MonoBehaviour
     public void Start()
     {
         //hammer tower
-        hammerTowerScript = GameObject.FindGameObjectWithTag("hammer").GetComponent<hammerScript>();
+       
 
         GameObject gameManagerObj = GameObject.Find("game managie");
         gameManager = gameManagerObj.GetComponent<game_managie>();
@@ -35,14 +34,27 @@ public class enmy_scrip : MonoBehaviour
         agent = this.GetComponent<NavMeshAgent>();
         agent.SetDestination(goal.transform.position);
         health = gameManager.enemyHealth;
-
+        
+        hammerTowerScript = GameObject.FindGameObjectWithTag("hammer").GetComponent<hammerScript>();
 
         givenSpeed = this.GetComponent<NavMeshAgent>().speed;
     }
 
     // Update is called once per frame
     void Update()
-    {}
+    {
+        //if (inStunZone == true && hammerTowerScript.toStun == true)
+        //{
+            //Stun();
+
+            //print("should Stun");
+            //this.GetComponent<NavMeshAgent>().speed = 0;
+            //hammerTowerScript.toStun = false;
+        
+            //Invoke(nameof(Unstun),stunTime);
+        ///}
+
+    }
 
     private void FixedUpdate()
     {
@@ -69,17 +81,13 @@ public class enmy_scrip : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
+        
+
         if (other.CompareTag("stunZone"))
         {
-           Stun();
+           
            inStunZone = true;
         }
-
-        //if (other.CompareTag("stunZone") && hammerTowerScript.toStun == true)
-        //{
-           //Stun();
-           //inStunZone = true;
-        //}
     }
 
 
@@ -123,7 +131,8 @@ public class enmy_scrip : MonoBehaviour
     {
         print("should Stun");
         this.GetComponent<NavMeshAgent>().speed = 0;
-        hammerTowerScript.toStun = false;
+
+        //hammerTowerScript.toStun = false;       
         
         Invoke(nameof(Unstun),stunTime);
 

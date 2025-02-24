@@ -1211,6 +1211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 500080784}
   - component: {fileID: 500080785}
+  - component: {fileID: 500080786}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: stunZone
@@ -1252,8 +1253,20 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 30, y: 20, z: 30}
+  m_Size: {x: 100, y: 20, z: 100}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &500080786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 500080783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65f1fb90f6d7c7479ab86a9ab7ffc92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &541004276
 GameObject:
   m_ObjectHideFlags: 0
@@ -2308,7 +2321,7 @@ Transform:
   m_GameObject: {fileID: 919259023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.78, y: 1.39, z: 22.76}
+  m_LocalPosition: {x: -11.56, y: 1.39, z: -0.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

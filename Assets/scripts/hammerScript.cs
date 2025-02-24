@@ -20,10 +20,6 @@ public class hammerScript : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("dude"))
-        {
-            inStunZone = true;
-        }
 
         if (other.CompareTag("dude") && attacking == false)
         {

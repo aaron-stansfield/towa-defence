@@ -52,7 +52,7 @@ public class game_managie : MonoBehaviour
     {
         if (deathCount < 20)
         {
-            spawnDelay = 1.7f;
+            spawnDelay = 1.7f;         //1.7
             enemyHealth = 5;
 
         }
