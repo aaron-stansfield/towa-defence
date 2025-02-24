@@ -24,7 +24,7 @@ public class hammerScript : MonoBehaviour
         {
             
             Hit();
-            other.gameObject.GetComponent<enmy_scrip>().damaged(5);
+            other.gameObject.GetComponent<enmy_scrip>().damaged(2);
             print("damage to deal");
             
 
