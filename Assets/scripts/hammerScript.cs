@@ -12,7 +12,7 @@ public class hammerScript : MonoBehaviour
 
     public float fireRate, currentAttack;
     public float attackRange, stunRange;
-    public bool attacking, toStun;
+    public bool attacking, toStun, inStunZone;
 
 
     
@@ -20,11 +20,12 @@ public class hammerScript : MonoBehaviour
 
     public void OnTriggerStay(Collider other)
     {
+
         if (other.CompareTag("dude") && attacking == false)
         {
             
             Hit();
-            other.gameObject.GetComponent<enmy_scrip>().damaged(5);
+            other.gameObject.GetComponent<enmy_scrip>().damaged(10);
             print("damage to deal");
             
 

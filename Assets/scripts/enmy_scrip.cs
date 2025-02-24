@@ -18,15 +18,15 @@ public class enmy_scrip : MonoBehaviour
     public int moneyOnHit;
     public float slowTime;
     public GameObject slowFX;
-    public bool toStun;
     public float stunTime;
     public bool inStunZone;
+    public float givenSpeed;
 
     // Start is called before the first frame update
     public void Start()
     {
         //hammer tower
-        hammerTowerScript = GameObject.FindGameObjectWithTag("hammer").GetComponent<hammerScript>();
+       
 
         GameObject gameManagerObj = GameObject.Find("game managie");
         gameManager = gameManagerObj.GetComponent<game_managie>();
@@ -34,11 +34,26 @@ public class enmy_scrip : MonoBehaviour
         agent = this.GetComponent<NavMeshAgent>();
         agent.SetDestination(goal.transform.position);
         health = gameManager.enemyHealth;
+        
+        hammerTowerScript = GameObject.FindGameObjectWithTag("hammer").GetComponent<hammerScript>();
+
+        givenSpeed = this.GetComponent<NavMeshAgent>().speed;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if (inStunZone == true && hammerTowerScript.toStun == true)
+        //{
+            //Stun();
+
+            //print("should Stun");
+            //this.GetComponent<NavMeshAgent>().speed = 0;
+            //hammerTowerScript.toStun = false;
+        
+            //Invoke(nameof(Unstun),stunTime);
+        ///}
+
     }
 
     private void FixedUpdate()
@@ -62,20 +77,21 @@ public class enmy_scrip : MonoBehaviour
             }
             Destroy(this.gameObject);
         }
+    }
 
-        if (other.CompareTag("stunZone") && hammerTowerScript.toStun == true)
-        {
-            print("should Stun");
-            this.GetComponent<NavMeshAgent>().speed = 0;
+    private void OnTriggerStay(Collider other)
+    {
         
-            Invoke(nameof(Unstun),stunTime);
-        }
 
         if (other.CompareTag("stunZone"))
         {
-            inStunZone = true;
+           
+           inStunZone = true;
         }
     }
+
+
+    
 
     public void damaged(int damageDone)
     {
@@ -115,6 +131,8 @@ public class enmy_scrip : MonoBehaviour
     {
         print("should Stun");
         this.GetComponent<NavMeshAgent>().speed = 0;
+
+        //hammerTowerScript.toStun = false;       
         
         Invoke(nameof(Unstun),stunTime);
 
@@ -122,8 +140,8 @@ public class enmy_scrip : MonoBehaviour
 
     public void Unstun()
     {
-        this.GetComponent<NavMeshAgent>().speed = this.GetComponent<NavMeshAgent>().speed * 2;
-        hammerTowerScript.toStun = false;
+        this.GetComponent<NavMeshAgent>().speed = givenSpeed;
+        print("unstun");
 
     }
 }
