@@ -97,6 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   wackFX: {fileID: 3139207601895967343}
+  hammerFX: {fileID: 4279495520603103069}
   highlightRing: {fileID: 3809614779378763330}
   upgradeMenu: {fileID: 2939760553570182253}
   WhatIsTarget:
@@ -957,6 +958,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3470025901056198119}
+  - component: {fileID: 2843522120208256456}
   m_Layer: 7
   m_Name: wackerHammerObj
   m_TagString: Untagged
@@ -981,7 +983,23 @@ Transform:
   - {fileID: 5675824686312426749}
   - {fileID: 7328178339482256198}
   m_Father: {fileID: 4170509508580875984}
-  m_LocalEulerAnglesHint: {x: 0.525, y: -156.245, z: -31.865}
+  m_LocalEulerAnglesHint: {x: -1.0632362, y: -157.35994, z: 8.039095}
+--- !u!111 &2843522120208256456
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4279495520603103069}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 85dc5e8ffd66ab14daa7e413f3e0a801, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 85dc5e8ffd66ab14daa7e413f3e0a801, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &4582752810046005461
 GameObject:
   m_ObjectHideFlags: 0

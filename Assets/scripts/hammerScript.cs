@@ -10,6 +10,7 @@ public class hammerScript : MonoBehaviour
 
     public Transform target;
     public GameObject wackFX;
+    public GameObject hammerFX;
     [SerializeField] GameObject highlightRing;
     [SerializeField] GameObject upgradeMenu;
     public LayerMask WhatIsTarget;
@@ -69,23 +70,9 @@ public class hammerScript : MonoBehaviour
         
         if (Physics.OverlapSphere(this.transform.position, 10, WhatIsTarget) != null && attacking == false)
         {
-            enemyCounter = 0;
-            foreach (Collider col in Physics.OverlapSphere(this.transform.position, 10, WhatIsTarget))
-            {
-                
-                if (col.CompareTag("dude") && enemyCounter <11)
-                {
 
-                    
-                    col.GetComponent<enmy_scrip>().Stun();
-                    col.gameObject.GetComponent<enmy_scrip>().damaged(3);
-                    print("damage to deal");
-
-                    enemyCounter++;
-
-                }
-            }
-            Hit();
+            hammerFX.GetComponent<Animation>().Play();
+            StartCoroutine(attack());
 
         }
     }
@@ -103,13 +90,37 @@ public class hammerScript : MonoBehaviour
     }
 
 
-    public void Hit()
+    IEnumerator attack()
     {
+        yield return new WaitForSeconds(0.4f);
+        enemyCounter = 0;
+        foreach (Collider col in Physics.OverlapSphere(this.transform.position, 10, WhatIsTarget))
+        {
+
+            if (col.CompareTag("dude") && enemyCounter < 11)
+            {
+
+                col.GetComponent<enmy_scrip>().Stun();
+                col.gameObject.GetComponent<enmy_scrip>().damaged(3);
+                print("damage to deal");
+
+                enemyCounter++;
+
+            }
+        }
+        Hit();
+    }
+
+    void Hit()
+    {
+        
         toStun = true;
         attacking = true;
         wackFX.SetActive(true);
         wackFX.GetComponent<Animator>().Play("wackerFXAnimation");
+        
         Invoke(nameof(ResetAttack),fireRate);
+        
 
     }
 

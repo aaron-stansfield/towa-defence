@@ -39,6 +39,8 @@ public class game_managie : MonoBehaviour
     {
         healthText = GameObject.Find("healthAmount").GetComponent<TextMeshProUGUI>();
         StartCoroutine(enmy_spawner());
+        isPaused = true;
+        Time.timeScale = 0;
     }
 
     void Update()
