@@ -13,16 +13,20 @@ public class game_managie : MonoBehaviour
     public float spawnDelay;
     public List<GameObject> towerList;
     public List<GameObject> enemyList;
-    public int baseTowerCost = 10;
+    public int baseTowerCost = 75;
     public TextMeshProUGUI baseTowerCostText;
     public int arcerTowerCost = 50;
-    public int wackerTowerCost = 75;
+    public int wackerTowerCost = 250;
     public bool anyUpgradeMenuOpen;
-    public int money = 10;
+    public int money = 100;
     public int deathCount = 0;
     public GameObject towerPurchaseButtons;
     public TextMeshProUGUI moneyText;
     public GameObject gameUI;
+
+    public TMP_Text TowerCostBase;
+    public TMP_Text TowerCostArcer;
+    public TMP_Text TowerCostWacker;
     
 
     public float enmySpeed;
@@ -41,6 +45,9 @@ public class game_managie : MonoBehaviour
         StartCoroutine(enmy_spawner());
         isPaused = true;
         Time.timeScale = 0;
+        TowerCostBase.text = baseTowerCost.ToString();
+        TowerCostArcer.text = arcerTowerCost.ToString();
+        TowerCostWacker.text = wackerTowerCost.ToString();
     }
 
     void Update()
@@ -54,7 +61,13 @@ public class game_managie : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (deathCount < 20)
+        if (deathCount < 10)
+        {
+            spawnDelay = 1.7f;         //1.7
+            enemyHealth = 2;
+
+        }
+        else if (deathCount < 20)
         {
             spawnDelay = 1.7f;         //1.7
             enemyHealth = 3;
@@ -62,23 +75,23 @@ public class game_managie : MonoBehaviour
         }
         else if (deathCount < 50)
         {
-            spawnDelay = 0.6f;
-            enemyHealth = 6;
+            spawnDelay = 1.5f;
+            enemyHealth = 5;
+        }
+        else if (deathCount < 70)
+        {
+            spawnDelay = 1.3f;
+            enemyHealth = 10;
         }
         else if (deathCount < 100)
         {
-            spawnDelay = 0.5f;
-            enemyHealth = 8;
+            spawnDelay = 1.1f;
+            enemyHealth = 15;
         }
         else if (deathCount < 300)
         {
-            spawnDelay = 0.2f;
-            enemyHealth = 10;
-        }
-        else if (deathCount < 500)
-        {
-            spawnDelay = 0.1f;
-            enemyHealth = 12    ;
+            spawnDelay = 1.1f;
+            enemyHealth = 20;
         }
 
         moneyText.text = money.ToString();
