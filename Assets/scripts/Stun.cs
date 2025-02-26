@@ -15,17 +15,8 @@ public class Stun : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("dude") && hammerTowerScript.toStun == true)
-        {
-            other.GetComponent<enmy_scrip>().Stun();
-
-            Invoke(nameof(SetToFalse),1);
-           
-        }
+        
     }
 
-    private void SetToFalse()
-    {
-        hammerTowerScript.toStun = false;
-    }
+
 }

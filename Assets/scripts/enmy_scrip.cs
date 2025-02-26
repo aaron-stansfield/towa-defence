@@ -20,7 +20,8 @@ public class enmy_scrip : MonoBehaviour
     public GameObject slowFX;
     public float stunTime;
     public bool inStunZone;
-    public float givenSpeed;
+    private float givenSpeed;
+    public bool isStunned;
 
     // Start is called before the first frame update
     public void Start()
@@ -129,17 +130,23 @@ public class enmy_scrip : MonoBehaviour
 
     public void Stun()
     {
-        print("should Stun");
-        this.GetComponent<NavMeshAgent>().speed = 0;
+        if (!isStunned)
+        {
+            isStunned = true;
+            print("should Stun");
+            this.GetComponent<NavMeshAgent>().speed = 0;
 
-        //hammerTowerScript.toStun = false;       
+            //hammerTowerScript.toStun = false;       
+
+            Invoke(nameof(Unstun), stunTime);
+        }
         
-        Invoke(nameof(Unstun),stunTime);
 
     }
 
     public void Unstun()
     {
+        isStunned = false;
         this.GetComponent<NavMeshAgent>().speed = givenSpeed;
         print("unstun");
 

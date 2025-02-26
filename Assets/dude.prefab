@@ -107,9 +107,9 @@ MonoBehaviour:
   moneyOnHit: 1
   slowTime: 5
   slowFX: {fileID: 3976026530189610100}
-  toStun: 0
   stunTime: 1.5
   inStunZone: 0
+  givenSpeed: 2.76
 --- !u!195 &5769725439821876568
 NavMeshAgent:
   m_ObjectHideFlags: 0

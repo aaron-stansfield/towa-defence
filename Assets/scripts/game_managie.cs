@@ -13,12 +13,12 @@ public class game_managie : MonoBehaviour
     public float spawnDelay;
     public List<GameObject> towerList;
     public List<GameObject> enemyList;
-    public int baseTowerCost = 5;
+    public int baseTowerCost = 10;
     public TextMeshProUGUI baseTowerCostText;
     public int arcerTowerCost = 50;
     public int wackerTowerCost = 75;
     public bool anyUpgradeMenuOpen;
-    public int money = 5;
+    public int money = 10;
     public int deathCount = 0;
     public GameObject towerPurchaseButtons;
     public TextMeshProUGUI moneyText;
@@ -55,23 +55,23 @@ public class game_managie : MonoBehaviour
         if (deathCount < 20)
         {
             spawnDelay = 1.7f;         //1.7
-            enemyHealth = 5;
+            enemyHealth = 3;
 
         }
         else if (deathCount < 50)
         {
             spawnDelay = 0.6f;
-            enemyHealth = 7;
+            enemyHealth = 6;
         }
         else if (deathCount < 100)
         {
             spawnDelay = 0.5f;
-            enemyHealth = 12;
+            enemyHealth = 8;
         }
         else if (deathCount < 300)
         {
             spawnDelay = 0.2f;
-            enemyHealth = 12;
+            enemyHealth = 10;
         }
         else if (deathCount < 500)
         {

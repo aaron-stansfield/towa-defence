@@ -136,7 +136,7 @@ public class cameraScript : MonoBehaviour
         if (currentMouseState != mouseState.placing && !manager.isProperPaused)
         {
             towerToPlace = manager.towerList[2];
-            if (manager.money >= manager.baseTowerCost)
+            if (manager.money >= manager.arcerTowerCost)
             {
                 towerGhost = Instantiate(manager.towerList[3]);
                 towerGhost.gameObject.SetActive(false);
@@ -151,7 +151,7 @@ public class cameraScript : MonoBehaviour
         if (currentMouseState != mouseState.placing && !manager.isProperPaused)
         {
             towerToPlace = manager.towerList[4];
-            if (manager.money <= manager.wackerTowerCost)
+            if (manager.money >= manager.wackerTowerCost)
             {
                 towerGhost = Instantiate(manager.towerList[5]);
                 towerGhost.gameObject.SetActive(false);
