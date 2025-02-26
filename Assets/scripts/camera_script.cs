@@ -70,7 +70,6 @@ public class cameraScript : MonoBehaviour
                 }
                 if (Input.GetMouseButtonUp(0) && movingArcerTarget && !isPointerOverUIObject())
                 {
-                    Debug.Log("huh");
                     movingArcerTarget = false;
                     towerGhost = null;
 
@@ -144,6 +143,20 @@ public class cameraScript : MonoBehaviour
                 changeMouseState();
             }
 
+        }
+    }
+
+    public void wackerTowerSelect()
+    {
+        if (currentMouseState != mouseState.placing && !manager.isProperPaused)
+        {
+            towerToPlace = manager.towerList[4];
+            if (manager.money <= manager.wackerTowerCost)
+            {
+                towerGhost = Instantiate(manager.towerList[5]);
+                towerGhost.gameObject.SetActive(false);
+                changeMouseState();
+            }
         }
     }
 
