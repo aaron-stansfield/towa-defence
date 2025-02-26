@@ -13,14 +13,22 @@ public class game_managie : MonoBehaviour
     public float spawnDelay;
     public List<GameObject> towerList;
     public List<GameObject> enemyList;
-    public int baseTowerCost = 5;
+    public int baseTowerCost = 75;
     public TextMeshProUGUI baseTowerCostText;
+    public int arcerTowerCost = 200;
+    public int wackerTowerCost = 250;
     public bool anyUpgradeMenuOpen;
-    public int money = 5;
+    public int money = 100;
     public int deathCount = 0;
     public GameObject towerPurchaseButtons;
     public TextMeshProUGUI moneyText;
     public GameObject gameUI;
+
+    public TMP_Text TowerCostBase;
+    public TMP_Text TowerCostArcer;
+    public TMP_Text TowerCostWacker;
+    public TMP_Text waveCount;
+    private int currentWave = 1;
     
 
     public float enmySpeed;
@@ -37,6 +45,11 @@ public class game_managie : MonoBehaviour
     {
         healthText = GameObject.Find("healthAmount").GetComponent<TextMeshProUGUI>();
         StartCoroutine(enmy_spawner());
+        isPaused = true;
+        Time.timeScale = 0;
+        TowerCostBase.text = baseTowerCost.ToString();
+        TowerCostArcer.text = arcerTowerCost.ToString();
+        TowerCostWacker.text = wackerTowerCost.ToString();
     }
 
     void Update()
@@ -50,31 +63,53 @@ public class game_managie : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (deathCount < 20)
+        if (deathCount > 10 && currentWave == 1)
         {
             spawnDelay = 1.7f;         //1.7
+            enemyHealth = 2;
+            isPaused = true;
+            currentWave++;
+        }
+        else if (deathCount > 20 && currentWave == 2)
+        {
+            
+            spawnDelay = 1.7f;         //1.7
+            enemyHealth = 3;
+            waveCount.text = "2";
+            isPaused = true;
+            currentWave++;
+        }
+        else if (deathCount > 50 && currentWave == 3)
+        {
+            spawnDelay = 1.5f;
             enemyHealth = 5;
-
+            waveCount.text = "3";
+            isPaused = true;
+            currentWave++;
         }
-        else if (deathCount < 50)
+        else if (deathCount > 70 && currentWave == 4)
         {
-            spawnDelay = 0.6f;
-            enemyHealth = 7;
+            spawnDelay = 1.3f;
+            enemyHealth = 10;
+            waveCount.text = "4";
+            isPaused = true;
+            currentWave++;
         }
-        else if (deathCount < 100)
+        else if (deathCount > 100 && currentWave == 5)
         {
-            spawnDelay = 0.5f;
-            enemyHealth = 12;
+            spawnDelay = 1.1f;
+            enemyHealth = 15;
+            waveCount.text = "5";
+            isPaused = true;
+            currentWave++;
         }
-        else if (deathCount < 300)
+        else if (deathCount > 300 && currentWave == 6)
         {
-            spawnDelay = 0.2f;
-            enemyHealth = 12;
-        }
-        else if (deathCount < 500)
-        {
-            spawnDelay = 0.1f;
-            enemyHealth = 12    ;
+            spawnDelay = 1.1f;
+            enemyHealth = 20;
+            waveCount.text = "final stand";
+            isPaused = true;
+            currentWave++;
         }
 
         moneyText.text = money.ToString();

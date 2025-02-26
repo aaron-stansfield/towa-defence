@@ -48,6 +48,7 @@ public class cameraScript : MonoBehaviour
                 towerGhost.transform.position = hit.point;
                 if (!placementCheck(hit.point) && !movingArcerTarget)
                 {
+                    if (towerGhost)
                     towerGhost.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.red;
                 }
                 else
@@ -70,7 +71,6 @@ public class cameraScript : MonoBehaviour
                 }
                 if (Input.GetMouseButtonUp(0) && movingArcerTarget && !isPointerOverUIObject())
                 {
-                    Debug.Log("huh");
                     movingArcerTarget = false;
                     towerGhost = null;
 
@@ -137,13 +137,27 @@ public class cameraScript : MonoBehaviour
         if (currentMouseState != mouseState.placing && !manager.isProperPaused)
         {
             towerToPlace = manager.towerList[2];
-            if (manager.money >= manager.baseTowerCost)
+            if (manager.money >= manager.arcerTowerCost)
             {
                 towerGhost = Instantiate(manager.towerList[3]);
                 towerGhost.gameObject.SetActive(false);
                 changeMouseState();
             }
 
+        }
+    }
+
+    public void wackerTowerSelect()
+    {
+        if (currentMouseState != mouseState.placing && !manager.isProperPaused)
+        {
+            towerToPlace = manager.towerList[4];
+            if (manager.money >= manager.wackerTowerCost)
+            {
+                towerGhost = Instantiate(manager.towerList[5]);
+                towerGhost.gameObject.SetActive(false);
+                changeMouseState();
+            }
         }
     }
 

@@ -31,7 +31,7 @@ public class Tower : MonoBehaviour
     private bool extraSlowChance;
     private int explosionDamage;
     [SerializeField] bool gumballer;
-    private float sauceLifeSpan = 3;
+    private float sauceLifeSpan = 1f;
     public Mesh hotDogProjectileMesh;
 
 
@@ -268,7 +268,9 @@ void FireProjectile(Vector3 interceptPoint)
         {
             projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
             bulletScript.chanceExplosive = explosionUpgrade;
-        }
+
+                bulletScript.bulletLifeTime = 2.4f;
+            }
         else if(arcer)
         {
 

@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.016202988, y: 0.8527579, z: -0.025689976, w: 0.5214226}
   m_LocalPosition: {x: 3.338227, y: 4.671811, z: 12.44002}
-  m_LocalScale: {x: 0.6906401, y: 0.69064, z: 0.69064003}
+  m_LocalScale: {x: 0.8999999, y: 0.8999999, z: 0.8999999}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5924059629128437515}
@@ -107,9 +107,9 @@ MonoBehaviour:
   moneyOnHit: 1
   slowTime: 5
   slowFX: {fileID: 3976026530189610100}
-  toStun: 0
   stunTime: 1.5
   inStunZone: 0
+  isStunned: 0
 --- !u!195 &5769725439821876568
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -234,7 +234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5978905446256761675
 RectTransform:
   m_ObjectHideFlags: 0
@@ -430,7 +430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3929936245201399654
 RectTransform:
   m_ObjectHideFlags: 0

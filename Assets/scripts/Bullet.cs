@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
-        StartCoroutine("BulletLifeTime");
+        StartCoroutine(BulletLifeTime());
         
     }
 
@@ -102,8 +102,6 @@ public class Bullet : MonoBehaviour
             other.GetComponent<enmy_scrip>().slowed();
         }
 
-
-        
     }
 
     private void OnTriggerStay(Collider other)
