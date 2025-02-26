@@ -27,6 +27,8 @@ public class game_managie : MonoBehaviour
     public TMP_Text TowerCostBase;
     public TMP_Text TowerCostArcer;
     public TMP_Text TowerCostWacker;
+    public TMP_Text waveCount;
+    private int currentWave = 1;
     
 
     public float enmySpeed;
@@ -61,37 +63,53 @@ public class game_managie : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (deathCount < 10)
+        if (deathCount > 10 && currentWave == 1)
         {
             spawnDelay = 1.7f;         //1.7
             enemyHealth = 2;
-
+            isPaused = true;
+            currentWave++;
         }
-        else if (deathCount < 20)
+        else if (deathCount > 20 && currentWave == 2)
         {
+            
             spawnDelay = 1.7f;         //1.7
             enemyHealth = 3;
-
+            waveCount.text = "2";
+            isPaused = true;
+            currentWave++;
         }
-        else if (deathCount < 50)
+        else if (deathCount > 50 && currentWave == 3)
         {
             spawnDelay = 1.5f;
             enemyHealth = 5;
+            waveCount.text = "3";
+            isPaused = true;
+            currentWave++;
         }
-        else if (deathCount < 70)
+        else if (deathCount > 70 && currentWave == 4)
         {
             spawnDelay = 1.3f;
             enemyHealth = 10;
+            waveCount.text = "4";
+            isPaused = true;
+            currentWave++;
         }
-        else if (deathCount < 100)
+        else if (deathCount > 100 && currentWave == 5)
         {
             spawnDelay = 1.1f;
             enemyHealth = 15;
+            waveCount.text = "5";
+            isPaused = true;
+            currentWave++;
         }
-        else if (deathCount < 300)
+        else if (deathCount > 300 && currentWave == 6)
         {
             spawnDelay = 1.1f;
             enemyHealth = 20;
+            waveCount.text = "final stand";
+            isPaused = true;
+            currentWave++;
         }
 
         moneyText.text = money.ToString();

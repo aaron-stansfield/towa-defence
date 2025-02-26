@@ -125,7 +125,7 @@ MonoBehaviour:
   explosive: 0
   isExplosion: 0
   bigBullet: {fileID: 8032492240239803107}
-  bulletLifeTime: 13.06
+  bulletLifeTime: 10.4
   parabolic: 0
   slows: 0
   extraSlowChance: 0

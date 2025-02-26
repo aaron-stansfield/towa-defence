@@ -268,7 +268,9 @@ void FireProjectile(Vector3 interceptPoint)
         {
             projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
             bulletScript.chanceExplosive = explosionUpgrade;
-        }
+
+                bulletScript.bulletLifeTime = 2.4f;
+            }
         else if(arcer)
         {
 

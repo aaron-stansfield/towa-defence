@@ -36,7 +36,7 @@ public class enmy_scrip : MonoBehaviour
         agent.SetDestination(goal.transform.position);
         health = gameManager.enemyHealth;
         
-        hammerTowerScript = GameObject.FindGameObjectWithTag("hammer").GetComponent<hammerScript>();
+        //hammerTowerScript = GameObject.FindGameObjectWithTag("hammer").GetComponent<hammerScript>();
 
         givenSpeed = this.GetComponent<NavMeshAgent>().speed;
     }

@@ -48,6 +48,7 @@ public class cameraScript : MonoBehaviour
                 towerGhost.transform.position = hit.point;
                 if (!placementCheck(hit.point) && !movingArcerTarget)
                 {
+                    if (towerGhost)
                     towerGhost.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.red;
                 }
                 else
