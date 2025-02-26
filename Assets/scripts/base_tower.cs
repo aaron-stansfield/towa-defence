@@ -31,7 +31,7 @@ public class Tower : MonoBehaviour
     private bool extraSlowChance;
     private int explosionDamage;
     [SerializeField] bool gumballer;
-    private float sauceLifeSpan = 3;
+    private float sauceLifeSpan = 1f;
     public Mesh hotDogProjectileMesh;
 
 

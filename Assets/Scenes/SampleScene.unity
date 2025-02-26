@@ -2062,8 +2062,8 @@ MonoBehaviour:
   enemyList: []
   baseTowerCost: 75
   baseTowerCostText: {fileID: 1062672121}
-  arcerTowerCost: 200
-  wackerTowerCost: 125
+  arcerTowerCost: 0
+  wackerTowerCost: 250
   anyUpgradeMenuOpen: 0
   money: 100
   deathCount: 0

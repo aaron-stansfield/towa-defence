@@ -15,7 +15,7 @@ public class game_managie : MonoBehaviour
     public List<GameObject> enemyList;
     public int baseTowerCost = 75;
     public TextMeshProUGUI baseTowerCostText;
-    public int arcerTowerCost = 50;
+    public int arcerTowerCost = 200;
     public int wackerTowerCost = 250;
     public bool anyUpgradeMenuOpen;
     public int money = 100;
