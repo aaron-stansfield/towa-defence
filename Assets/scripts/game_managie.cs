@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+//using UnityEngine.UIElements;
 
 public class game_managie : MonoBehaviour
 {
@@ -13,7 +15,7 @@ public class game_managie : MonoBehaviour
     public float spawnDelay;
     public List<GameObject> towerList;
     public List<GameObject> enemyList;
-    public int baseTowerCost = 75;
+    public int baseTowerCost = 100;
     public TextMeshProUGUI baseTowerCostText;
     public int arcerTowerCost = 200;
     public int wackerTowerCost = 250;
@@ -23,6 +25,10 @@ public class game_managie : MonoBehaviour
     public GameObject towerPurchaseButtons;
     public TextMeshProUGUI moneyText;
     public GameObject gameUI;
+    private bool isTowerUIHidden;
+    public Sprite UIPause;
+    public Sprite UIPlay;
+    public GameObject pauseButton;
 
     public TMP_Text TowerCostBase;
     public TMP_Text TowerCostArcer;
@@ -115,14 +121,15 @@ public class game_managie : MonoBehaviour
         moneyText.text = money.ToString();
         baseTowerCostText.text = baseTowerCost.ToString();
 
-        /*if (anyUpgradeMenuOpen)
+        if (anyUpgradeMenuOpen)
         {
-            towerPurchaseButtons.SetActive(false);
+            
+            //towerPurchaseButtons.SetActive(false);
         }
         else
         {
-            towerPurchaseButtons.SetActive(true);
-        }*/
+            //towerPurchaseButtons.SetActive(true);
+        }
     }
 
     IEnumerator enmy_spawner()
@@ -133,6 +140,21 @@ public class game_managie : MonoBehaviour
         dude.GetComponent<NavMeshAgent>().speed = enmySpeed;
         enmyCount++;
         StartCoroutine(enmy_spawner());
+    }
+
+    public void PlayTowerUIAnimation()
+    {
+        if (isTowerUIHidden)
+        {
+
+            towerPurchaseButtons.GetComponent<Animation>().Play("UIunshlorp");
+        }
+        else
+        {
+            towerPurchaseButtons.GetComponent<Animation>().Play("UIshlorp");
+        }
+
+        isTowerUIHidden = !isTowerUIHidden;
     }
 
     public void Damage()
@@ -183,6 +205,17 @@ public class game_managie : MonoBehaviour
         }
         else
         {
+            if (!isPaused)
+            {
+
+                pauseButton.GetComponent<Image>().sprite = UIPlay;
+
+            }
+            else
+            {
+
+                pauseButton.GetComponent<Image>().sprite = UIPause;
+            }
             Time.timeScale = isPaused ? 1 : 0; // toggle time pause
             isPaused = !isPaused;
         }

@@ -43,7 +43,6 @@ public class Tower : MonoBehaviour
     private int upgrade3Tier = 0;
     public TextMeshProUGUI upgrade3Text;
     private int bulletHealth;
-    public int baseCost = 5;
     public GameObject shooterPart; // part of gumballer that animates when it shoots
 
     public float attackRadius = 30f;
