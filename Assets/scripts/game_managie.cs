@@ -115,14 +115,14 @@ public class game_managie : MonoBehaviour
         moneyText.text = money.ToString();
         baseTowerCostText.text = baseTowerCost.ToString();
 
-        if (anyUpgradeMenuOpen)
+        /*if (anyUpgradeMenuOpen)
         {
             towerPurchaseButtons.SetActive(false);
         }
         else
         {
             towerPurchaseButtons.SetActive(true);
-        }
+        }*/
     }
 
     IEnumerator enmy_spawner()
