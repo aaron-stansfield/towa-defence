@@ -94,14 +94,14 @@ public class hammerScript : MonoBehaviour
     {
         yield return new WaitForSeconds(0.4f);
         enemyCounter = 0;
-        foreach (Collider col in Physics.OverlapSphere(this.transform.position, 10, WhatIsTarget))
+        foreach (Collider col in Physics.OverlapSphere(this.transform.position, 15, WhatIsTarget))
         {
 
             if (col.CompareTag("dude") && enemyCounter < 11)
             {
 
                 col.GetComponent<enmy_scrip>().Stun();
-                col.gameObject.GetComponent<enmy_scrip>().damaged(3);
+                col.gameObject.GetComponent<enmy_scrip>().damaged(2);
                 print("damage to deal");
 
                 enemyCounter++;
@@ -160,4 +160,9 @@ public class hammerScript : MonoBehaviour
         upgradeMenu.gameObject.SetActive(false);
         highlightRing.gameObject.SetActive(false);
     }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawSphere(this.transform.position, 20);
+    //}
 }

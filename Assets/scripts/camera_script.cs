@@ -49,13 +49,18 @@ public class cameraScript : MonoBehaviour
                 if (!placementCheck(hit.point) && !movingArcerTarget)
                 {
                     if (towerGhost)
-                    towerGhost.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.red;
+                    towerGhost.transform.GetChild(1).GetComponent<MeshRenderer>().material.SetColor("_BaseColour",Color.red);
                 }
                 else
                 {
                     if (!movingArcerTarget)
                     {
-                        towerGhost.transform.GetChild(0).GetComponent<MeshRenderer>().material.color = Color.black;
+                        Color colour;
+                        if (UnityEngine.ColorUtility.TryParseHtmlString("#5C0099", out colour))
+                        {
+                            towerGhost.transform.GetChild(1).GetComponent<MeshRenderer>().material.SetColor("_BaseColour", colour);
+                        }
+
                     }
                     towerGhost.gameObject.SetActive(true);
                     if (Input.GetMouseButtonUp(0) && !isPointerOverUIObject() && !movingArcerTarget)

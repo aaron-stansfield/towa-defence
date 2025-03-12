@@ -81,8 +81,8 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 16.2
-  m_Center: {x: 0.00000023841858, y: -1.72, z: -0.00000023841858}
+  m_Radius: 8.41
+  m_Center: {x: 0.00000023841858, y: -6.4, z: -0.00000023841858}
 --- !u!114 &3072221345565953900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,7 +860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1100641046180309060
 Transform:
   m_ObjectHideFlags: 0
@@ -870,8 +870,8 @@ Transform:
   m_GameObject: {fileID: 3809614779378763330}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.16, z: 0}
-  m_LocalScale: {x: 18.835941, y: 0.5974192, z: 18.835941}
+  m_LocalPosition: {x: 0.00000095367, y: 0.54, z: -0.00000095367}
+  m_LocalScale: {x: 9.998609, y: 0.3171257, z: 9.998609}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1490753673912186228}
