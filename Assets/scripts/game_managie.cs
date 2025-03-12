@@ -10,6 +10,7 @@ public class game_managie : MonoBehaviour
 {
     private TextMeshProUGUI healthText;
     public GameObject enmy;
+    public GameObject properEnmy;
     public GameObject spawnpoint;
     private int enmyCount = 0;
     public float spawnDelay;
@@ -56,6 +57,11 @@ public class game_managie : MonoBehaviour
         TowerCostBase.text = baseTowerCost.ToString();
         TowerCostArcer.text = arcerTowerCost.ToString();
         TowerCostWacker.text = wackerTowerCost.ToString();
+
+        if(GameObject.Find("nothin 2 worry bout").GetComponent<nothin>().cooldudes)
+        {
+            enmy = properEnmy;
+        }
     }
 
     void Update()

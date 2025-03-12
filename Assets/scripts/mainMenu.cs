@@ -29,4 +29,10 @@ public class mainMenu : MonoBehaviour
         // Loads main menu scene
         SceneManager.LoadScene(0);
     }
+
+    public void SwapDudes()
+    {
+        nothin dudescript = GameObject.Find("nothin 2 worry bout").GetComponent<nothin>();
+        dudescript.cooldudes = !dudescript.cooldudes;
+    }
 }
