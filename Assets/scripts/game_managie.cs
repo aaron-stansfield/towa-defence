@@ -30,6 +30,7 @@ public class game_managie : MonoBehaviour
     public Sprite UIPause;
     public Sprite UIPlay;
     public GameObject pauseButton;
+    public GameObject roundChangeHolder;
 
     public TMP_Text TowerCostBase;
     public TMP_Text TowerCostArcer;
@@ -82,7 +83,10 @@ public class game_managie : MonoBehaviour
 
     void Start()
     {
-        TogglePause(false);
+        towerPurchaseButtons.GetComponent<Animation>().Play("UIunshlorp");
+        roundChangeHolder.GetComponent<Animator>().SetTrigger("Start");
+        StartCoroutine(doPause());
+        //TogglePause(false);
         healthText = GameObject.Find("healthAmount").GetComponent<TextMeshProUGUI>();
         StartCoroutine(WaveHandler());
         
@@ -102,6 +106,10 @@ public class game_managie : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause(true);
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            roundChangeHolder.GetComponent<Animator>().SetTrigger("Start");
         }
     }
 
@@ -143,10 +151,14 @@ public class game_managie : MonoBehaviour
         {
             int spawnedThisWave = 0;
             int killsAtStartOfRound = deathCount;
+            
             roundStartingHealth = int.Parse(healthText.text);
+            
             for (int i = 0; i < roundsAmount[currentWave - 1]; i++)
             {
                 yield return new WaitForSeconds(spawnDelay);
+                //roundChangeHolder.GetComponent<Animator>().SetTrigger("Stop");
+
                 spawnedThisWave++;
                 enmy_spawn();
                 
@@ -165,7 +177,9 @@ public class game_managie : MonoBehaviour
                 yield return new WaitForSeconds(0.3f);
             }
             //totalDudes = 0;
-            TogglePause(false);
+            roundChangeHolder.GetComponent<Animator>().SetTrigger("Start");
+            StartCoroutine(doPause());
+            
             currentWave++;
             spawnDelay = roundsSpawnDelay[currentWave];
             enemyHealth = roundsHealth[currentWave];
@@ -208,6 +222,11 @@ public class game_managie : MonoBehaviour
 
     }
 
+    IEnumerator doPause()
+    {
+        yield return new WaitForSeconds(0.7f);
+        TogglePause(false);
+    }
     public void PlayTowerUIAnimation()
     {
         if (isTowerUIHidden)
