@@ -36,7 +36,39 @@ public class game_managie : MonoBehaviour
     public TMP_Text TowerCostWacker;
     public TMP_Text waveCount;
     private int currentWave = 1;
-    
+    private int totalDudes = 0;
+    private int roundStartingHealth;
+
+    public List<int> roundsAmount = new List<int>
+    {
+         10,
+         20,
+         50,
+         70,
+         100,
+         300
+    };
+
+    public List<int> roundsHealth = new List<int>
+    {
+         2,
+         3,
+         5,
+         10,
+         15,
+         20
+    };
+
+    public List<float> roundsSpawnDelay = new List<float>
+    {
+         1.7f,
+         1.7f,
+         1.5f,
+         1.3f,
+         1.1f,
+         1.1f
+    };
+
 
     public float enmySpeed;
 
@@ -50,10 +82,10 @@ public class game_managie : MonoBehaviour
 
     void Start()
     {
+        TogglePause(false);
         healthText = GameObject.Find("healthAmount").GetComponent<TextMeshProUGUI>();
-        StartCoroutine(enmy_spawner());
-        isPaused = true;
-        Time.timeScale = 0;
+        StartCoroutine(WaveHandler());
+        
         TowerCostBase.text = baseTowerCost.ToString();
         TowerCostArcer.text = arcerTowerCost.ToString();
         TowerCostWacker.text = wackerTowerCost.ToString();
@@ -75,55 +107,6 @@ public class game_managie : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (deathCount > 10 && currentWave == 1)
-        {
-            spawnDelay = 1.7f;         //1.7
-            enemyHealth = 2;
-            isPaused = true;
-            currentWave++;
-        }
-        else if (deathCount > 20 && currentWave == 2)
-        {
-            
-            spawnDelay = 1.7f;         //1.7
-            enemyHealth = 3;
-            waveCount.text = "2";
-            isPaused = true;
-            currentWave++;
-        }
-        else if (deathCount > 50 && currentWave == 3)
-        {
-            spawnDelay = 1.5f;
-            enemyHealth = 5;
-            waveCount.text = "3";
-            isPaused = true;
-            currentWave++;
-        }
-        else if (deathCount > 70 && currentWave == 4)
-        {
-            spawnDelay = 1.3f;
-            enemyHealth = 10;
-            waveCount.text = "4";
-            isPaused = true;
-            currentWave++;
-        }
-        else if (deathCount > 100 && currentWave == 5)
-        {
-            spawnDelay = 1.1f;
-            enemyHealth = 15;
-            waveCount.text = "5";
-            isPaused = true;
-            currentWave++;
-        }
-        else if (deathCount > 300 && currentWave == 6)
-        {
-            spawnDelay = 1.1f;
-            enemyHealth = 20;
-            waveCount.text = "final stand";
-            isPaused = true;
-            currentWave++;
-        }
-
         moneyText.text = money.ToString();
         baseTowerCostText.text = baseTowerCost.ToString();
 
@@ -138,14 +121,91 @@ public class game_managie : MonoBehaviour
         }
     }
 
-    IEnumerator enmy_spawner()
+    public void speedToggle()
     {
-        yield return new WaitForSeconds(spawnDelay);
+        if (Time.timeScale == 1 || Time.timeScale == 0)
+        {
+            if (isPaused)
+            {
+                TogglePause(false);
+            }
+            Time.timeScale = 2;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+    }
+
+    IEnumerator WaveHandler()
+    {
+        while (true)
+        {
+            int spawnedThisWave = 0;
+            int killsAtStartOfRound = deathCount;
+            roundStartingHealth = int.Parse(healthText.text);
+            for (int i = 0; i < roundsAmount[currentWave - 1]; i++)
+            {
+                yield return new WaitForSeconds(spawnDelay);
+                spawnedThisWave++;
+                enmy_spawn();
+                
+            }
+            Debug.Log(spawnedThisWave);
+            //for (int i = 0; i < currentWave; i++)
+            //{
+            //    totalDudes += roundsAmount[i];
+            //}
+            while ((deathCount - killsAtStartOfRound) + Mathf.Abs(int.Parse(healthText.text) - roundStartingHealth) < roundsAmount[currentWave - 1])
+            {
+                //Debug.Log(totalDudes);
+                //Debug.Log(roundsAmount[])
+                
+                Debug.Log(roundStartingHealth);
+                yield return new WaitForSeconds(0.3f);
+            }
+            //totalDudes = 0;
+            TogglePause(false);
+            currentWave++;
+            spawnDelay = roundsSpawnDelay[currentWave];
+            enemyHealth = roundsHealth[currentWave];
+            
+            waveCount.text = currentWave.ToString();
+        }
+        //for (int i = 0; i < round2Length + 1; i++)
+        //{
+        //    StartCoroutine(enmy_spawn());
+        //    yield return new WaitForSeconds(spawnDelay);
+        //}
+        //while (deathCount + Mathf.Abs(int.Parse(healthText.text) - 100) < (round2Length + round1Length + 2))
+        //{
+        //    yield return new WaitForSeconds(0.3f);
+        //}
+        //TogglePause(false);
+        //spawnDelay = 1.7f;
+        //enemyHealth = 3;
+        //currentWave++;
+        //waveCount.text = currentWave.ToString();
+
+        //for (int i = 0; i < round3Length + 1; i++)
+        //{
+        //    StartCoroutine(enmy_spawn());
+        //    yield return new WaitForSeconds(spawnDelay);
+        //}
+
+        //while (deathCount + Mathf.Abs(int.Parse(healthText.text) - 100) < (round3Length + round2Length + round1Length + 2))
+        //{
+        //    yield return new WaitForSeconds(0.3f);
+        //}
+    }
+
+    private void enmy_spawn()
+    {
         GameObject dude = Instantiate(enmy, spawnpoint.transform);
         dude.name = enmyCount.ToString();
         dude.GetComponent<NavMeshAgent>().speed = enmySpeed;
         enmyCount++;
-        StartCoroutine(enmy_spawner());
+
     }
 
     public void PlayTowerUIAnimation()
