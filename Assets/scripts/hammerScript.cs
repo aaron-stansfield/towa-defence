@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class hammerScript : MonoBehaviour
 {
@@ -24,10 +25,21 @@ public class hammerScript : MonoBehaviour
     private game_managie manager;
     [SerializeField] int enemyCounter;
 
+    //upgrade
+    private int upgrade1Tier = 0;
+    public TextMeshProUGUI upgrade1Text;
+    private int upgrade2Tier = 0;
+    public TextMeshProUGUI upgrade2Text;
+    private int upgrade3Tier = 0;
+    public TextMeshProUGUI upgrade3Text;
+    public bool attackKnockBack;
+
+
     private void Start()
     {
         manager = GameObject.Find("game managie").GetComponent<game_managie>();
         cameraScript = Camera.main.GetComponent<cameraScript>();
+        attackRange = 10;
     }
 
 
@@ -68,7 +80,7 @@ public class hammerScript : MonoBehaviour
     private void FixedUpdate()
     {
         
-        if (Physics.OverlapSphere(this.transform.position, 10, WhatIsTarget) != null && attacking == false)
+        if (Physics.OverlapSphere(this.transform.position, attackRange, WhatIsTarget) != null && attacking == false)
         {
 
             hammerFX.GetComponent<Animation>().Play();
@@ -99,9 +111,12 @@ public class hammerScript : MonoBehaviour
 
             if (col.CompareTag("dude") && enemyCounter < 11)
             {
-
+                if (attackKnockBack == true)
+                {
+                    col.GetComponent<enmy_scrip>().KnockBack();
+                }
                 col.GetComponent<enmy_scrip>().Stun();
-                col.gameObject.GetComponent<enmy_scrip>().damaged(2);
+                col.gameObject.GetComponent<enmy_scrip>().damaged(0);
                 print("damage to deal");
 
                 enemyCounter++;
@@ -165,4 +180,36 @@ public class hammerScript : MonoBehaviour
     //{
     //    Gizmos.DrawSphere(this.transform.position, 20);
     //}
+
+    public void Upgrade1()
+    {
+        if (upgrade1Tier == 0 && manager.money >= 100)
+            {
+                manager.money -= 100;
+                attackRange += 2;           //can change for ballance
+                upgrade1Tier++;
+                upgrade1Text.text = "Tier 2 - cost 250\n further increases range";
+            }
+            else if(upgrade1Tier == 1 && manager.money >= 250)
+            {
+                manager.money -= 250;
+                attackRange += 2;
+                upgrade1Tier++;
+                upgrade1Text.text = "fully upgraded \n :)";
+            }
+        
+    }
+
+    public void Upgrade2()
+    {
+
+        if (upgrade2Tier == 0 && manager.money >= 200)
+            {
+                manager.money -= 200;
+                attackKnockBack = true;
+                upgrade2Tier++;
+                upgrade2Text.text = "fully upgraded \n :)";
+            }
+    }
+            
 }

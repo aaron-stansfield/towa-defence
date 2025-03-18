@@ -140,8 +140,12 @@ public class enmy_scrip : MonoBehaviour
 
             Invoke(nameof(Unstun), stunTime);
         }
-        
+    }
 
+    public void KnockBack()
+    {
+        this.GetComponent<NavMeshAgent>().speed = -5;
+        Invoke(nameof(Unstun), 1);
     }
 
     public void Unstun()

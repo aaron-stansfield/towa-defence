@@ -112,6 +112,10 @@ MonoBehaviour:
   inStunZone: 0
   mouseColliderObject: {fileID: 5697253259619671931}
   enemyCounter: 0
+  upgrade1Text: {fileID: 0}
+  upgrade2Text: {fileID: 0}
+  upgrade3Text: {fileID: 0}
+  attackKnockBack: 0
 --- !u!33 &7485880588084815801
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -541,10 +545,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1.3925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 513525310467477497}
   - {fileID: 1298724334870505893}
   - {fileID: 6792261684829804126}
   - {fileID: 8090770917783894380}
+  - {fileID: 513525310467477497}
   m_Father: {fileID: 8825980627230098438}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
