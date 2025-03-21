@@ -3,7 +3,26 @@ guid: 16a4f7be5a3943641a420fc43925020e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - enmy: {instanceID: 0}
+  - properEnmy: {instanceID: 0}
+  - spawnpoint: {instanceID: 0}
+  - baseTowerCostText: {instanceID: 0}
+  - towerPurchaseButtons: {instanceID: 0}
+  - moneyText: {instanceID: 0}
+  - gameUI: {instanceID: 0}
+  - UIPause: {instanceID: 0}
+  - UIPlay: {instanceID: 0}
+  - pauseButton: {instanceID: 0}
+  - roundChangeHolder: {instanceID: 0}
+  - TowerCostBase: {instanceID: 0}
+  - TowerCostArcer: {instanceID: 0}
+  - TowerCostWacker: {instanceID: 0}
+  - waveCount: {instanceID: 0}
+  - normalEnemyPrefab: {fileID: 66862539164753587, guid: e299a93403ac1e3468f20380f4702089, type: 3}
+  - tankEnemyPrefab: {instanceID: 0}
+  - fastEnemyPrefab: {instanceID: 0}
+  - pauseMenuUI: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

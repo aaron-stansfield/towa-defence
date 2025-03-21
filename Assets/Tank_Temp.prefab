@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2036271365946935366}
   - component: {fileID: 5769725439821876568}
   m_Layer: 3
-  m_Name: 2Ddude
+  m_Name: Tank_Temp
   m_TagString: dude
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goal: {fileID: 0}
-  health: 25
+  health: 200
   moneyOnDeath: 5
   moneyOnHit: 1
   slowTime: 5
@@ -118,7 +118,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.33
-  m_Speed: 6.7
+  m_Speed: 5.27
   m_Acceleration: 21.57
   avoidancePriority: 50
   m_AngularSpeed: 17.3

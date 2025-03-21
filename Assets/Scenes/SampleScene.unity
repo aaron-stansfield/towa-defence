@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.004706609, g: 0.046788916, b: 0.1192412, a: 1}
+  m_IndirectSpecularColor: {r: 0.004706788, g: 0.04678881, b: 0.119240694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3083,8 +3083,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16a4f7be5a3943641a420fc43925020e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enmy: {fileID: 66862539164753587, guid: e299a93403ac1e3468f20380f4702089, type: 3}
-  properEnmy: {fileID: 66862539164753587, guid: 0fdb072d48c37f745ab3fb980e5238e6, type: 3}
   spawnpoint: {fileID: 110796458}
   spawnDelay: 1.7
   towerList:
@@ -3100,7 +3098,7 @@ MonoBehaviour:
   arcerTowerCost: 200
   wackerTowerCost: 250
   anyUpgradeMenuOpen: 0
-  money: 100
+  money: 999
   deathCount: 0
   towerPurchaseButtons: {fileID: 2009597526}
   moneyText: {fileID: 1491612734}
@@ -3113,16 +3111,10 @@ MonoBehaviour:
   TowerCostArcer: {fileID: 1589987297}
   TowerCostWacker: {fileID: 8904179}
   waveCount: {fileID: 1340856222}
-  roundsAmount: 0a000000140000003200000046000000640000002c010000
-  roundsHealth: 0200000003000000050000000a0000000f00000014000000
-  roundsSpawnDelay:
-  - 1.7
-  - 1.7
-  - 1.5
-  - 1.3
-  - 1.1
-  - 1.1
-  enmySpeed: 7.03
+  normalEnemyPrefab: {fileID: 66862539164753587, guid: e299a93403ac1e3468f20380f4702089, type: 3}
+  tankEnemyPrefab: {fileID: 66862539164753587, guid: 6306d5089e7b2344aa3a5c5cd729c476, type: 3}
+  fastEnemyPrefab: {fileID: 66862539164753587, guid: 8cb66dc0f7992fe439915f89978c0e71, type: 3}
+  enemySpeed: 0
   enemyHealth: 3
   pauseMenuUI: {fileID: 764850182}
   isPaused: 0
