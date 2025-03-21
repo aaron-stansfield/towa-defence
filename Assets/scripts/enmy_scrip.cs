@@ -72,10 +72,17 @@ public class enmy_scrip : MonoBehaviour
         if (other.CompareTag("goal"))
         {
             gameManager.Damage();
+            
+            gameManager.deathCount++;
+            gameManager.money += moneyOnDeath;
+
+            
             if (gameManager.enemyList.Contains(this.gameObject))
             {
                 gameManager.enemyList.Remove(this.gameObject);
             }
+
+           
             Destroy(this.gameObject);
         }
     }
