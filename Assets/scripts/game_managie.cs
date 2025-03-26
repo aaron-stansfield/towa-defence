@@ -13,9 +13,9 @@ public class game_managie : MonoBehaviour
     public float spawnDelay;
     public List<GameObject> towerList;
     public List<GameObject> enemyList;
-    public int baseTowerCost = 100;
+    public int baseTowerCost = 80;
     public TextMeshProUGUI baseTowerCostText;
-    public int arcerTowerCost = 200;
+    public int arcerTowerCost = 150;
     public int wackerTowerCost = 250;
     public bool anyUpgradeMenuOpen;
     public int money = 100;

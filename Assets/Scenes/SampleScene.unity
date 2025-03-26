@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.004706788, g: 0.04678881, b: 0.119240694, a: 1}
+  m_IndirectSpecularColor: {r: 0.0038583942, g: 0.04678879, b: 0.11882617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3093,12 +3093,12 @@ MonoBehaviour:
   - {fileID: 5627089686381069580, guid: 77750e9553171d44ba808670d3f9eea6, type: 3}
   - {fileID: 5627089686381069580, guid: 931acce53dcceac48b4e7130b9d78830, type: 3}
   enemyList: []
-  baseTowerCost: 100
+  baseTowerCost: 80
   baseTowerCostText: {fileID: 1062672121}
-  arcerTowerCost: 200
+  arcerTowerCost: 150
   wackerTowerCost: 250
   anyUpgradeMenuOpen: 0
-  money: 999
+  money: 100
   deathCount: 0
   towerPurchaseButtons: {fileID: 2009597526}
   moneyText: {fileID: 1491612734}
@@ -3975,7 +3975,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Hot Dawg
 
-    cost: 200
+    cost: 150
 
 
     ranged tower, place a target and the tower
@@ -6667,7 +6667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 250
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9771,7 +9771,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Gumballer
 
-    cost: 100
+    cost: 80
 
 
     basic tower, shoots one projectile with
