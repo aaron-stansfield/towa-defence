@@ -14,7 +14,7 @@ public class cameraScript : MonoBehaviour
     private game_managie manager;
     public GameObject towerGhost;
     public mouseState currentMouseState;
-    private float checkRadius = 1.3f;
+    private float checkRadius = 2.3f;
     public bool movingArcerTarget;
     
     public enum mouseState
@@ -166,10 +166,10 @@ public class cameraScript : MonoBehaviour
         }
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.DrawSphere(towerGhost.transform.position, checkRadius);
-    //}
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(hit.point, checkRadius);
+    }
 
     private bool isPointerOverUIObject()  //avoids the click interacting with ui
     {

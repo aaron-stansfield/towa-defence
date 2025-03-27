@@ -12,6 +12,7 @@ TagManager:
   - ground
   - stunZone
   - hammer
+  - null
   layers:
   - Default
   - TransparentFX

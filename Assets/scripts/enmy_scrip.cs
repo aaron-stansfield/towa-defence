@@ -108,14 +108,15 @@ public class enmy_scrip : MonoBehaviour
     IEnumerator delayedDeath()
     {
         isDead = true;
-        this.tag = "empy";
-        agent.speed = 0;
         
-        this.GetComponent<CapsuleCollider>().enabled = false;
-        //this.GetComponent<NavMeshAgent>().enabled = false;
-        this.GetComponent<Rigidbody>().useGravity = false;
+        this.gameObject.tag = "null";
+        this.gameObject.layer = 0;
+        Destroy(this.GetComponent<CapsuleCollider>());
+        Destroy(this.GetComponent<NavMeshAgent>());
+        Destroy(this.GetComponent<Rigidbody>());
+        //this.GetComponent<NavMeshAgent>().IsDestroyed();
         AnimCanvas.GetComponent<Animator>().SetTrigger("Dead");
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.6f);
         Destroy(this.gameObject);
     }
 

@@ -28,6 +28,7 @@ public class game_managie : MonoBehaviour
     public Sprite UIPlay;
     public GameObject pauseButton;
     public GameObject roundChangeHolder;
+    private bool isShlorped = false;
 
     public TMP_Text TowerCostBase;
     public TMP_Text TowerCostArcer;
@@ -90,6 +91,20 @@ public class game_managie : MonoBehaviour
         baseTowerCostText.text = baseTowerCost.ToString();
     }
 
+    public void toggleShlorp()
+    {
+        if (isShlorped)
+        {
+            towerPurchaseButtons.GetComponent<Animation>().Play("UIunshlorp");
+            
+        }
+        else
+        {
+            towerPurchaseButtons.GetComponent<Animation>().Play("UIshlorp");
+        }
+
+        isShlorped = !isShlorped;
+    }
     public void speedToggle()
     {
         if (Time.timeScale == 1 || Time.timeScale == 0)

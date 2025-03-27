@@ -126,7 +126,7 @@ public class Tower : MonoBehaviour
         {
             foreach (GameObject dude in enemysInRange)
             {
-                if (dude == null)
+                if (!dude.CompareTag("dude"))
                 {
                     enemysInRange.Remove(dude);
                 }
