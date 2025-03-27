@@ -45,8 +45,8 @@ public class Tower : MonoBehaviour
     private int bulletHealth;
     public GameObject shooterPart; // part of gumballer that animates when it shoots
 
-    public float attackRadius = 30f;
-    public float projectileSpeed = 60f;
+    public float attackRadius;
+    public float projectileSpeed;
     public float fireRate = 1f; // Time in seconds between shots
     public GameObject Bullet;
     public GameObject BSpawn;
