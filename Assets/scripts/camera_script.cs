@@ -168,7 +168,7 @@ public class cameraScript : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(hit.point, checkRadius);
+        Gizmos.DrawSphere(towerGhost.transform.position, checkRadius);
     }
 
     private bool isPointerOverUIObject()  //avoids the click interacting with ui
