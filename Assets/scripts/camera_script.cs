@@ -107,7 +107,7 @@ public class cameraScript : MonoBehaviour
 
     public bool placementCheck(Vector3 pos)
     {
-        Collider[] currentObjects = Physics.OverlapSphere(pos, checkRadius);
+        Collider[] currentObjects = Physics.OverlapSphere(new Vector3(pos.x,0,pos.z), checkRadius);
         
         foreach(Collider col in currentObjects)
         {
@@ -168,7 +168,7 @@ public class cameraScript : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(hit.point, checkRadius);
+        Gizmos.DrawSphere(new Vector3(towerGhost.transform.position.x,0,towerGhost.transform.position.z), checkRadius);
     }
 
     private bool isPointerOverUIObject()  //avoids the click interacting with ui

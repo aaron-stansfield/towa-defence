@@ -13,6 +13,7 @@ TagManager:
   - stunZone
   - hammer
   - null
+  - startPoint
   layers:
   - Default
   - TransparentFX

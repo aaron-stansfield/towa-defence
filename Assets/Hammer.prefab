@@ -112,9 +112,9 @@ MonoBehaviour:
   inStunZone: 0
   mouseColliderObject: {fileID: 5697253259619671931}
   enemyCounter: 0
-  upgrade1Text: {fileID: 0}
-  upgrade2Text: {fileID: 0}
-  upgrade3Text: {fileID: 0}
+  upgrade1Text: {fileID: 2855474509377892236}
+  upgrade2Text: {fileID: 2828399119258335237}
+  upgrade3Text: {fileID: 7181462357010705154}
   attackKnockBack: 0
 --- !u!33 &7485880588084815801
 MeshFilter:
@@ -545,10 +545,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1.3925, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 513525310467477497}
   - {fileID: 1298724334870505893}
   - {fileID: 6792261684829804126}
   - {fileID: 8090770917783894380}
-  - {fileID: 513525310467477497}
   m_Father: {fileID: 8825980627230098438}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -574,7 +574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8825980627230098438
 RectTransform:
   m_ObjectHideFlags: 0
@@ -779,8 +779,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Tower, Assembly-CSharp
+      - m_Target: {fileID: 3072221345565953900}
+        m_TargetAssemblyTypeName: hammerScript, Assembly-CSharp
         m_MethodName: Upgrade1
         m_Mode: 1
         m_Arguments:
@@ -1069,7 +1069,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tier 1 - cost 100\n increase fire rate\n"
+  m_text: 'Tier 1 - cost 100
+
+    increase range
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1289,7 +1293,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Tier 1 - cost 200
 
-    explosive rounds'
+    add knockback'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1951,8 +1955,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Tower, Assembly-CSharp
+      - m_Target: {fileID: 3072221345565953900}
+        m_TargetAssemblyTypeName: hammerScript, Assembly-CSharp
         m_MethodName: Upgrade2
         m_Mode: 1
         m_Arguments:

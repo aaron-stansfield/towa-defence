@@ -10,7 +10,8 @@ public class enmy_scrip : MonoBehaviour
     hammerScript hammerTowerScript;
 
     private bool isDead;
-    public GameObject goal;
+    private GameObject goal;
+    private GameObject startPoint;
     private NavMeshAgent agent;
     private game_managie gameManager;
     public int health;
@@ -32,6 +33,7 @@ public class enmy_scrip : MonoBehaviour
         //AnimCanvas.GetComponent<Animation>().Play("2DDudeRun");
         GameObject gameManagerObj = GameObject.Find("game managie");
         gameManager = gameManagerObj.GetComponent<game_managie>();
+        startPoint = GameObject.FindGameObjectWithTag("startPoint");
         goal = GameObject.FindGameObjectWithTag("goal");
         agent = this.GetComponent<NavMeshAgent>();
         agent.SetDestination(goal.transform.position);
@@ -60,7 +62,7 @@ public class enmy_scrip : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!isDead)
+        if (!isDead && !isStunned)
         {
             moveEnmy();
         }
@@ -111,9 +113,10 @@ public class enmy_scrip : MonoBehaviour
         
         this.gameObject.tag = "null";
         this.gameObject.layer = 0;
+        Destroy(this.GetComponent<Rigidbody>());
         Destroy(this.GetComponent<CapsuleCollider>());
         Destroy(this.GetComponent<NavMeshAgent>());
-        Destroy(this.GetComponent<Rigidbody>());
+        
         //this.GetComponent<NavMeshAgent>().IsDestroyed();
         AnimCanvas.GetComponent<Animator>().SetTrigger("Dead");
         yield return new WaitForSeconds(0.6f);
@@ -169,10 +172,17 @@ public class enmy_scrip : MonoBehaviour
         }
     }
 
-    public void KnockBack()
+    public IEnumerator KnockBack()
     {
-        this.GetComponent<NavMeshAgent>().speed = -5;
-        Invoke(nameof(Unstun), 1);
+        isStunned = true;
+        agent.SetDestination(startPoint.transform.position);
+        agent.speed = givenSpeed * 2;
+        yield return new WaitForSeconds(1);
+        agent.SetDestination(goal.transform.position);
+        agent.speed = givenSpeed / 2;
+        isStunned = false;
+        
+        
     }
 
     public void Unstun()

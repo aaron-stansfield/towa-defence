@@ -104,26 +104,32 @@ public class hammerScript : MonoBehaviour
 
     IEnumerator attack()
     {
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(1.2f);
         enemyCounter = 0;
         foreach (Collider col in Physics.OverlapSphere(this.transform.position, 15, WhatIsTarget))
         {
 
-            if (col.CompareTag("dude") && enemyCounter < 11)
+            if (col.CompareTag("dude") && enemyCounter < 5)
             {
                 if (attackKnockBack == true)
                 {
-                    col.GetComponent<enmy_scrip>().KnockBack();
+                    StartCoroutine(col.GetComponent<enmy_scrip>().KnockBack());
                 }
-                col.GetComponent<enmy_scrip>().Stun();
+                else
+                {
+                    col.GetComponent<enmy_scrip>().Stun();
+                }
+                
                 col.gameObject.GetComponent<enmy_scrip>().damaged(0);
                 print("damage to deal");
 
                 enemyCounter++;
 
             }
+            
         }
         Hit();
+        
     }
 
     void Hit()

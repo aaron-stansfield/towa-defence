@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afdf985f974c5146af53ed910507f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 0}
   health: 10
   moneyOnDeath: 5
   moneyOnHit: 1
@@ -118,8 +117,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 66862539164753587}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.33
-  m_Speed: 22.51
+  m_Radius: 1.5
+  m_Speed: 16.82
   m_Acceleration: 21.57
   avoidancePriority: 50
   m_AngularSpeed: 17.3
