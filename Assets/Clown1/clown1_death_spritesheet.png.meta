@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9d6390e4edc3ee544af951b1f399aa11
+guid: 4f80f21f74ba8fb44b90d361be3c8238
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -44,7 +44,7 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 10
+  spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: clown2_running_spritesheet_0
+      name: clown1_death_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 20
+        x: 50
         y: 1394
-        width: 1229
-        height: 1085
+        width: 1177
+        height: 1120
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ee1aed65484b56459c5a5c26acc4018
-      internalID: 1886051662
+      spriteID: 0763626253bb2a24ab6f0e776d3d48f3
+      internalID: 1265229545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clown2_running_spritesheet_1
+      name: clown1_death_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 1311
-        y: 1403
-        width: 1233
-        height: 1098
+        x: 1494
+        y: 1302
+        width: 879
+        height: 1258
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07f1cb1f4d0227a48a20601393504c01
-      internalID: -1792389707
+      spriteID: 33dea19f13bb192429ae87854944a038
+      internalID: 124398552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clown2_running_spritesheet_2
+      name: clown1_death_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 2592
+        x: 2588
+        y: 1401
+        width: 1234
+        height: 1056
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d9f06f48656943439fa0d5144dd97ce
+      internalID: 1991498919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown1_death_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 3848
+        y: 1420
+        width: 1223
+        height: 976
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3d791e02b4707047b71fcc31abdc0d9
+      internalID: -1964994407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown1_death_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 5143
         y: 1389
-        width: 1238
-        height: 1099
+        width: 1242
+        height: 1051
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +208,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e78b6d986ddf414facd09bb22d070ed
-      internalID: -2016494705
+      spriteID: bc5783c96f8698643a11001dad274230
+      internalID: 2015394772
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: clown2_running_spritesheet_3
+      name: clown1_death_spritesheet_6
       rect:
         serializedVersion: 2
-        x: 3852
-        y: 1395
+        x: 7939
+        y: 1534
+        width: 765
+        height: 766
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 168cb55fb65f9fb40b47d10efe95d31b
+      internalID: 2016648201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown1_death_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 51
+        width: 1172
+        height: 1172
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f49fdea0e49ad3d47ae5a9faac9a3b45
+      internalID: -262410180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown1_death_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 0
+        width: 1281
+        height: 1280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec73b8a171b71a64dabacd868697a02c
+      internalID: -1271547736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown1_death_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 6434
+        y: 1330
         width: 1260
-        height: 1023
+        height: 1230
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,134 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d9b69bc37cfbb414db602797192f1757
-      internalID: 1386273870
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clown2_running_spritesheet_4
-      rect:
-        serializedVersion: 2
-        x: 5252
-        y: 1394
-        width: 1089
-        height: 1059
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 92ce8abdaaebe0c44977a191d2b5e182
-      internalID: -108472746
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clown2_running_spritesheet_5
-      rect:
-        serializedVersion: 2
-        x: 6433
-        y: 1394
-        width: 1230
-        height: 1085
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3b4128fde4bb25b458454b14db2babf6
-      internalID: 1991439549
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clown2_running_spritesheet_6
-      rect:
-        serializedVersion: 2
-        x: 7711
-        y: 1403
-        width: 1229
-        height: 1098
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ed43a27430c9d6a42a894a4bf6b1ca9b
-      internalID: -136894296
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clown2_running_spritesheet_7
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 126
-        width: 1238
-        height: 1097
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ecc718d933bec6f4c8fb77eb410374ac
-      internalID: -1416360259
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clown2_running_spritesheet_8
-      rect:
-        serializedVersion: 2
-        x: 1289
-        y: 133
-        width: 1255
-        height: 1020
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b9371ce6cc1da546ad087c69921ef8e
-      internalID: -251895984
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: clown2_running_spritesheet_9
-      rect:
-        serializedVersion: 2
-        x: 2667
-        y: 133
-        width: 1089
-        height: 1055
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ef5e8e21ec0452d48b273a6c0f55dff5
-      internalID: -1172672768
+      spriteID: b41e264e6fc9561488dd74f265a13f21
+      internalID: 96424287
       vertices: []
       indices: 
       edges: []
@@ -322,7 +301,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 6f58d9904da2ff24da72bfe838863678
+    spriteID: 95f37edd2aacef84e8a86a6c3c10c9a2
     internalID: 0
     vertices: []
     indices: 
@@ -330,16 +309,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      clown2_running_spritesheet_0: 1886051662
-      clown2_running_spritesheet_1: -1792389707
-      clown2_running_spritesheet_2: -2016494705
-      clown2_running_spritesheet_3: 1386273870
-      clown2_running_spritesheet_4: -108472746
-      clown2_running_spritesheet_5: 1991439549
-      clown2_running_spritesheet_6: -136894296
-      clown2_running_spritesheet_7: -1416360259
-      clown2_running_spritesheet_8: -251895984
-      clown2_running_spritesheet_9: -1172672768
+      clown1_death_spritesheet_0: 1265229545
+      clown1_death_spritesheet_1: 124398552
+      clown1_death_spritesheet_10: 237192223
+      clown1_death_spritesheet_2: 1991498919
+      clown1_death_spritesheet_3: -1964994407
+      clown1_death_spritesheet_4: 2015394772
+      clown1_death_spritesheet_5: 96424287
+      clown1_death_spritesheet_6: 2016648201
+      clown1_death_spritesheet_7: -262410180
+      clown1_death_spritesheet_8: -1271547736
+      clown1_death_spritesheet_9: 1045551292
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

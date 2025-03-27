@@ -1051,7 +1051,6 @@ MonoBehaviour:
   upgrade1Text: {fileID: 1037574858065203098}
   upgrade2Text: {fileID: 5100076462422771998}
   upgrade3Text: {fileID: 4169396019399641164}
-  baseCost: 5
   shooterPart: {fileID: 0}
   attackRadius: 134.7
   projectileSpeed: 73.6
@@ -1874,7 +1873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8187728436888923553
 Transform:
   m_ObjectHideFlags: 0

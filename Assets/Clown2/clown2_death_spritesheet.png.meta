@@ -1,0 +1,456 @@
+fileFormatVersion: 2
+guid: ab64d6bb8fb32bc4cbf89e1f5ae4e819
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: clown2_death_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1394
+        width: 1229
+        height: 1085
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7c170f1a53426c49b7756f5759aa1e2
+      internalID: -1058606870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown2_death_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 1350
+        y: 1394
+        width: 1115
+        height: 1045
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b66923bec096c1408173a245f891f04
+      internalID: -722623727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown2_death_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 2640
+        y: 1395
+        width: 1076
+        height: 1102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1142db07f270c7846b389313dc015df5
+      internalID: -441016703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown2_death_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 3957
+        y: 1390
+        width: 1017
+        height: 1137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5443624e693d87a438f045962a42d161
+      internalID: -1466569430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown2_death_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 5235
+        y: 1389
+        width: 1054
+        height: 1169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce4ace2bff56314d83bbd3d480693b2
+      internalID: 1866142527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown2_death_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 6521
+        y: 1394
+        width: 1063
+        height: 1164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e0d1dbe19f73214eba5f6c0c991f9f8
+      internalID: 1599740374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown2_death_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 7820
+        y: 1394
+        width: 998
+        height: 967
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c7ef74c4c81c304a9344bec48b5814e
+      internalID: 1215237734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown2_death_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 0
+        width: 1121
+        height: 1233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4b31920802ad844ab00a06ad1c26fac
+      internalID: -177337167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown2_death_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 0
+        width: 1221
+        height: 1221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8351515ff73eb04699029e773487a6c
+      internalID: -1340695500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown2_death_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 2629
+        y: 0
+        width: 1176
+        height: 1233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28f3dd06244a4a64bab05c52b4fcaa49
+      internalID: -1062263044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown2_death_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 3918
+        y: 0
+        width: 1071
+        height: 1238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 028a3e410b55cb8428ff986d5a346fb4
+      internalID: -911561329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 484f994f9037e114f85178f6597caa36
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      clown2_death_spritesheet_0: -1058606870
+      clown2_death_spritesheet_1: -722623727
+      clown2_death_spritesheet_10: -911561329
+      clown2_death_spritesheet_11: -1981688454
+      clown2_death_spritesheet_12: 2010064113
+      clown2_death_spritesheet_13: -414402942
+      clown2_death_spritesheet_14: -1945591040
+      clown2_death_spritesheet_15: 1173324781
+      clown2_death_spritesheet_16: -1222413115
+      clown2_death_spritesheet_17: 710246556
+      clown2_death_spritesheet_18: -1772919669
+      clown2_death_spritesheet_19: 1961072331
+      clown2_death_spritesheet_2: -441016703
+      clown2_death_spritesheet_20: -197239224
+      clown2_death_spritesheet_21: -2072275801
+      clown2_death_spritesheet_22: -403294792
+      clown2_death_spritesheet_23: -1322904774
+      clown2_death_spritesheet_24: -621565272
+      clown2_death_spritesheet_25: -2007589642
+      clown2_death_spritesheet_26: 1517081371
+      clown2_death_spritesheet_27: 946811777
+      clown2_death_spritesheet_28: -2117011792
+      clown2_death_spritesheet_29: 1064142792
+      clown2_death_spritesheet_3: -1466569430
+      clown2_death_spritesheet_30: 1870982457
+      clown2_death_spritesheet_31: -300809846
+      clown2_death_spritesheet_32: 424532685
+      clown2_death_spritesheet_33: 2051951136
+      clown2_death_spritesheet_34: 1095307063
+      clown2_death_spritesheet_35: -1949499080
+      clown2_death_spritesheet_36: 554540580
+      clown2_death_spritesheet_37: 2078868736
+      clown2_death_spritesheet_38: -493137658
+      clown2_death_spritesheet_39: -536515904
+      clown2_death_spritesheet_4: 1866142527
+      clown2_death_spritesheet_40: -1065983731
+      clown2_death_spritesheet_41: 48593170
+      clown2_death_spritesheet_42: -16956138
+      clown2_death_spritesheet_43: 860669082
+      clown2_death_spritesheet_44: -92473912
+      clown2_death_spritesheet_45: 1985215259
+      clown2_death_spritesheet_46: -445422934
+      clown2_death_spritesheet_47: 1204897961
+      clown2_death_spritesheet_48: -76459264
+      clown2_death_spritesheet_49: -1209684220
+      clown2_death_spritesheet_5: 1599740374
+      clown2_death_spritesheet_50: -1862741047
+      clown2_death_spritesheet_51: 455903466
+      clown2_death_spritesheet_52: 655216614
+      clown2_death_spritesheet_53: -287761881
+      clown2_death_spritesheet_54: -978784242
+      clown2_death_spritesheet_55: -613368050
+      clown2_death_spritesheet_56: 1492394693
+      clown2_death_spritesheet_57: -1242862393
+      clown2_death_spritesheet_58: 421043275
+      clown2_death_spritesheet_59: 1810021527
+      clown2_death_spritesheet_6: 1215237734
+      clown2_death_spritesheet_60: -396585280
+      clown2_death_spritesheet_61: 385909205
+      clown2_death_spritesheet_62: 1593620998
+      clown2_death_spritesheet_63: -25254586
+      clown2_death_spritesheet_64: 490413497
+      clown2_death_spritesheet_65: 1318641315
+      clown2_death_spritesheet_66: -1533484369
+      clown2_death_spritesheet_67: 1782538056
+      clown2_death_spritesheet_68: -1098125193
+      clown2_death_spritesheet_69: 1051516281
+      clown2_death_spritesheet_7: -177337167
+      clown2_death_spritesheet_70: -2040592548
+      clown2_death_spritesheet_71: -1603241883
+      clown2_death_spritesheet_72: 1334059242
+      clown2_death_spritesheet_73: -1305755035
+      clown2_death_spritesheet_74: -1143197654
+      clown2_death_spritesheet_75: -1882277855
+      clown2_death_spritesheet_76: 376797621
+      clown2_death_spritesheet_77: -1717231671
+      clown2_death_spritesheet_78: 1618501944
+      clown2_death_spritesheet_79: -1523761697
+      clown2_death_spritesheet_8: -1340695500
+      clown2_death_spritesheet_80: -1076071746
+      clown2_death_spritesheet_81: -1421647394
+      clown2_death_spritesheet_82: 350485932
+      clown2_death_spritesheet_83: 1585872882
+      clown2_death_spritesheet_84: -227157417
+      clown2_death_spritesheet_85: 856585152
+      clown2_death_spritesheet_86: -1076444624
+      clown2_death_spritesheet_87: -228375935
+      clown2_death_spritesheet_88: -86912093
+      clown2_death_spritesheet_89: 1306484047
+      clown2_death_spritesheet_9: -1062263044
+      clown2_death_spritesheet_90: -1745971143
+      clown2_death_spritesheet_91: 1313398842
+      clown2_death_spritesheet_92: -823295625
+      clown2_death_spritesheet_93: 1341839563
+      clown2_death_spritesheet_94: -759676536
+      clown2_death_spritesheet_95: 1127365203
+      clown2_death_spritesheet_96: -1331002709
+      clown2_death_spritesheet_97: -1988283028
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

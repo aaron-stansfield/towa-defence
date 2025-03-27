@@ -9,7 +9,7 @@ public class enmy_scrip : MonoBehaviour
     //for hammer tower
     hammerScript hammerTowerScript;
 
-
+    private bool isDead;
     public GameObject goal;
     private NavMeshAgent agent;
     private game_managie gameManager;
@@ -18,6 +18,7 @@ public class enmy_scrip : MonoBehaviour
     public int moneyOnHit;
     public float slowTime;
     public GameObject slowFX;
+    public GameObject AnimCanvas;
     public float stunTime;
     public bool inStunZone;
     private float givenSpeed;
@@ -27,8 +28,8 @@ public class enmy_scrip : MonoBehaviour
     public void Start()
     {
         //hammer tower
-       
 
+        //AnimCanvas.GetComponent<Animation>().Play("2DDudeRun");
         GameObject gameManagerObj = GameObject.Find("game managie");
         gameManager = gameManagerObj.GetComponent<game_managie>();
         goal = GameObject.FindGameObjectWithTag("goal");
@@ -59,7 +60,11 @@ public class enmy_scrip : MonoBehaviour
 
     private void FixedUpdate()
     {
-        moveEnmy();
+        if (!isDead)
+        {
+            moveEnmy();
+        }
+
     }
     public void moveEnmy()
     {
@@ -82,8 +87,9 @@ public class enmy_scrip : MonoBehaviour
                 gameManager.enemyList.Remove(this.gameObject);
             }
 
-           
-            Destroy(this.gameObject);
+            StartCoroutine(delayedDeath());
+
+            
         }
     }
 
@@ -99,7 +105,19 @@ public class enmy_scrip : MonoBehaviour
     }
 
 
-    
+    IEnumerator delayedDeath()
+    {
+        isDead = true;
+        this.tag = "empy";
+        agent.speed = 0;
+        
+        this.GetComponent<CapsuleCollider>().enabled = false;
+        //this.GetComponent<NavMeshAgent>().enabled = false;
+        this.GetComponent<Rigidbody>().useGravity = false;
+        AnimCanvas.GetComponent<Animator>().SetTrigger("Dead");
+        yield return new WaitForSeconds(0.8f);
+        Destroy(this.gameObject);
+    }
 
     public void damaged(int damageDone)
     {
@@ -113,7 +131,8 @@ public class enmy_scrip : MonoBehaviour
                 {
                     gameManager.enemyList.Remove(this.gameObject);
                 }
-                Destroy(this.gameObject);
+                StartCoroutine(delayedDeath());
+                
             }
             gameManager.money += moneyOnHit;
         }
