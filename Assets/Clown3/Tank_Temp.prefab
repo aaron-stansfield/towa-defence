@@ -99,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afdf985f974c5146af53ed910507f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 0}
   health: 200
   moneyOnDeath: 5
   moneyOnHit: 1

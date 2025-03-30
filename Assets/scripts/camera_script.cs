@@ -166,10 +166,10 @@ public class cameraScript : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawSphere(new Vector3(towerGhost.transform.position.x,0,towerGhost.transform.position.z), checkRadius);
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.DrawSphere(new Vector3(towerGhost.transform.position.x,0,towerGhost.transform.position.z), checkRadius);
+    //}
 
     private bool isPointerOverUIObject()  //avoids the click interacting with ui
     {

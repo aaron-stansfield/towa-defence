@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -35,11 +36,23 @@ public class game_managie : MonoBehaviour
     public TMP_Text TowerCostWacker;
     public TMP_Text waveCount;
     private int currentWave = 1;
+    private bool roundBegin = false;
 
     // 20/03/25
     public GameObject normalEnemyPrefab;
     public GameObject tankEnemyPrefab;
     public GameObject fastEnemyPrefab;
+    public GameObject tentCanvas;
+
+    public GameObject startingArrows;
+
+    public GameObject[] hurtSprites;
+
+    //private int[] canvasBounds = new int[]
+    //{
+        
+
+    //};
 
     public List<WaveConfig> waves = new List<WaveConfig>
     {
@@ -63,7 +76,7 @@ public class game_managie : MonoBehaviour
     {
         towerPurchaseButtons.GetComponent<Animation>().Play("UIunshlorp");
         roundChangeHolder.GetComponent<Animator>().SetTrigger("Start");
-        StartCoroutine(doPause());
+        //StartCoroutine(doPause());
         healthText = GameObject.Find("healthAmount").GetComponent<TextMeshProUGUI>();
         StartCoroutine(WaveHandler());
 
@@ -135,6 +148,12 @@ public class game_managie : MonoBehaviour
         {
             WaveConfig currentWave;
 
+            if (!roundBegin)
+            {
+                yield return new WaitForEndOfFrame();
+                StartCoroutine(WaveHandler());
+                break;
+            }
 
             if (currentWaveIndex < waves.Count)
             {
@@ -150,7 +169,7 @@ public class game_managie : MonoBehaviour
             }
 
             // Update wave count UI
-            waveCount.text = $"{currentWaveIndex + 1}"; // Update the displayed wave number (+1 to make it player-friendly)
+            
 
             // Reset death count for the new wave
             deathCount = 0;
@@ -213,8 +232,11 @@ public class game_managie : MonoBehaviour
             Debug.Log($"Wave {currentWaveIndex} officially complete. Preparing for the next wave.");
             roundChangeHolder.GetComponent<Animator>().SetTrigger("Start");
 
+            roundBegin = false;
+            pauseButton.gameObject.SetActive(true);
+
             // Trigger in-game pause
-            StartCoroutine(doPause());
+            //StartCoroutine(doPause());
 
             // Wait for the player to unpause
             while (isPaused)
@@ -224,7 +246,8 @@ public class game_managie : MonoBehaviour
 
             // Increment wave index and loop back to handle the next wave
             currentWaveIndex++;
-            waveCount.text = $" {currentWave}";
+            waveCount.text = $"{currentWaveIndex + 1}"; // Update the displayed wave number (+1 to make it player-friendly)
+            //waveCount.text = $" {currentWave}";
         }
     }
 
@@ -283,11 +306,26 @@ public class game_managie : MonoBehaviour
         int amount = int.Parse(healthText.text);
         amount -= 1;
         healthText.text = amount.ToString();
-
+        StartCoroutine(DamageAnimation());
         if (amount <= 0)
         {
             GameOver();
         }
+    }
+
+    IEnumerator DamageAnimation()
+    {
+        int IndexToShow = Random.Range(0,3);
+        GameObject bleep = Instantiate(hurtSprites[IndexToShow],tentCanvas.transform);
+        bleep.transform.localScale = new Vector3(30,30,30);
+
+        int posy = Random.Range(-880, 880);
+        int posx = Random.Range(-1230, 1230);
+        bleep.transform.localPosition = new Vector3(posx, posy, 0);
+
+
+        yield return new WaitForSeconds(1.4f);
+        Destroy(bleep);
     }
 
     public void GameOver()
@@ -321,7 +359,7 @@ public class game_managie : MonoBehaviour
                 Time.timeScale = !isPaused ? 1 : 0;
             }
         }
-        else
+        /*else
         {
             if (!isPaused)
             {
@@ -333,7 +371,13 @@ public class game_managie : MonoBehaviour
             }
             Time.timeScale = isPaused ? 1 : 0;
             isPaused = !isPaused;
-        }
+        }*/
+    }
+
+    public void startRound()
+    {
+        pauseButton.gameObject.SetActive(false);
+        roundBegin = true;
     }
 
     public void ResumeGame()

@@ -81,7 +81,7 @@ public class enmy_scrip : MonoBehaviour
             gameManager.Damage();
             
             gameManager.deathCount++;
-            gameManager.money += moneyOnDeath;
+            //gameManager.money += moneyOnDeath;
 
             
             if (gameManager.enemyList.Contains(this.gameObject))
