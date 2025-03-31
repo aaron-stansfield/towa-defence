@@ -53,6 +53,7 @@ public class Tower : MonoBehaviour
     public GameObject currentTargetedObject;
     public GameObject highlightRing; // gameObject under the tower that spawns when the tower is highlighted
     public List<GameObject> enemysInRange;
+    private GameObject placeAnim;
 
     public targetState currentTargetState;
     public enum targetState
@@ -67,6 +68,7 @@ public class Tower : MonoBehaviour
     
     void Start()
     {
+        //placeAnim = GameObject.Find("placeAnim").gameObject;
         manager = GameObject.Find("game managie").GetComponent<game_managie>();
         cameraScript = GameObject.Find("Main Camera").GetComponent<cameraScript>();
         mouseColliderObject = transform.GetChild(0).gameObject;

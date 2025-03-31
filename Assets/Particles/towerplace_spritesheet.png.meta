@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -121,7 +121,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: towerplace_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 1468
+        width: 914
+        height: 910
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c170503e52c794c84906a0478a7954
+      internalID: 1260387041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: towerplace_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 1403
+        width: 1041
+        height: 1041
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f52271505847c84186b1c38b0ded283
+      internalID: -304514970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: towerplace_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 2636
+        y: 1350
+        width: 1146
+        height: 1147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 805e64be3a1eaa74eb98071ca6b8e724
+      internalID: -1038988969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: towerplace_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 3892
+        y: 1333
+        width: 1176
+        height: 1181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcd1867a28dc09243a25a34c691638d5
+      internalID: 380706260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: towerplace_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 5134
+        y: 1298
+        width: 1251
+        height: 1251
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 204f5dae74c49ba41816ced481d7fab3
+      internalID: -1311728064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: towerplace_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 6401
+        y: 1271
+        width: 1279
+        height: 1289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab7ff1acaf57c064caaaf2335fadcd8d
+      internalID: 907225473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +258,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      towerplace_spritesheet_0: 1260387041
+      towerplace_spritesheet_1: -304514970
+      towerplace_spritesheet_2: -1038988969
+      towerplace_spritesheet_3: 380706260
+      towerplace_spritesheet_4: -1311728064
+      towerplace_spritesheet_5: 907225473
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

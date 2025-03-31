@@ -16,6 +16,7 @@ public class cameraScript : MonoBehaviour
     public mouseState currentMouseState;
     private float checkRadius = 2.3f;
     public bool movingArcerTarget;
+    public Sprite towerPlaceAnimSprite;
     
     public enum mouseState
     {
@@ -45,7 +46,7 @@ public class cameraScript : MonoBehaviour
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundMask) )
             {
                 //creates ghost of tower to be placed if in placing mode
-                towerGhost.transform.position = hit.point;
+                towerGhost.transform.position = new Vector3(hit.point.x,hit.point.y + 0.01f,hit.point.z);
                 if (!placementCheck(hit.point) && !movingArcerTarget)
                 {
                     if (towerGhost)
@@ -76,6 +77,7 @@ public class cameraScript : MonoBehaviour
                 }
                 if (Input.GetMouseButtonUp(0) && movingArcerTarget && !isPointerOverUIObject())
                 {
+                    //towerGhost.GetComponent<SpriteRenderer>().sprite = 
                     movingArcerTarget = false;
                     towerGhost = null;
 

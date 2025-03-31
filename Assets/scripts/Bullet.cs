@@ -92,7 +92,7 @@ public class Bullet : MonoBehaviour
             explosion.GetComponent<Bullet>().health = explosionDamage;
             explosion.GetComponent<Bullet>().bulletLifeTime = 0.3f;
             Transform sauceInstance = Instantiate(sauceObj.transform);
-            sauceInstance.transform.position = new Vector3(this.transform.position.x,0,this.transform.position.z);
+            sauceInstance.transform.position = new Vector3(this.transform.position.x,1.7f,this.transform.position.z);
             sauceInstance.GetComponent<sauceScript>().lifeTime = sauceLifeSpan;
         }
         

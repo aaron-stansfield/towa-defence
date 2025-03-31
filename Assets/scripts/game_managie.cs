@@ -155,6 +155,7 @@ public class game_managie : MonoBehaviour
                 break;
             }
 
+            startingArrows.SetActive(false);
             if (currentWaveIndex < waves.Count)
             {
                 // Use predefined wave
@@ -245,6 +246,7 @@ public class game_managie : MonoBehaviour
             }
 
             // Increment wave index and loop back to handle the next wave
+            startingArrows.SetActive(true);
             currentWaveIndex++;
             waveCount.text = $"{currentWaveIndex + 1}"; // Update the displayed wave number (+1 to make it player-friendly)
             //waveCount.text = $" {currentWave}";
