@@ -353,7 +353,7 @@ void FireProjectile(Vector3 interceptPoint)
                 manager.money -= 100;
                 fireRate = fireRate / 1.5f;
                 upgrade1Tier++;
-                upgrade1Text.text = "Tier 2 - cost 250\n further increases firerate";
+                upgrade1Text.text = "Tier 2 - cost 250\n test";
             }
             else if (upgrade1Tier == 1 && manager.money >= 250)
             {
@@ -361,8 +361,16 @@ void FireProjectile(Vector3 interceptPoint)
                 fireRate = fireRate / 1.3f;
                 bulletHealth++;
                 upgrade1Tier++;
+                upgrade1Text.text = "Tier 3 - cost 300 \n explosive rounds";
+            }
+            else if (upgrade1Tier == 2 && manager.money >= 250)
+            {
+                manager.money -= 300;
+                explosionUpgrade = true;
+                upgrade1Tier++;
                 upgrade1Text.text = "fully upgraded \n :)";
             }
+            
         }
 
         else if(arcer)
@@ -376,67 +384,27 @@ void FireProjectile(Vector3 interceptPoint)
                 upgrade1Tier++;
                 upgrade1Text.text = "Tier 2 - cost 250\n further increases firerate";
             }
-            else if(upgrade1Tier == 1 && manager.money >= 250)
+            else if(upgrade1Tier == 1 && manager.money >= 300)      //money can change
             {
                 manager.money -= 250;
                 fireRate = fireRate / 1.5f;
                 upgrade1Tier++;
-                upgrade1Text.text = "fully upgraded \n :)";
+                upgrade1Text.text = "Tier 2 - cost 300\n Sause lasts longer";
+                print(upgrade1Tier);
             }
-        }
-        
-    }
-
-    public void Upgrade2()
-    {
-
-        // upgrades for the gumballer
-        if (gumballer)
-        {
-            if (upgrade2Tier == 0 && manager.money >= 200)
+            else if (upgrade1Tier == 2 && manager.money >= 300)
             {
-                manager.money -= 200;
+                manager.money -= 300;
                 explosionUpgrade = true;
-                upgrade2Tier++;
-                upgrade2Text.text = "fully upgraded \n :)";
+                upgrade1Tier++;
+                upgrade1Text.text = "fully upgraded \n :)";
+                
             }
         }
         
-        else if (arcer)
-        {
-            if (upgrade2Tier == 0 && manager.money >= 200)
-            {
-                manager.money -= 200;
-                sauceLifeSpan = 6;
-                upgrade2Tier++;
-                upgrade2Text.text = "fully upgraded \n :)";
-            }
-            //if (upgrade2Tier == 1 && manager.money >= 150)
-        }
     }
 
-    public void Upgrade3()
-    {
-        if (gumballer)
-        {
-            // upgrades for the gumballer
-            if (upgrade3Tier == 0 && manager.money >= 150)
-            {
-                //manager.money -= 150;
-                //slowOnHit = true;
-                //upgrade3Tier++;
-                //upgrade3Text.text = "tier 2 - cost 200 \n increase chance to slow enemies";
-            }
-            else if (upgrade3Tier == 1 && manager.money >= 250)
-            {
-                //manager.money -= 200;
-                //extraSlowChance = true;
-                //upgrade3Tier++;
-                //upgrade3Text.text = "fully upgraded \n :)";
-            }
-        }
-        
-    }
+    
 
     public void FireMode()
     {

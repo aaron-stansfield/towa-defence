@@ -380,6 +380,7 @@ public class game_managie : MonoBehaviour
     {
         pauseButton.gameObject.SetActive(false);
         roundBegin = true;
+        //car stuff here?
     }
 
     public void ResumeGame()

@@ -83,8 +83,10 @@ public class hammerScript : MonoBehaviour
         if (Physics.OverlapSphere(this.transform.position, attackRange, WhatIsTarget) != null && attacking == false)
         {
 
-            hammerFX.GetComponent<Animation>().Play();
+            
+            //hammerFX.GetComponent<Animation>().Play();
             StartCoroutine(attack());
+            
 
         }
     }
@@ -124,6 +126,8 @@ public class hammerScript : MonoBehaviour
                 print("damage to deal");
 
                 enemyCounter++;
+
+                hammerFX.GetComponent<Animation>().Play();  //other animation?
 
             }
             
@@ -201,21 +205,18 @@ public class hammerScript : MonoBehaviour
                 manager.money -= 250;
                 attackRange += 2;
                 upgrade1Tier++;
+                upgrade1Text.text = "Tier 3 - cost 400 \n Add knockback";
+            }
+            else if (upgrade1Tier == 2 && manager.money >= 400)
+            {
+                manager.money -= 400;
+                attackKnockBack = true;
+                upgrade1Tier++;
                 upgrade1Text.text = "fully upgraded \n :)";
             }
         
     }
 
-    public void Upgrade2()
-    {
-
-        if (upgrade2Tier == 0 && manager.money >= 200)
-            {
-                manager.money -= 200;
-                attackKnockBack = true;
-                upgrade2Tier++;
-                upgrade2Text.text = "fully upgraded \n :)";
-            }
-    }
+    
             
 }
