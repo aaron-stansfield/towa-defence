@@ -48,9 +48,20 @@ public class game_managie : MonoBehaviour
 
     public GameObject[] hurtSprites;
 
+    //01/04/25
+    public GameObject clownCar;
+    public Transform startWaypoint;
+    public Transform dropOffWaypoint;
+    public Transform finishWaypoint;
+    public int totalEnemyCount;
+    private bool waveComplete = false; // Tracks when the wave is complete
+    private Coroutine activeCarSequence = null; // Tracks the active CarSequence coroutine
+    private enum CarState { Idle, MovingToDropOff, Waiting, MovingToFinish, Resetting }
+    private CarState currentCarState = CarState.Idle; // Start the car in an idle state
+
     //private int[] canvasBounds = new int[]
     //{
-        
+
 
     //};
 
@@ -141,12 +152,19 @@ public class game_managie : MonoBehaviour
         public int FastEnemies { get; set; }
         public List<string> SpawnOrder { get; set; } // Define the order in which enemies spawn (e.g., "Normal", "Tank", "Fast")
     }
+    int GetTotalEnemyCount()
+    {
+        return waves[currentWaveIndex].NormalEnemies + waves[currentWaveIndex].TankEnemies + waves[currentWaveIndex].FastEnemies;
+    }
+
+
 
     IEnumerator WaveHandler()
     {
-        while (true) // Infinite loop for both predefined waves and random mode
+        while (true)
         {
             WaveConfig currentWave;
+            int totalEnemyCount;
 
             if (!roundBegin)
             {
@@ -155,35 +173,53 @@ public class game_managie : MonoBehaviour
                 break;
             }
 
+            // Reset the car if a new round starts
+            currentCarState = CarState.Resetting; // Update the state
+            if (activeCarSequence != null)
+            {
+                StopCoroutine(activeCarSequence); // Stop any ongoing car actions
+                Debug.Log("Stopped active CarSequence to prepare for the next round.");
+            }
+
+            clownCar.transform.position = startWaypoint.position;
+            clownCar.transform.rotation = Quaternion.Euler(0f, 0f, 0f); // Reset orientation
+            currentCarState = CarState.Idle; // Set the car back to idle
+            Debug.Log("Clown car reset to the starting position for the new round.");
+
             startingArrows.SetActive(false);
+
             if (currentWaveIndex < waves.Count)
             {
-                // Use predefined wave
+                // Predefined wave
                 currentWave = waves[currentWaveIndex];
-                Debug.Log($"Starting predefined wave {currentWaveIndex}.");
+                totalEnemyCount = GetTotalEnemyCount();
+                Debug.Log($"Starting predefined wave {currentWaveIndex}. Total enemies: {totalEnemyCount}");
             }
             else
             {
-                // Generate a random wave
-                currentWave = GenerateRandomWave();
-                Debug.Log($"Starting random wave {currentWaveIndex}. Generated: Normal={currentWave.NormalEnemies}, Tank={currentWave.TankEnemies}, Fast={currentWave.FastEnemies}");
+                // Random wave
+                currentWave = GenerateRandomWave(out totalEnemyCount);
+                Debug.Log($"Starting random wave {currentWaveIndex}. Total enemies: {totalEnemyCount}");
             }
 
-            // Update wave count UI
-            
+            // Reset waveComplete flag
+            waveComplete = false;
 
-            // Reset death count for the new wave
+            // Spawn delay
+            yield return new WaitForSeconds(3f);
+
+            // Reset death count for the wave
             deathCount = 0;
-            int spawnedEnemies = 0; // Track how many enemies are spawned this wave
+            int spawnedEnemies = 0;
 
-            // Spawn enemies based on the order in the wave
+            // Spawn enemies (same logic as before)
             foreach (string enemyType in currentWave.SpawnOrder)
             {
                 if (enemyType == "Normal")
                 {
                     for (int i = 0; i < currentWave.NormalEnemies; i++)
                     {
-                        yield return new WaitForSeconds(0.5f); // Adjust spawn delay
+                        yield return new WaitForSeconds(0.5f);
                         SpawnEnemy(normalEnemyPrefab);
                         spawnedEnemies++;
                         Debug.Log($"Spawned Normal Enemy: {spawnedEnemies} spawned so far.");
@@ -203,7 +239,7 @@ public class game_managie : MonoBehaviour
                 {
                     for (int i = 0; i < currentWave.FastEnemies; i++)
                     {
-                        yield return new WaitForSeconds(0.3f); // Faster spawn for fast enemies
+                        yield return new WaitForSeconds(0.3f);
                         SpawnEnemy(fastEnemyPrefab);
                         spawnedEnemies++;
                         Debug.Log($"Spawned Fast Enemy: {spawnedEnemies} spawned so far.");
@@ -211,52 +247,50 @@ public class game_managie : MonoBehaviour
                 }
             }
 
-            // Wait until all enemies from the current wave are handled
-            while (deathCount < spawnedEnemies || enemyList.Count > 0)
+            // Wait for the wave to be completed
+            while (deathCount < totalEnemyCount || enemyList.Count > 0)
             {
-                enemyList.RemoveAll(enemy => enemy == null); // Clean up references to destroyed enemies
-                Debug.Log($"Wave {currentWaveIndex}: Active enemies remaining: {enemyList.Count}. Death count: {deathCount}");
-                yield return new WaitForSeconds(0.3f); // Periodically check
+                enemyList.RemoveAll(enemy => enemy == null);
+                Debug.Log($"Wave {currentWaveIndex}: Active enemies remaining: {enemyList.Count}, Death count: {deathCount}");
+                yield return new WaitForSeconds(0.3f);
             }
 
-            // Add a short delay to ensure any remaining enemies are truly gone
-            Debug.Log($"Wave {currentWaveIndex} complete! Waiting briefly to ensure all enemies are gone.");
+            // Add a short delay to ensure the wave is fully complete
+            yield return new WaitForSeconds(3f);
 
+            // Mark the wave as complete
+            waveComplete = true; // This will signal the car to move
+            Debug.Log("Wave complete! Signaling car to move to the finish line.");
 
-            //FOR CLOWN CAR!!!
-            //when we add the car just adjust the time for it to be able to drive away and a new one showes up
-            yield return new WaitForSeconds(3f); // Adjust this delay duration as needed
+            // Trigger the car to move to the drop-off and handle the wave
+            if (currentCarState == CarState.Idle)
+            {
+                activeCarSequence = StartCoroutine(CarSequence());
+                Debug.Log("Started CarSequence after wave completion.");
+            }
+            else
+            {
+                Debug.LogWarning("CarSequence not started because the car was not idle.");
+            }
 
-
-            enemyList.Clear(); // Final cleanup for any lingering references
-
+            // Final cleanup
+            enemyList.Clear();
             Debug.Log($"Wave {currentWaveIndex} officially complete. Preparing for the next wave.");
-            roundChangeHolder.GetComponent<Animator>().SetTrigger("Start");
 
             roundBegin = false;
             pauseButton.gameObject.SetActive(true);
 
-            // Trigger in-game pause
-            //StartCoroutine(doPause());
-
-            // Wait for the player to unpause
-            while (isPaused)
-            {
-                yield return null;
-            }
-
-            // Increment wave index and loop back to handle the next wave
+            // Increment wave index and update UI
             startingArrows.SetActive(true);
             currentWaveIndex++;
-            waveCount.text = $"{currentWaveIndex + 1}"; // Update the displayed wave number (+1 to make it player-friendly)
-            //waveCount.text = $" {currentWave}";
+            waveCount.text = $"{currentWaveIndex + 1}";
         }
     }
 
 
 
 
-    WaveConfig GenerateRandomWave()
+    WaveConfig GenerateRandomWave(out int totalEnemyCount)
     {
         WaveConfig lastWave = currentWaveIndex > 0 ? waves[Mathf.Min(currentWaveIndex - 1, waves.Count - 1)] : new WaveConfig
         {
@@ -266,7 +300,7 @@ public class game_managie : MonoBehaviour
             SpawnOrder = new List<string> { "Normal" }
         };
 
-        // Increase enemy counts randomly by 2-5
+        // Increase enemy counts randomly by 2-10
         int newNormalEnemies = lastWave.NormalEnemies + Random.Range(2, 10);
         int newTankEnemies = lastWave.TankEnemies + Random.Range(1, 3);
         int newFastEnemies = lastWave.FastEnemies + Random.Range(2, 6);
@@ -281,6 +315,9 @@ public class game_managie : MonoBehaviour
             newSpawnOrder[swapIndex] = temp;
         }
 
+        // Calculate total enemies
+        totalEnemyCount = newNormalEnemies + newTankEnemies + newFastEnemies;
+
         return new WaveConfig
         {
             NormalEnemies = newNormalEnemies,
@@ -289,6 +326,7 @@ public class game_managie : MonoBehaviour
             SpawnOrder = newSpawnOrder
         };
     }
+
 
     void SpawnEnemy(GameObject enemyPrefab)
     {
@@ -380,8 +418,128 @@ public class game_managie : MonoBehaviour
     {
         pauseButton.gameObject.SetActive(false);
         roundBegin = true;
-        //car stuff here?
+
+        // Trigger car movement
+        StartCoroutine(CarSequence());
     }
+
+    //CAR STUFFF!!!!!!!!!!!!
+
+
+
+    IEnumerator CarSequence()
+    {
+        if (currentCarState != CarState.Idle)
+        {
+            Debug.LogWarning("CarSequence started while the car was not idle. Aborting.");
+            yield break; // Prevent starting if the car is not idle
+        }
+
+        currentCarState = CarState.MovingToDropOff;
+
+        // Move the car to the drop-off point
+        yield return MoveCarTo(dropOffWaypoint);
+        currentCarState = CarState.Waiting;
+
+        Debug.Log("Car parked at the drop-off. Waiting for the wave to end.");
+
+        // Wait until the wave is marked as complete
+        yield return new WaitUntil(() => waveComplete);
+
+        Debug.Log("Wave complete. Car will now move to the finish line.");
+        currentCarState = CarState.MovingToFinish;
+
+        // Move the car to the finish line
+        yield return MoveCarTo(finishWaypoint);
+
+        // Reset the car for the next wave
+        clownCar.transform.position = startWaypoint.position;
+        clownCar.transform.rotation = Quaternion.Euler(0f, 0f, 0f); // Reset orientation
+        currentCarState = CarState.Idle;
+
+        Debug.Log("Car reset to the start for the next round.");
+    }
+    IEnumerator MoveCarTo(Transform targetWaypoint)
+    {
+        while (Vector3.Distance(clownCar.transform.position, targetWaypoint.position) > 0.1f)
+        {
+            // Stretch the car while it's moving
+            clownCar.transform.localScale = Vector3.Lerp(
+                clownCar.transform.localScale,
+                new Vector3(12f, 4f, 6f), // Stretch effect (lengthened X, flattened Y, adjusted Z)
+                10f * Time.deltaTime // Smooth transition for faster speed
+            );
+
+            // Move the car toward the target waypoint
+            clownCar.transform.position = Vector3.MoveTowards(
+                clownCar.transform.position,
+                targetWaypoint.position,
+                20f * Time.deltaTime // Adjusted speed for faster movement
+            );
+
+            yield return null; // Wait for the next frame
+        }
+
+        // Car reached the waypoint, compress and tip forward
+        yield return CompressAndTipForward();
+    }
+
+    IEnumerator CompressAndTipForward()
+    {
+        Debug.Log("Car is stopping and compressing...");
+
+        float tipDuration = 0.3f; // tipping forward time
+        float resetDuration = 0.3f; // time from tiped forward to back to normal
+        float elapsed = 0f;
+
+        // Phase 1: Compress and Tip Forward
+        while (elapsed < tipDuration)
+        {
+            // Compress the car's scale
+            clownCar.transform.localScale = Vector3.Lerp(
+                clownCar.transform.localScale,
+                new Vector3(8f, 6f, 4f), // Compress effect (shortened X, taller Y, narrowed Z)
+                elapsed / tipDuration
+            );
+
+            // Tip forward at the front pivot
+            clownCar.transform.rotation = Quaternion.Lerp(
+                clownCar.transform.rotation,
+                Quaternion.Euler(0f, 0f, -15f), // Tilt backward (-Z direction)
+                elapsed / tipDuration
+            );
+
+            elapsed += Time.deltaTime;
+            yield return null; 
+        }
+
+        // Reset elapsed time for the next phase
+        elapsed = 0f;
+
+        // Phase 2: Smoothly Reset to Normal State
+        while (elapsed < resetDuration)
+        {
+            // Reset the car's scale to normal
+            clownCar.transform.localScale = Vector3.Lerp(
+                clownCar.transform.localScale,
+                new Vector3(10f, 5f, 5f), // Original scale
+                elapsed / resetDuration
+            );
+
+            // Reset rotation to upright position
+            clownCar.transform.rotation = Quaternion.Lerp(
+                clownCar.transform.rotation,
+                Quaternion.Euler(0f, 0f, 0f), // Upright position
+                elapsed / resetDuration
+            );
+
+            elapsed += Time.deltaTime;
+            yield return null; 
+        }
+
+        Debug.Log("Car reset to normal state.");
+    }
+
 
     public void ResumeGame()
     {
