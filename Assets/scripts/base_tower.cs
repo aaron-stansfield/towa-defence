@@ -79,7 +79,7 @@ public class Tower : MonoBehaviour
         if (gumballer)
         {
             explosionDamage = 4;
-            bulletHealth = 2;
+            bulletHealth = 1;
         }
         else if (arcer)
         {
