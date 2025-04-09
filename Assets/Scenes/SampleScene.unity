@@ -4320,6 +4320,7 @@ MonoBehaviour:
   wackerTowerCost: 250
   anyUpgradeMenuOpen: 0
   money: 10000
+  money: 100
   deathCount: 0
   towerPurchaseButtons: {fileID: 2009597526}
   moneyText: {fileID: 1491612734}
@@ -4349,9 +4350,9 @@ MonoBehaviour:
   finishWaypoint: {fileID: 2054800826031668250}
   totalEnemyCount: 0
   enemySpeed: 0
-  normalEnemyHealth: 0
-  tankEnemyHealth: 0
-  fastEnemyHealth: 0
+  normalEnemyHealth: 25
+  tankEnemyHealth: 100
+  fastEnemyHealth: 10
   pauseMenuUI: {fileID: 764850182}
   isPaused: 0
   isProperPaused: 0
