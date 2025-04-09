@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c9c656865ec154e4eb2472d4821a1e1a
+guid: 5a04c6bacb3eebc468f4a30f1d227f86
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,30 +106,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_0
+      name: transition_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 243
-        y: 1521
-        width: 796
-        height: 806
+        x: 0
+        y: 2164
+        width: 1934
+        height: 1076
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f5ee7ecf32b62d4b929bc3a5854480a
-      internalID: -916895013
+      spriteID: 52b55b3a15d42b548ac6cb163ff055e4
+      internalID: 684201483
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_1
+      name: transition_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 1420
-        y: 1412
-        width: 1010
-        height: 1010
+        x: 3842
+        y: 2164
+        width: 1918
+        height: 1076
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50acb983e434a314cb14bc200c324fbb
-      internalID: 248015155
+      spriteID: 369c12f08384b594ead2bc7bcc3b8066
+      internalID: -456810059
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_2
+      name: transition_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 2579
-        y: 1293
-        width: 1251
-        height: 1252
+        x: 1917
+        y: 2164
+        width: 1918
+        height: 1076
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e29ca654de938dc4688550b02fe7d485
-      internalID: 964367191
+      spriteID: 4336d6f557b25ba419eaf370a48089d6
+      internalID: 1247508310
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_3
+      name: transition_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 1276
-        width: 1283
-        height: 1282
+        x: 0
+        y: 1089
+        width: 1918
+        height: 1076
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef84666607046ea4f95d0a4043b676be
-      internalID: 1476549305
+      spriteID: 1bfeef27b4c3e87469811c1b0848beaa
+      internalID: -1430041976
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_4
+      name: transition_spritesheet_4
       rect:
         serializedVersion: 2
-        x: 5118
-        y: 1291
-        width: 1279
-        height: 1269
+        x: 1926
+        y: 1089
+        width: 1918
+        height: 1076
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cad1e8dae96c37b42a8a566b17decded
-      internalID: 1708061513
+      spriteID: 7545aa1442f9d4c46b404439a92ae48f
+      internalID: 367498283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_5
+      name: transition_spritesheet_5
       rect:
         serializedVersion: 2
-        x: 6403
-        y: 1297
-        width: 1264
-        height: 1263
+        x: 3842
+        y: 1089
+        width: 1918
+        height: 1076
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,41 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9917201e661a15a4aae3af6fb0480aaf
-      internalID: -1270732158
+      spriteID: 333ccd7b00adeaa44b47c8a23945a22e
+      internalID: -252851328
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_6
-      rect:
-        serializedVersion: 2
-        x: 7687
-        y: 1284
-        width: 1273
-        height: 1276
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fb09ebdf7a1d3a8449191a746c9a05c6
-      internalID: -119230954
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: towerupgrade_spritesheet_7
+      name: transition_spritesheet_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1273
-        height: 1273
+        width: 1918
+        height: 1076
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28244cc966cadf34b891f602fda33806
-      internalID: -961198908
+      spriteID: 2ab8a28a87b43be41b32881ca28c602a
+      internalID: -1498516411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_8
+      name: transition_spritesheet_7
       rect:
         serializedVersion: 2
-        x: 1288
+        x: 1917
         y: 0
-        width: 1273
-        height: 1273
+        width: 1918
+        height: 1076
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,8 +271,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b667a3098f81b7e488a0f4bf1048f65e
-      internalID: 487242310
+      spriteID: 1d7442616cc6ae543ad728571353e1bd
+      internalID: 356597053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: transition_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 3842
+        y: 0
+        width: 1918
+        height: 1076
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa85f26b2c45d7a47aeedc7cc0f037e0
+      internalID: -1872316393
       vertices: []
       indices: 
       edges: []
@@ -314,7 +301,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: ff81a38b702bd4b4b962f19a98557df8
     internalID: 0
     vertices: []
     indices: 
@@ -322,15 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      towerupgrade_spritesheet_0: -916895013
-      towerupgrade_spritesheet_1: 248015155
-      towerupgrade_spritesheet_2: 964367191
-      towerupgrade_spritesheet_3: 1476549305
-      towerupgrade_spritesheet_4: 1708061513
-      towerupgrade_spritesheet_5: -1270732158
-      towerupgrade_spritesheet_6: -119230954
-      towerupgrade_spritesheet_7: -961198908
-      towerupgrade_spritesheet_8: 487242310
+      transition_spritesheet_0: -1430041976
+      transition_spritesheet_1: 684201483
+      transition_spritesheet_2: -456810059
+      transition_spritesheet_3: 1247508310
+      transition_spritesheet_4: 367498283
+      transition_spritesheet_5: -252851328
+      transition_spritesheet_6: -1498516411
+      transition_spritesheet_7: 356597053
+      transition_spritesheet_8: -1872316393
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

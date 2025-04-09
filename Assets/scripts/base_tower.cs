@@ -14,6 +14,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Tower : MonoBehaviour
 {
+    public int bulletDamage;
     private Transform target;
     private GameObject parentObject; // this gameObject's parent
     private GameObject turret; // this gameObject
@@ -53,7 +54,7 @@ public class Tower : MonoBehaviour
     public GameObject currentTargetedObject;
     public GameObject highlightRing; // gameObject under the tower that spawns when the tower is highlighted
     public List<GameObject> enemysInRange;
-    private GameObject placeAnim;
+    public GameObject upgradeAnim;
 
     public targetState currentTargetState;
     public enum targetState
@@ -166,7 +167,7 @@ public class Tower : MonoBehaviour
                 return;
             }
 
-            if (target != null && Vector3.Distance(transform.position, target.position) <= attackRadius && manager.waveComplete == false)
+            if (target != null && Vector3.Distance(transform.position, target.position) <= attackRadius && manager.roundBegin == true)
             {
                 FireProjectile(target.transform.position);
                 if (gumballer)
@@ -264,14 +265,15 @@ void FireProjectile(Vector3 interceptPoint)
         bulletScript.health = bulletHealth;
         bulletScript.slows = slowOnHit;
         bulletScript.extraSlowChance = extraSlowChance;
+        bulletScript.bulletDamage = bulletDamage;
        
         if (gumballer)
         {
             projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
             bulletScript.chanceExplosive = explosionUpgrade;
 
-                bulletScript.bulletLifeTime = 2.4f;
-            }
+            bulletScript.bulletLifeTime = 2.4f;
+        }
         else if(arcer)
         {
 
@@ -352,6 +354,7 @@ void FireProjectile(Vector3 interceptPoint)
             {
                 manager.money -= 100;
                 fireRate = fireRate / 1.5f;
+                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "Tier 2 - cost 250\n test";
             }
@@ -359,6 +362,7 @@ void FireProjectile(Vector3 interceptPoint)
             {
                 manager.money -= 250;
                 fireRate = fireRate / 1.3f;
+                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 bulletHealth++;
                 upgrade1Tier++;
                 upgrade1Text.text = "Tier 3 - cost 300 \n explosive rounds";
@@ -367,6 +371,7 @@ void FireProjectile(Vector3 interceptPoint)
             {
                 manager.money -= 300;
                 explosionUpgrade = true;
+                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "fully upgraded \n :)";
             }
@@ -381,6 +386,7 @@ void FireProjectile(Vector3 interceptPoint)
                 manager.money -= 100;
                 fireRate = fireRate / 1.5f;
                 explosionDamage = 7;
+                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "Tier 2 - cost 250\n further increases firerate";
             }
@@ -389,6 +395,7 @@ void FireProjectile(Vector3 interceptPoint)
                 manager.money -= 250;
                 fireRate = fireRate / 1.5f;
                 upgrade1Tier++;
+                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Text.text = "Tier 2 - cost 300\n Sause lasts longer";
                 print(upgrade1Tier);
             }
@@ -396,6 +403,7 @@ void FireProjectile(Vector3 interceptPoint)
             {
                 manager.money -= 300;
                 explosionUpgrade = true;
+                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "fully upgraded \n :)";
                 

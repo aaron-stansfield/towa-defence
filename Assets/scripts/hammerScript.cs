@@ -33,6 +33,7 @@ public class hammerScript : MonoBehaviour
     private int upgrade3Tier = 0;
     public TextMeshProUGUI upgrade3Text;
     public bool attackKnockBack;
+    public GameObject upgradeAnim;
 
 
     private void Start()
@@ -202,7 +203,8 @@ public class hammerScript : MonoBehaviour
         if (upgrade1Tier == 0 && manager.money >= 100)
             {
                 manager.money -= 100;
-                attackRange += 2;           //can change for ballance
+                attackRange += 2;           //can change for balance
+                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "Tier 2 - cost 250\n further increases range";
             }
@@ -210,6 +212,7 @@ public class hammerScript : MonoBehaviour
             {
                 manager.money -= 250;
                 attackRange += 2;
+                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "Tier 3 - cost 400 \n Add knockback";
             }
@@ -217,6 +220,7 @@ public class hammerScript : MonoBehaviour
             {
                 manager.money -= 400;
                 attackKnockBack = true;
+                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "fully upgraded \n :)";
             }

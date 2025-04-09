@@ -24,6 +24,7 @@ public class enmy_scrip : MonoBehaviour
     public bool inStunZone;
     private float givenSpeed;
     public bool isStunned;
+    private bool isSlowed;
 
     // Start is called before the first frame update
     public void Start()
@@ -148,13 +149,19 @@ public class enmy_scrip : MonoBehaviour
     }
     private IEnumerator slowedIEnum()
     {
-        if (!slowFX.activeInHierarchy)
+        if (!isSlowed)
         {
+            isSlowed = true;
             this.GetComponent<NavMeshAgent>().speed = this.GetComponent<NavMeshAgent>().speed / 2;
-            slowFX.gameObject.SetActive(true);
+            Color color;
+            UnityEngine.ColorUtility.TryParseHtmlString("#FF82C8", out color);
+            AnimCanvas.GetComponent<SpriteRenderer>().color = color;
+            //slowFX.gameObject.SetActive(true);
             yield return new WaitForSeconds(slowTime);
             this.GetComponent<NavMeshAgent>().speed = this.GetComponent<NavMeshAgent>().speed * 2;
-            slowFX.gameObject.SetActive(false);
+            AnimCanvas.GetComponent<SpriteRenderer>().color = Color.white;
+            isSlowed = false;
+            //slowFX.gameObject.SetActive(false);
         }
     }
 

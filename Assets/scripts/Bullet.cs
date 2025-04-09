@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour
     public float sauceLifeSpan;
     public Vector3 angle;
     public Mesh hotdogMesh;
+    public int bulletDamage;
     // Start is called before the first frame update
     void Start()
     {

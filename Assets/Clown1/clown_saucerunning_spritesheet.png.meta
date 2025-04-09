@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c9c656865ec154e4eb2472d4821a1e1a
+guid: 9bcde17859943624986ecb1f8d7206ce
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,30 +106,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_0
+      name: clown_saucerunning_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 243
-        y: 1521
-        width: 796
-        height: 806
+        x: 50
+        y: 1394
+        width: 1164
+        height: 1133
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6f5ee7ecf32b62d4b929bc3a5854480a
-      internalID: -916895013
+      spriteID: 5fd991a92ea87374797be9f7f5eb7716
+      internalID: -1736752833
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_1
+      name: clown_saucerunning_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 1420
-        y: 1412
-        width: 1010
-        height: 1010
+        x: 1354
+        y: 1398
+        width: 1168
+        height: 1135
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +145,167 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50acb983e434a314cb14bc200c324fbb
-      internalID: 248015155
+      spriteID: eecd03f1a653c7a4d86b08b3582911ee
+      internalID: -393772088
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_2
+      name: clown_saucerunning_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 2618
+        y: 1403
+        width: 1199
+        height: 1128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8bdb4d12720d03428f3a25cde7651f7
+      internalID: 2024807827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown_saucerunning_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 3843
+        y: 1394
+        width: 1274
+        height: 852
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95022d777146e0345945b462694df2e1
+      internalID: -1633939099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown_saucerunning_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 5121
+        y: 1398
+        width: 1273
+        height: 871
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b89fcc0f9a7f7f342be5273364a23be2
+      internalID: -1738861590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown_saucerunning_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 6412
+        y: 1394
+        width: 1273
+        height: 949
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf5e310fc021768408f2c6e5be7805e9
+      internalID: -345910357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown_saucerunning_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 7759
+        y: 1394
+        width: 1177
+        height: 1120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cfed3903a1b4a45a76a6c719b309f7
+      internalID: 1994435750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown_saucerunning_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 68
+        width: 1168
+        height: 1129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac067f0b948a14b42a2d665ea4f80b8f
+      internalID: -2010958077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown_saucerunning_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 1345
+        y: 72
+        width: 1168
+        height: 1134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5039cee0e1c035a4d88dd919ab07b8b5
+      internalID: -1606475652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown_saucerunning_spritesheet_9
       rect:
         serializedVersion: 2
         x: 2579
-        y: 1293
-        width: 1251
-        height: 1252
+        y: 77
+        width: 1199
+        height: 1124
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,83 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e29ca654de938dc4688550b02fe7d485
-      internalID: 964367191
+      spriteID: b907ecc4a4070ab419ed06032bb2324a
+      internalID: 1969995186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_3
+      name: clown_saucerunning_spritesheet_10
       rect:
         serializedVersion: 2
-        x: 3840
-        y: 1276
-        width: 1283
-        height: 1282
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ef84666607046ea4f95d0a4043b676be
-      internalID: 1476549305
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: towerupgrade_spritesheet_4
-      rect:
-        serializedVersion: 2
-        x: 5118
-        y: 1291
-        width: 1279
-        height: 1269
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cad1e8dae96c37b42a8a566b17decded
-      internalID: 1708061513
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: towerupgrade_spritesheet_5
-      rect:
-        serializedVersion: 2
-        x: 6403
-        y: 1297
-        width: 1264
-        height: 1263
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9917201e661a15a4aae3af6fb0480aaf
-      internalID: -1270732158
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: towerupgrade_spritesheet_6
-      rect:
-        serializedVersion: 2
-        x: 7687
-        y: 1284
+        x: 3857
+        y: 68
         width: 1273
-        height: 1276
+        height: 849
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb09ebdf7a1d3a8449191a746c9a05c6
-      internalID: -119230954
+      spriteID: 5d9330a58e47fed49809dd00b346d744
+      internalID: -971697081
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_7
+      name: clown_saucerunning_spritesheet_11
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1273
-        height: 1273
+        x: 5138
+        y: 72
+        width: 1269
+        height: 871
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +355,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28244cc966cadf34b891f602fda33806
-      internalID: -961198908
+      spriteID: 3fb41d73f504ca54f8c90f5ed98e01cc
+      internalID: -462687194
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: towerupgrade_spritesheet_8
+      name: clown_saucerunning_spritesheet_12
       rect:
         serializedVersion: 2
-        x: 1288
-        y: 0
-        width: 1273
-        height: 1273
+        x: 6412
+        y: 68
+        width: 1272
+        height: 945
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,8 +376,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b667a3098f81b7e488a0f4bf1048f65e
-      internalID: 487242310
+      spriteID: f4ea3c250bf614c4c9cd94b7666c69e5
+      internalID: -1639261207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clown_saucerunning_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 7746
+        y: 68
+        width: 1177
+        height: 1116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a1f7a8ad87e6c24f923e5181d5f00b5
+      internalID: -862418417
       vertices: []
       indices: 
       edges: []
@@ -314,7 +406,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: b5e0dd85442b3664dbd2519ea1097b68
     internalID: 0
     vertices: []
     indices: 
@@ -322,15 +414,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      towerupgrade_spritesheet_0: -916895013
-      towerupgrade_spritesheet_1: 248015155
-      towerupgrade_spritesheet_2: 964367191
-      towerupgrade_spritesheet_3: 1476549305
-      towerupgrade_spritesheet_4: 1708061513
-      towerupgrade_spritesheet_5: -1270732158
-      towerupgrade_spritesheet_6: -119230954
-      towerupgrade_spritesheet_7: -961198908
-      towerupgrade_spritesheet_8: 487242310
+      clown_saucerunning_spritesheet_0: -1736752833
+      clown_saucerunning_spritesheet_1: -393772088
+      clown_saucerunning_spritesheet_10: -971697081
+      clown_saucerunning_spritesheet_11: -462687194
+      clown_saucerunning_spritesheet_12: -1639261207
+      clown_saucerunning_spritesheet_13: -862418417
+      clown_saucerunning_spritesheet_2: 2024807827
+      clown_saucerunning_spritesheet_3: -1633939099
+      clown_saucerunning_spritesheet_4: -1738861590
+      clown_saucerunning_spritesheet_5: -345910357
+      clown_saucerunning_spritesheet_6: 1994435750
+      clown_saucerunning_spritesheet_7: -2010958077
+      clown_saucerunning_spritesheet_8: -1606475652
+      clown_saucerunning_spritesheet_9: 1969995186
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

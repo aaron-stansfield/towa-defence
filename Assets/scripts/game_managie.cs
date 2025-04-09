@@ -36,7 +36,7 @@ public class game_managie : MonoBehaviour
     public TMP_Text TowerCostWacker;
     public TMP_Text waveCount;
     private int currentWave = 1;
-    private bool roundBegin = false;
+    public bool roundBegin = false;
 
     // 20/03/25
     public GameObject normalEnemyPrefab;
@@ -54,20 +54,12 @@ public class game_managie : MonoBehaviour
     public Transform dropOffWaypoint;
     public Transform finishWaypoint;
     public int totalEnemyCount;
-    public bool waveComplete = false; // Tracks when the wave is complete (changed to public 09/04/2025)
+    private bool clownsSpawned = false; // Tracks when all the clowns in a wave have spawned
     private Coroutine activeCarSequence = null; // Tracks the active CarSequence coroutine
     private enum CarState { Idle, MovingToDropOff, Waiting, MovingToFinish, Resetting }
     private CarState currentCarState = CarState.Idle; // Start the car in an idle state
 
 
-    //09/04/2025
-    public bool midRound;
-
-    //private int[] canvasBounds = new int[]
-    //{
-
-
-    //};
 
     public List<WaveConfig> waves = new List<WaveConfig>
     {
@@ -100,6 +92,10 @@ public class game_managie : MonoBehaviour
         TowerCostWacker.text = wackerTowerCost.ToString();
     }
 
+    private void OnLevelWasLoaded(int level)
+    {
+        Time.timeScale = 1;
+    }
     void Update()
     {
         // Toggle pause when ESC key is pressed
@@ -193,7 +189,6 @@ public class game_managie : MonoBehaviour
             Debug.Log("Clown car reset to the starting position for the new round.");
 
             startingArrows.SetActive(false);
-
             if (currentWaveIndex < waves.Count)
             {
                 // Predefined wave
@@ -208,8 +203,8 @@ public class game_managie : MonoBehaviour
                 Debug.Log($"Starting random wave {currentWaveIndex}. Total enemies: {totalEnemyCount}");
             }
 
-            // Reset waveComplete flag
-            waveComplete = false;
+            
+            
 
             // Spawn delay
             yield return new WaitForSeconds(3f);
@@ -251,6 +246,7 @@ public class game_managie : MonoBehaviour
                         Debug.Log($"Spawned Fast Enemy: {spawnedEnemies} spawned so far.");
                     }
                 }
+                clownsSpawned = true; // This will signal the car to move
             }
 
             // Wait for the wave to be completed
@@ -262,27 +258,29 @@ public class game_managie : MonoBehaviour
             }
 
             // Add a short delay to ensure the wave is fully complete
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(1.5f);
 
             // Mark the wave as complete
-            waveComplete = true; // This will signal the car to move
+            
             Debug.Log("Wave complete! Signaling car to move to the finish line.");
 
             // Trigger the car to move to the drop-off and handle the wave
-            if (currentCarState == CarState.Idle)
-            {
-                activeCarSequence = StartCoroutine(CarSequence());
-                Debug.Log("Started CarSequence after wave completion.");
-            }
-            else
-            {
-                Debug.LogWarning("CarSequence not started because the car was not idle.");
-            }
+            //activeCarSequence = StartCoroutine(CarSequence());
+            //if (currentCarState == CarState.Idle)
+            //{
+                
+            //    Debug.Log("Started CarSequence after wave completion.");
+            //}
+            //else
+            //{
+            //    Debug.LogWarning("CarSequence not started because the car was not idle.");
+            //}
 
             // Final cleanup
+            // Reset clownsSpawned flag
+            clownsSpawned = false;
             enemyList.Clear();
             Debug.Log($"Wave {currentWaveIndex} officially complete. Preparing for the next wave.");
-
             roundBegin = false;
             pauseButton.gameObject.SetActive(true);
 
@@ -435,11 +433,11 @@ public class game_managie : MonoBehaviour
 
     IEnumerator CarSequence()
     {
-        if (currentCarState != CarState.Idle)
-        {
-            Debug.LogWarning("CarSequence started while the car was not idle. Aborting.");
-            yield break; // Prevent starting if the car is not idle
-        }
+        //if (currentCarState != CarState.Idle)
+        //{
+        //    Debug.LogWarning("CarSequence started while the car was not idle. Aborting.");
+        //    yield break; // Prevent starting if the car is not idle
+        //}
 
         currentCarState = CarState.MovingToDropOff;
 
@@ -450,7 +448,7 @@ public class game_managie : MonoBehaviour
         Debug.Log("Car parked at the drop-off. Waiting for the wave to end.");
 
         // Wait until the wave is marked as complete
-        yield return new WaitUntil(() => waveComplete);
+        yield return new WaitUntil(() => clownsSpawned);
 
         Debug.Log("Wave complete. Car will now move to the finish line.");
         currentCarState = CarState.MovingToFinish;

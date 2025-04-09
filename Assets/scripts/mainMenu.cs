@@ -9,7 +9,8 @@ public class mainMenu : MonoBehaviour
     {
         // Gets the scene currently being used and finds the next scene
         // Then sets that to the active scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        
+        SceneManager.LoadScene(1);
     }
 
     public void quitGame()
