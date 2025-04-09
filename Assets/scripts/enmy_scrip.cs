@@ -25,6 +25,7 @@ public class enmy_scrip : MonoBehaviour
     private float givenSpeed;
     public bool isStunned;
     private bool isSlowed;
+    public string dudetype;
 
     // Start is called before the first frame update
     public void Start()
@@ -38,7 +39,20 @@ public class enmy_scrip : MonoBehaviour
         goal = GameObject.FindGameObjectWithTag("goal");
         agent = this.GetComponent<NavMeshAgent>();
         agent.SetDestination(goal.transform.position);
-        health = gameManager.enemyHealth;
+
+        switch(dudetype)
+        {
+            case "Fast":
+                health = gameManager.fastEnemyHealth; break;
+
+
+            case "Normal":
+                health = gameManager.normalEnemyHealth; break;
+
+            case "Tank":
+                health = gameManager.tankEnemyHealth; break;
+
+        }
         
         //hammerTowerScript = GameObject.FindGameObjectWithTag("hammer").GetComponent<hammerScript>();
 

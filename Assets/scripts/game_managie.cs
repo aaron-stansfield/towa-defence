@@ -72,7 +72,9 @@ public class game_managie : MonoBehaviour
     private int currentWaveIndex = 0;
 
     public float enemySpeed;
-    public int enemyHealth;
+    public int normalEnemyHealth;
+    public int tankEnemyHealth;
+    public int fastEnemyHealth;
 
     // Added for pause functionality
     public GameObject pauseMenuUI;
@@ -221,7 +223,7 @@ public class game_managie : MonoBehaviour
                     for (int i = 0; i < currentWave.NormalEnemies; i++)
                     {
                         yield return new WaitForSeconds(0.5f);
-                        SpawnEnemy(normalEnemyPrefab);
+                        SpawnEnemy(normalEnemyPrefab,"Normal");
                         spawnedEnemies++;
                         Debug.Log($"Spawned Normal Enemy: {spawnedEnemies} spawned so far.");
                     }
@@ -231,7 +233,7 @@ public class game_managie : MonoBehaviour
                     for (int i = 0; i < currentWave.TankEnemies; i++)
                     {
                         yield return new WaitForSeconds(0.5f);
-                        SpawnEnemy(tankEnemyPrefab);
+                        SpawnEnemy(tankEnemyPrefab,"Tank");
                         spawnedEnemies++;
                         Debug.Log($"Spawned Tank Enemy: {spawnedEnemies} spawned so far.");
                     }
@@ -241,7 +243,7 @@ public class game_managie : MonoBehaviour
                     for (int i = 0; i < currentWave.FastEnemies; i++)
                     {
                         yield return new WaitForSeconds(0.3f);
-                        SpawnEnemy(fastEnemyPrefab);
+                        SpawnEnemy(fastEnemyPrefab,"Fast");
                         spawnedEnemies++;
                         Debug.Log($"Spawned Fast Enemy: {spawnedEnemies} spawned so far.");
                     }
@@ -332,9 +334,10 @@ public class game_managie : MonoBehaviour
     }
 
 
-    void SpawnEnemy(GameObject enemyPrefab)
+    void SpawnEnemy(GameObject enemyPrefab, string type)
     {
         GameObject dude = Instantiate(enemyPrefab, spawnpoint.transform);
+        dude.GetComponent<enmy_scrip>().dudetype = type;
         dude.name = enmyCount.ToString();
         enmyCount++;
     }
