@@ -22,7 +22,7 @@ public class Tower : MonoBehaviour
     private GameObject mouseColliderObject; // collider used for mouse raycasts
     private cameraScript cameraScript; // reference to the camera's script
     private game_managie manager;
-    private bool isActive; // true if the tower is currently highlighted
+    public bool isActive; // true if the tower is currently highlighted
     private float lastFireTime; // time since last shit
     private bool explosionUpgrade;
     public bool arcer; // if this tower shoots in an arc
@@ -84,15 +84,28 @@ public class Tower : MonoBehaviour
         }
         else if (arcer)
         {
+            changeArcerTarget();
             explosionDamage = 7;
             bulletHealth = 1;
         }
+
+        
     }
 
     
     void Update()
     {
 
+
+        if (((Input.GetMouseButtonDown(0) && !isPointerOverUIObject()) || Input.GetMouseButton(1)) && isActive || manager.isProperPaused )
+        {
+            close();
+            if (cameraScript.movingArcerTarget)
+            {
+                cameraScript.changeMouseState();
+                cameraScript.movingArcerTarget = false;
+            }
+        }
         // if player clicks tower open upgrade menu
         if (Input.GetMouseButtonDown(0) && cameraScript.currentMouseState == cameraScript.mouseState.normal && mouseColliderObject == GetClickedObject() && !manager.anyUpgradeMenuOpen)
         {
@@ -110,15 +123,6 @@ public class Tower : MonoBehaviour
             //if time stops add here
         }
 
-        if (Input.GetMouseButton(1) && isActive || manager.isProperPaused)
-        {
-            close();
-            if (cameraScript.movingArcerTarget)
-            {
-                cameraScript.changeMouseState();
-                cameraScript.movingArcerTarget = false;
-            }
-        }
 
     }
 

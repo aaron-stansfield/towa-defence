@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -39,18 +40,19 @@ public class cameraScript : MonoBehaviour
 
     private void inputStuff()
     {
-        if(currentMouseState == mouseState.placing && !manager.isProperPaused)
+        if (currentMouseState == mouseState.placing && !manager.isProperPaused)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundMask) )
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundMask))
             {
                 //creates ghost of tower to be placed if in placing mode
-                towerGhost.transform.position = new Vector3(hit.point.x,hit.point.y + 0.01f,hit.point.z);
+
+                towerGhost.transform.position = new Vector3(hit.point.x, hit.point.y + 0.01f, hit.point.z);
                 if (!placementCheck(hit.point) && !movingArcerTarget)
                 {
                     if (towerGhost)
-                    towerGhost.transform.GetChild(1).GetComponent<MeshRenderer>().material.SetColor("_BaseColour",Color.red);
+                        towerGhost.transform.GetChild(1).GetComponent<MeshRenderer>().material.SetColor("_BaseColour", Color.red);
                 }
                 else
                 {
@@ -66,13 +68,16 @@ public class cameraScript : MonoBehaviour
                     towerGhost.gameObject.SetActive(true);
                     if (Input.GetMouseButtonUp(0) && !isPointerOverUIObject() && !movingArcerTarget)
                     {
+
                         GameObject newTower = Instantiate(towerToPlace);
                         manager.money -= manager.baseTowerCost;
                         //manager.baseTowerCost += Mathf.RoundToInt(manager.baseTowerCost / 0.8f);
                         newTower.transform.position = hit.point;
                         Destroy(towerGhost);
-
+                        
                         changeMouseState();
+
+
                     }
                 }
                 if (Input.GetMouseButtonUp(0) && movingArcerTarget && !isPointerOverUIObject())
@@ -91,7 +96,7 @@ public class cameraScript : MonoBehaviour
                 changeMouseState();
             }
         }
-        
+
     }
 
     public void changeMouseState()

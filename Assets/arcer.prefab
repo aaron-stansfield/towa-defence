@@ -839,6 +839,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f1303eebd05e2419c2fb2db91ab6ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletDamage: 0
   upgradeMenu: {fileID: 8623056582159176157}
   arcer: 1
   launchSpeed: 8.02
