@@ -84,7 +84,7 @@ public class Tower : MonoBehaviour
         }
         else if (arcer)
         {
-            explosionDamage = 7;
+            explosionDamage = 10;
             bulletHealth = 1;
         }
     }

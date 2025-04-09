@@ -4222,7 +4222,7 @@ MonoBehaviour:
   arcerTowerCost: 150
   wackerTowerCost: 250
   anyUpgradeMenuOpen: 0
-  money: 10000
+  money: 100
   deathCount: 0
   towerPurchaseButtons: {fileID: 2009597526}
   moneyText: {fileID: 1491612734}
@@ -4235,6 +4235,7 @@ MonoBehaviour:
   TowerCostArcer: {fileID: 1589987297}
   TowerCostWacker: {fileID: 8904179}
   waveCount: {fileID: 1340856222}
+  roundBegin: 0
   normalEnemyPrefab: {fileID: 66862539164753587, guid: e299a93403ac1e3468f20380f4702089, type: 3}
   tankEnemyPrefab: {fileID: 66862539164753587, guid: 6306d5089e7b2344aa3a5c5cd729c476, type: 3}
   fastEnemyPrefab: {fileID: 66862539164753587, guid: 8cb66dc0f7992fe439915f89978c0e71, type: 3}
@@ -4250,10 +4251,10 @@ MonoBehaviour:
   dropOffWaypoint: {fileID: 4632477379027922819}
   finishWaypoint: {fileID: 2054800826031668250}
   totalEnemyCount: 0
-  waveComplete: 0
-  midRound: 0
   enemySpeed: 0
-  enemyHealth: 3
+  normalEnemyHealth: 25
+  tankEnemyHealth: 100
+  fastEnemyHealth: 10
   pauseMenuUI: {fileID: 764850182}
   isPaused: 0
   isProperPaused: 0
