@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
 public class mainMenu : MonoBehaviour
 {
+    public bool unPause;
+
+    
     public void playGame()
     {
         // Gets the scene currently being used and finds the next scene
         // Then sets that to the active scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        unPause = true;
     }
 
     public void quitGame()
@@ -28,7 +34,7 @@ public class mainMenu : MonoBehaviour
     {
         // Loads main menu scene
         SceneManager.LoadScene(0);
-        //somthing here about changing the pause to false to stop bug from menu
+        
     }
 
     public void SwapDudes()

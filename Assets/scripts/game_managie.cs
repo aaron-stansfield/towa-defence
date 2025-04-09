@@ -62,6 +62,7 @@ public class game_managie : MonoBehaviour
 
     //09/04/2025
     public bool midRound;
+    private mainMenu menu;
 
     //private int[] canvasBounds = new int[]
     //{
@@ -89,6 +90,10 @@ public class game_managie : MonoBehaviour
 
     void Start()
     {
+
+        menu = GameObject.Find("main shmenu script holder").GetComponent<mainMenu>();
+
+
         towerPurchaseButtons.GetComponent<Animation>().Play("UIunshlorp");
         roundChangeHolder.GetComponent<Animator>().SetTrigger("Start");
         //StartCoroutine(doPause());
@@ -98,7 +103,10 @@ public class game_managie : MonoBehaviour
         TowerCostBase.text = baseTowerCost.ToString();
         TowerCostArcer.text = arcerTowerCost.ToString();
         TowerCostWacker.text = wackerTowerCost.ToString();
+        
     }
+
+
 
     void Update()
     {
@@ -112,7 +120,10 @@ public class game_managie : MonoBehaviour
             roundChangeHolder.GetComponent<Animator>().SetTrigger("Start");
         }
 
-        
+        if (menu.unPause == true)
+        {
+            isProperPaused = false;
+        }
     }
 
     void FixedUpdate()
