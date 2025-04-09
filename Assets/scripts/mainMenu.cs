@@ -28,6 +28,7 @@ public class mainMenu : MonoBehaviour
     {
         // Loads main menu scene
         SceneManager.LoadScene(0);
+        //somthing here about changing the pause to false to stop bug from menu
     }
 
     public void SwapDudes()

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.0038583942, g: 0.04678879, b: 0.11882617, a: 1}
+  m_IndirectSpecularColor: {r: 0.004706609, g: 0.046788916, b: 0.1192412, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4307,6 +4307,8 @@ MonoBehaviour:
   dropOffWaypoint: {fileID: 4632477379027922819}
   finishWaypoint: {fileID: 2054800826031668250}
   totalEnemyCount: 0
+  waveComplete: 0
+  midRound: 0
   enemySpeed: 0
   enemyHealth: 3
   pauseMenuUI: {fileID: 764850182}
@@ -6677,7 +6679,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0.2675187, y: -0, z: -0, w: 0.9635527}
-  m_LocalPosition: {x: -9.222, y: 32.6, z: -32.2}
+  m_LocalPosition: {x: -9.222, y: 32.6, z: -40.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -16776,7 +16778,7 @@ Transform:
   m_GameObject: {fileID: 6424853546614748441}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -6.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17366,7 +17368,7 @@ Transform:
   m_GameObject: {fileID: 8612965630850313817}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -52.9, y: 0, z: 0}
+  m_LocalPosition: {x: -52.9, y: 0, z: -3.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

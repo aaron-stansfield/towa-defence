@@ -166,7 +166,7 @@ public class Tower : MonoBehaviour
                 return;
             }
 
-            if (target != null && Vector3.Distance(transform.position, target.position) <= attackRadius)
+            if (target != null && Vector3.Distance(transform.position, target.position) <= attackRadius && manager.waveComplete == false)
             {
                 FireProjectile(target.transform.position);
                 if (gumballer)

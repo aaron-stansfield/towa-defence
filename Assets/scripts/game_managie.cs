@@ -54,10 +54,14 @@ public class game_managie : MonoBehaviour
     public Transform dropOffWaypoint;
     public Transform finishWaypoint;
     public int totalEnemyCount;
-    private bool waveComplete = false; // Tracks when the wave is complete
+    public bool waveComplete = false; // Tracks when the wave is complete (changed to public 09/04/2025)
     private Coroutine activeCarSequence = null; // Tracks the active CarSequence coroutine
     private enum CarState { Idle, MovingToDropOff, Waiting, MovingToFinish, Resetting }
     private CarState currentCarState = CarState.Idle; // Start the car in an idle state
+
+
+    //09/04/2025
+    public bool midRound;
 
     //private int[] canvasBounds = new int[]
     //{
@@ -107,6 +111,8 @@ public class game_managie : MonoBehaviour
         {
             roundChangeHolder.GetComponent<Animator>().SetTrigger("Start");
         }
+
+        
     }
 
     void FixedUpdate()

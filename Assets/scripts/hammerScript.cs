@@ -83,8 +83,8 @@ public class hammerScript : MonoBehaviour
         if (Physics.OverlapSphere(this.transform.position, attackRange, WhatIsTarget) != null && attacking == false)
         {
 
-            
-            //hammerFX.GetComponent<Animation>().Play();
+            //wackFX.GetComponent<Animator>().Play("wackerFXAnimation");  //put here to match with hammer animation
+            hammerFX.GetComponent<Animation>().Play();            //just cahnged
             StartCoroutine(attack());
             
 
@@ -106,9 +106,10 @@ public class hammerScript : MonoBehaviour
 
     IEnumerator attack()
     {
+        
         yield return new WaitForSeconds(1.2f);
         enemyCounter = 0;
-        foreach (Collider col in Physics.OverlapSphere(this.transform.position, 15, WhatIsTarget))
+        foreach (Collider col in Physics.OverlapSphere(this.transform.position, attackRange, WhatIsTarget))
         {
 
             if (col.CompareTag("dude") && enemyCounter < 5)
@@ -127,7 +128,11 @@ public class hammerScript : MonoBehaviour
 
                 enemyCounter++;
 
-                hammerFX.GetComponent<Animation>().Play();  //other animation?
+                //hammerFX.GetComponent<Animation>().Play();  //other animation?
+                wackFX.GetComponent<Animator>().Play("wackerFXAnimation");  //put here to match with hammer animation
+
+                
+                
 
             }
             
@@ -142,7 +147,8 @@ public class hammerScript : MonoBehaviour
         toStun = true;
         attacking = true;
         wackFX.SetActive(true);
-        wackFX.GetComponent<Animator>().Play("wackerFXAnimation");
+        print("here");
+        //wackFX.GetComponent<Animator>().Play("wackerFXAnimation");        //should they be seperete?
         
         Invoke(nameof(ResetAttack),fireRate);
         
