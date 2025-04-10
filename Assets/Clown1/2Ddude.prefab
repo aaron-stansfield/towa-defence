@@ -108,6 +108,7 @@ MonoBehaviour:
   stunTime: 1.5
   inStunZone: 0
   isStunned: 0
+  dudetype: 
 --- !u!195 &5769725439821876568
 NavMeshAgent:
   m_ObjectHideFlags: 0
