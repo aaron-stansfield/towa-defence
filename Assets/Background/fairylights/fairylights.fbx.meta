@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 251a9dfe17129eb4a92a499d2f4416b5
+guid: 3b50810ddc2b24c4086e37dc9048f934
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: standardSurface1
-    second: {fileID: 2100000, guid: 67c09297025da674fb844dcad0569b05, type: 2}
+      name: fairylight
+    second: {fileID: 2100000, guid: 11d6d0d8ad7bfbc45853920e0d34a6fc, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
