@@ -1101,7 +1101,7 @@ GameObject:
   - component: {fileID: 110796459}
   m_Layer: 0
   m_Name: spawnPoint
-  m_TagString: Untagged
+  m_TagString: startPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4434,7 +4434,7 @@ MonoBehaviour:
   arcerTowerCost: 150
   wackerTowerCost: 250
   anyUpgradeMenuOpen: 0
-  money: 100
+  money: 10000
   deathCount: 0
   towerPurchaseButtons: {fileID: 2009597526}
   moneyText: {fileID: 1491612734}
