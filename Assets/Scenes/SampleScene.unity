@@ -4434,7 +4434,7 @@ MonoBehaviour:
   arcerTowerCost: 150
   wackerTowerCost: 250
   anyUpgradeMenuOpen: 0
-  money: 10000
+  money: 100
   deathCount: 0
   towerPurchaseButtons: {fileID: 2009597526}
   moneyText: {fileID: 1491612734}
