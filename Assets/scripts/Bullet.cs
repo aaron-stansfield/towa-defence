@@ -58,7 +58,7 @@ public class Bullet : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         System.Random random = new System.Random();
-        int chance = random.Next(0, 10);
+        int chance = random.Next(0, 5);
 
         if (other.CompareTag("dude") && health > 0 && !explosive)
         {

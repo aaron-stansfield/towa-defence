@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afdf985f974c5146af53ed910507f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  moneyOnDeath: 5
+  health: 30
+  moneyOnDeath: 10
   moneyOnHit: 1
   slowTime: 5
   slowFX: {fileID: 3976026530189610100}

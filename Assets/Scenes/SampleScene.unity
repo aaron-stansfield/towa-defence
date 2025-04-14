@@ -2971,10 +2971,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: c7b08389462c3b94ba9e9818dfdd4f81, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: c7b08389462c3b94ba9e9818dfdd4f81, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: c7b08389462c3b94ba9e9818dfdd4f81, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: c7b08389462c3b94ba9e9818dfdd4f81, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 76219998f762b324d8a8d7f3b57cacad, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 76219998f762b324d8a8d7f3b57cacad, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 76219998f762b324d8a8d7f3b57cacad, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 76219998f762b324d8a8d7f3b57cacad, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -3018,7 +3018,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f0b25a2c0eb28944cb81d2de582a68c3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 98227240daef6ce4684fa5930758b44d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4464,9 +4464,9 @@ MonoBehaviour:
   finishWaypoint: {fileID: 2054800826031668250}
   totalEnemyCount: 0
   enemySpeed: 0
-  normalEnemyHealth: 5
-  tankEnemyHealth: 15
-  fastEnemyHealth: 2
+  normalEnemyHealth: 25
+  tankEnemyHealth: 300
+  fastEnemyHealth: 10
   pauseMenuUI: {fileID: 764850182}
   isPaused: 0
   isProperPaused: 0
@@ -6810,10 +6810,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: a829535f80c8fe748a811fcc9adaf530, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: a829535f80c8fe748a811fcc9adaf530, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: a829535f80c8fe748a811fcc9adaf530, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: a829535f80c8fe748a811fcc9adaf530, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: 6353bb3bcaf39ed439984b392ea8f649, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 6353bb3bcaf39ed439984b392ea8f649, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 6353bb3bcaf39ed439984b392ea8f649, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: 6353bb3bcaf39ed439984b392ea8f649, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -6857,7 +6857,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a417cd033abf4c041a41bc2afdb33359, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 334f2f02a4fddf44389829cb3954ab8b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7736,7 +7736,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 100
+  m_text: '80
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10057,10 +10059,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 21300000, guid: a9f8c4b45fb978b4b9b6f8e28b121efd, type: 3}
-    m_PressedSprite: {fileID: 21300000, guid: a9f8c4b45fb978b4b9b6f8e28b121efd, type: 3}
-    m_SelectedSprite: {fileID: 21300000, guid: a9f8c4b45fb978b4b9b6f8e28b121efd, type: 3}
-    m_DisabledSprite: {fileID: 21300000, guid: a9f8c4b45fb978b4b9b6f8e28b121efd, type: 3}
+    m_HighlightedSprite: {fileID: 21300000, guid: faf44547c841d464e86af84f283b168b, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: faf44547c841d464e86af84f283b168b, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: faf44547c841d464e86af84f283b168b, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: faf44547c841d464e86af84f283b168b, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -10104,7 +10106,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 71b9d9be720d684429252e7334f39d9d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6c902c4962655e94bb75fb565ffae3e2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -11113,7 +11115,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 200
+  m_text: 150
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

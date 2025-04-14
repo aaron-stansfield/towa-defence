@@ -79,13 +79,13 @@ public class Tower : MonoBehaviour
         parentObject = transform.parent.gameObject;
         if (gumballer)
         {
-            explosionDamage = 3;
+            explosionDamage = 15;
             bulletHealth = 1;
         }
         else if (arcer)
         {
             changeArcerTarget();
-            explosionDamage = 3;
+            explosionDamage = 15;
             bulletHealth = 1;
         }
 
@@ -354,30 +354,30 @@ void FireProjectile(Vector3 interceptPoint)
         if (gumballer)
         {
             // upgrades for the gumballer
-            if (upgrade1Tier == 0 && manager.money >= 100)
+            if (upgrade1Tier == 0 && manager.money >= 50)
             {
-                manager.money -= 100;
+                manager.money -= 50;
                 fireRate = fireRate / 1.5f;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
-                upgrade1Text.text = "Tier 2 - cost 250\n test";
+                upgrade1Text.text = "Tier 2 - cost 100 \n Even faster fire rate";
             }
-            else if (upgrade1Tier == 1 && manager.money >= 250)
+            else if (upgrade1Tier == 1 && manager.money >= 100)
             {
-                manager.money -= 250;
+                manager.money -= 100;
                 fireRate = fireRate / 1.3f;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 bulletHealth++;
                 upgrade1Tier++;
-                upgrade1Text.text = "Tier 3 - cost 300 \n explosive rounds";
+                upgrade1Text.text = "Tier 3 - cost 200 \n Explosive rounds";
             }
-            else if (upgrade1Tier == 2 && manager.money >= 250)
+            else if (upgrade1Tier == 2 && manager.money >= 200)
             {
-                manager.money -= 300;
+                manager.money -= 200;
                 explosionUpgrade = true;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
-                upgrade1Text.text = "fully upgraded \n :)";
+                upgrade1Text.text = "Fully upgraded \n :)";
             }
             
         }
@@ -389,23 +389,23 @@ void FireProjectile(Vector3 interceptPoint)
             {
                 manager.money -= 100;
                 fireRate = fireRate / 1.5f;
-                explosionDamage = 7;
+                explosionDamage = 10;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "Tier 2 - cost 250\n further increases firerate";
             }
-            else if(upgrade1Tier == 1 && manager.money >= 300)      //money can change
+            else if(upgrade1Tier == 1 && manager.money >= 150)      //money can change
             {
-                manager.money -= 250;
+                manager.money -= 150;
                 fireRate = fireRate / 1.5f;
                 upgrade1Tier++;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Text.text = "Tier 2 - cost 300\n Sause lasts longer";
                 print(upgrade1Tier);
             }
-            else if (upgrade1Tier == 2 && manager.money >= 300)
+            else if (upgrade1Tier == 2 && manager.money >= 200)
             {
-                manager.money -= 300;
+                manager.money -= 200;
                 explosionUpgrade = true;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;

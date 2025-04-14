@@ -63,11 +63,15 @@ public class game_managie : MonoBehaviour
 
     public List<WaveConfig> waves = new List<WaveConfig>
     {
+        new WaveConfig { NormalEnemies = 3, TankEnemies = 0, FastEnemies = 0, SpawnOrder = new List<string> { "Normal" } },
         new WaveConfig { NormalEnemies = 5, TankEnemies = 0, FastEnemies = 0, SpawnOrder = new List<string> { "Normal" } },
-        new WaveConfig { NormalEnemies = 13, TankEnemies = 0, FastEnemies = 0, SpawnOrder = new List<string> { "Normal" } },
-        new WaveConfig { NormalEnemies = 10, TankEnemies = 2, FastEnemies = 0, SpawnOrder = new List<string> { "Normal", "Tank" } },
-        new WaveConfig { NormalEnemies = 15, TankEnemies = 4, FastEnemies = 0, SpawnOrder = new List<string> { "Tank", "Normal" } },
-        new WaveConfig { NormalEnemies = 10, TankEnemies = 8, FastEnemies = 10, SpawnOrder = new List<string> { "Fast", "Tank", "Normal" } },
+        new WaveConfig { NormalEnemies = 8, TankEnemies = 0, FastEnemies = 0, SpawnOrder = new List<string> { "Normal" } },
+        new WaveConfig { NormalEnemies = 10, TankEnemies = 0, FastEnemies = 2, SpawnOrder = new List<string> { "Fast", "Normal" } },
+        new WaveConfig { NormalEnemies = 14, TankEnemies = 0, FastEnemies = 0, SpawnOrder = new List<string> { "Normal" } },
+        new WaveConfig { NormalEnemies = 16, TankEnemies = 0, FastEnemies = 0, SpawnOrder = new List<string> { "Normal" } },
+        new WaveConfig { NormalEnemies = 15, TankEnemies = 1, FastEnemies = 0, SpawnOrder = new List<string> { "Tank", "Normal" } },
+        new WaveConfig { NormalEnemies = 10, TankEnemies = 0, FastEnemies = 4, SpawnOrder = new List<string> { "Fast", "Normal" } },
+        new WaveConfig { NormalEnemies = 15, TankEnemies = 3, FastEnemies = 3, SpawnOrder = new List<string> { "Fast", "Normal", "Tank" } },
     };
     private int currentWaveIndex = 0;
 
