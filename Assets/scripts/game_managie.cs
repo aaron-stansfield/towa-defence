@@ -271,7 +271,7 @@ public class game_managie : MonoBehaviour
             //activeCarSequence = StartCoroutine(CarSequence());
             //if (currentCarState == CarState.Idle)
             //{
-                
+
             //    Debug.Log("Started CarSequence after wave completion.");
             //}
             //else
@@ -281,6 +281,7 @@ public class game_managie : MonoBehaviour
 
             // Final cleanup
             // Reset clownsSpawned flag
+            roundChangeHolder.GetComponent<Animator>().SetTrigger("Start");
             clownsSpawned = false;
             enemyList.Clear();
             Debug.Log($"Wave {currentWaveIndex} officially complete. Preparing for the next wave.");
