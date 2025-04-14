@@ -58,7 +58,7 @@ public class Bullet : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         System.Random random = new System.Random();
-        int chance = random.Next(0, 5);
+        int chance = random.Next(0, 10);
 
         if (other.CompareTag("dude") && health > 0 && !explosive)
         {
@@ -70,7 +70,7 @@ public class Bullet : MonoBehaviour
                if (chance == 0)
                {
                     Transform explosion = Instantiate(bigBullet.transform);
-                    explosion.gameObject.transform.localScale = new Vector3(10, 10, 10);
+                    explosion.gameObject.transform.localScale = new Vector3(0, 0, 0);
                     explosion.GetComponent<Rigidbody>().useGravity = false;
                     explosion.GetComponent<SphereCollider>().radius = 0.7f;
                     explosion.GetComponent<Bullet>().isExplosion = true;

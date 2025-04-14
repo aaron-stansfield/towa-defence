@@ -63,10 +63,7 @@ public class game_managie : MonoBehaviour
 
     public List<WaveConfig> waves = new List<WaveConfig>
     {
-
-
-        new WaveConfig { NormalEnemies = 8, TankEnemies = 0, FastEnemies = 0, SpawnOrder = new List<string> { "Normal" } },
-
+        new WaveConfig { NormalEnemies = 5, TankEnemies = 0, FastEnemies = 0, SpawnOrder = new List<string> { "Normal" } },
         new WaveConfig { NormalEnemies = 13, TankEnemies = 0, FastEnemies = 0, SpawnOrder = new List<string> { "Normal" } },
         new WaveConfig { NormalEnemies = 10, TankEnemies = 2, FastEnemies = 0, SpawnOrder = new List<string> { "Normal", "Tank" } },
         new WaveConfig { NormalEnemies = 15, TankEnemies = 4, FastEnemies = 0, SpawnOrder = new List<string> { "Tank", "Normal" } },
