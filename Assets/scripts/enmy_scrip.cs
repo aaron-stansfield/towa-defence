@@ -193,11 +193,7 @@ public class enmy_scrip : MonoBehaviour
         }
     }
 
-    public void KnockBack()
-    {
-        StartCoroutine(KnockBackIEnum());
-    }
-    private IEnumerator KnockBackIEnum()
+    public IEnumerator KnockBack()
     {
         isStunned = true;
         agent.SetDestination(startPoint.transform.position);
