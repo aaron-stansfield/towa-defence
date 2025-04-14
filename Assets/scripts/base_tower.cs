@@ -14,7 +14,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Tower : MonoBehaviour
 {
-    public int bulletDamage = 5;
+    public int bulletDamage;
     private Transform target;
     private GameObject parentObject; // this gameObject's parent
     private GameObject turret; // this gameObject
@@ -79,13 +79,13 @@ public class Tower : MonoBehaviour
         parentObject = transform.parent.gameObject;
         if (gumballer)
         {
-            explosionDamage = 3;
+            explosionDamage = 4;
             bulletHealth = 1;
         }
         else if (arcer)
         {
             changeArcerTarget();
-            explosionDamage = 3;
+            explosionDamage = 7;
             bulletHealth = 1;
         }
 
