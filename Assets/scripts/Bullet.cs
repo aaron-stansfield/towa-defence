@@ -62,8 +62,9 @@ public class Bullet : MonoBehaviour
 
         if (other.CompareTag("dude") && health > 0 && !explosive)
         {
-            other.gameObject.GetComponent<enmy_scrip>().damaged(1);
-            
+            other.gameObject.GetComponent<enmy_scrip>().damaged(bulletDamage); // Ensure bulletDamage is passed here.
+            health--;
+            //Debug.Log($"Bullet damage set to: {bulletDamage}");
             if (chanceExplosive && !isExplosion)
             {
                if (chance == 0)

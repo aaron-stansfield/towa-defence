@@ -269,7 +269,7 @@ void FireProjectile(Vector3 interceptPoint)
         bulletScript.health = bulletHealth;
         bulletScript.slows = slowOnHit;
         bulletScript.extraSlowChance = extraSlowChance;
-        bulletScript.bulletDamage = bulletDamage;
+        bulletScript.bulletDamage = 5 ;
        
         if (gumballer)
         {
