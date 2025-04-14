@@ -63,7 +63,10 @@ public class game_managie : MonoBehaviour
 
     public List<WaveConfig> waves = new List<WaveConfig>
     {
+
+
         new WaveConfig { NormalEnemies = 8, TankEnemies = 0, FastEnemies = 0, SpawnOrder = new List<string> { "Normal" } },
+
         new WaveConfig { NormalEnemies = 13, TankEnemies = 0, FastEnemies = 0, SpawnOrder = new List<string> { "Normal" } },
         new WaveConfig { NormalEnemies = 10, TankEnemies = 2, FastEnemies = 0, SpawnOrder = new List<string> { "Normal", "Tank" } },
         new WaveConfig { NormalEnemies = 15, TankEnemies = 4, FastEnemies = 0, SpawnOrder = new List<string> { "Tank", "Normal" } },
@@ -222,7 +225,7 @@ public class game_managie : MonoBehaviour
                 {
                     for (int i = 0; i < currentWave.NormalEnemies; i++)
                     {
-                        yield return new WaitForSeconds(0.5f);
+                        yield return new WaitForSeconds(0.8f);
                         SpawnEnemy(normalEnemyPrefab,"Normal");
                         spawnedEnemies++;
                         Debug.Log($"Spawned Normal Enemy: {spawnedEnemies} spawned so far.");
@@ -232,7 +235,7 @@ public class game_managie : MonoBehaviour
                 {
                     for (int i = 0; i < currentWave.TankEnemies; i++)
                     {
-                        yield return new WaitForSeconds(0.5f);
+                        yield return new WaitForSeconds(1.5f);
                         SpawnEnemy(tankEnemyPrefab,"Tank");
                         spawnedEnemies++;
                         Debug.Log($"Spawned Tank Enemy: {spawnedEnemies} spawned so far.");
@@ -248,9 +251,10 @@ public class game_managie : MonoBehaviour
                         Debug.Log($"Spawned Fast Enemy: {spawnedEnemies} spawned so far.");
                     }
                 }
-                clownsSpawned = true; // This will signal the car to move
+                
             }
 
+            clownsSpawned = true; // This will signal the car to move
             // Wait for the wave to be completed
             while (deathCount < totalEnemyCount || enemyList.Count > 0)
             {
