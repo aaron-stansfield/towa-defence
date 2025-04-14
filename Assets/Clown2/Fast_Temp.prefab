@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afdf985f974c5146af53ed910507f6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 10
   moneyOnDeath: 5
   moneyOnHit: 1
   slowTime: 5
@@ -108,7 +108,6 @@ MonoBehaviour:
   stunTime: 1.5
   inStunZone: 0
   isStunned: 0
-  dudetype: 
 --- !u!195 &5769725439821876568
 NavMeshAgent:
   m_ObjectHideFlags: 0
