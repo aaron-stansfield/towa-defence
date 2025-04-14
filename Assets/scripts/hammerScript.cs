@@ -4,14 +4,13 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using System.Linq;
 
 public class hammerScript : MonoBehaviour
 {
     
 
     public Transform target;
-    public GameObject wackFX;
-    public GameObject hammerFX;
     [SerializeField] GameObject highlightRing;
     [SerializeField] GameObject upgradeMenu;
     public LayerMask WhatIsTarget;
@@ -24,6 +23,8 @@ public class hammerScript : MonoBehaviour
     private bool isActive;
     private game_managie manager;
     [SerializeField] int enemyCounter;
+    public GameObject Tier1Model;
+    public GameObject Tier2Model;
 
     //upgrade
     private int upgrade1Tier = 0;
@@ -46,6 +47,17 @@ public class hammerScript : MonoBehaviour
 
     private void Update()
     {
+
+        if ((Input.GetMouseButton(1) || Input.GetMouseButtonDown(0)) && (isActive || manager.isProperPaused) && !isPointerOverUIObject())
+        {
+            close();
+            if (cameraScript.movingArcerTarget)
+            {
+                cameraScript.changeMouseState();
+                cameraScript.movingArcerTarget = false;
+            }
+        }
+
         if (Input.GetMouseButtonDown(0) && cameraScript.currentMouseState == cameraScript.mouseState.normal && mouseColliderObject == GetClickedObject() && !manager.anyUpgradeMenuOpen)
         {
             print("clicked/touched!");
@@ -57,37 +69,17 @@ public class hammerScript : MonoBehaviour
             //if time stops add here
         }
 
-        if (Input.GetMouseButton(1) && isActive || manager.isProperPaused)
-        {
-            close();
-            if (cameraScript.movingArcerTarget)
-            {
-                cameraScript.changeMouseState();
-                cameraScript.movingArcerTarget = false;
-            }
-        }
-
-        if (Input.GetMouseButton(1) && isActive || manager.isProperPaused)
-        {
-            close();
-            if (cameraScript.movingArcerTarget)
-            {
-                cameraScript.changeMouseState();
-                cameraScript.movingArcerTarget = false;
-            }
-        }
     }
 
     private void FixedUpdate()
     {
-        
-        if (Physics.OverlapSphere(this.transform.position, attackRange, WhatIsTarget) != null && attacking == false)
+        Collider[] potentialDudes = Physics.OverlapSphere(this.transform.position, attackRange, WhatIsTarget);
+
+        if (attacking == false && potentialDudes.Length > 0)
         {
 
-            //wackFX.GetComponent<Animator>().Play("wackerFXAnimation");  //put here to match with hammer animation
-            hammerFX.GetComponent<Animation>().Play();            //just cahnged
+            attacking = true;
             StartCoroutine(attack());
-            
 
         }
     }
@@ -101,57 +93,68 @@ public class hammerScript : MonoBehaviour
      void ResetAttack()
     {
         attacking = false;                        //allows a delay between attacks
-        wackFX.SetActive(false);
     }
 
 
+    void attackCall()
+    {
+        StartCoroutine(attack());
+    }
+
     IEnumerator attack()
     {
+
+
+        switch (upgrade1Tier)
+        {
+            case 0:
+                Tier1Model.GetComponent<Animator>().SetTrigger("Hit");
+                break;
+
+            case > 0:
+                Tier2Model.GetComponent<Animator>().SetTrigger("Hit");
+                break;
+        }
         
-        yield return new WaitForSeconds(1.2f);
+
+        yield return new WaitForSeconds(0.2f);
+
         enemyCounter = 0;
-        foreach (Collider col in Physics.OverlapSphere(this.transform.position, attackRange, WhatIsTarget))
+        Collider[] potentialDudes = Physics.OverlapSphere(this.transform.position, attackRange, WhatIsTarget);
+        foreach (Collider col in potentialDudes)
         {
 
             if (col.CompareTag("dude") && enemyCounter < 5)
             {
                 if (attackKnockBack == true)
                 {
-                    StartCoroutine(col.GetComponent<enmy_scrip>().KnockBack());
+                    col.GetComponent<enmy_scrip>().KnockBack();
                 }
                 else
                 {
                     col.GetComponent<enmy_scrip>().Stun();
                 }
-                
+
                 col.gameObject.GetComponent<enmy_scrip>().damaged(0);
                 print("damage to deal");
 
                 enemyCounter++;
 
-                //hammerFX.GetComponent<Animation>().Play();  //other animation?
-                wackFX.GetComponent<Animator>().Play("wackerFXAnimation");  //put here to match with hammer animation
-
-                
-                
 
             }
-            
+
         }
-        Hit();
-        
+        /*if (enemyCounter > 0)
+        {
+            Hit();
+        }*/
+        Invoke(nameof(ResetAttack), fireRate);
     }
 
     void Hit()
     {
         
-        toStun = true;
-        attacking = true;
-        wackFX.SetActive(true);
-        print("here");
-        //wackFX.GetComponent<Animator>().Play("wackerFXAnimation");        //should they be seperete?
         
-        Invoke(nameof(ResetAttack),fireRate);
         
 
     }
@@ -201,30 +204,32 @@ public class hammerScript : MonoBehaviour
     public void Upgrade1()
     {
         if (upgrade1Tier == 0 && manager.money >= 100)
-            {
-                manager.money -= 100;
-                attackRange += 2;           //can change for balance
-                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
-                upgrade1Tier++;
-                upgrade1Text.text = "Tier 2 - cost 250\n further increases range";
-            }
-            else if(upgrade1Tier == 1 && manager.money >= 250)
-            {
-                manager.money -= 250;
-                attackRange += 2;
-                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
-                upgrade1Tier++;
-                upgrade1Text.text = "Tier 3 - cost 400 \n Add knockback";
-            }
-            else if (upgrade1Tier == 2 && manager.money >= 400)
-            {
-                manager.money -= 400;
-                attackKnockBack = true;
-                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
-                upgrade1Tier++;
-                upgrade1Text.text = "fully upgraded \n :)";
-            }
-        
+        {
+            manager.money -= 100;
+            attackRange += 2;           //can change for balance
+            upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
+            Tier1Model.SetActive(false);
+            Tier2Model.SetActive(true);
+            upgrade1Tier++;
+            upgrade1Text.text = "Tier 2 - cost 250\n further increases range";
+        }
+        else if (upgrade1Tier == 1 && manager.money >= 250)
+        {
+            manager.money -= 250;
+            attackRange += 2;
+            upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
+            upgrade1Tier++;
+            upgrade1Text.text = "Tier 3 - cost 400 \n Add knockback";
+        }
+        else if (upgrade1Tier == 2 && manager.money >= 400)
+        {
+            manager.money -= 400;
+            attackKnockBack = true;
+            upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
+            upgrade1Tier++;
+            upgrade1Text.text = "fully upgraded \n :)";
+        }
+
     }
 
     
