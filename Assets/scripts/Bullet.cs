@@ -86,7 +86,7 @@ public class Bullet : MonoBehaviour
         else if (other.CompareTag("ground") && !isExplosion && explosive)
         {
             Transform explosion = Instantiate(bigBullet.transform);
-            explosion.gameObject.transform.localScale = new Vector3(8, 8, 8);
+            explosion.gameObject.transform.localScale = new Vector3(0, 0, 0);
             explosion.GetComponent<Rigidbody>().useGravity = false;
             explosion.GetComponent<SphereCollider>().radius = 0.7f;
             explosion.transform.position = new Vector3(explosion.transform.position.x, 1.7f, explosion.transform.position.z);
