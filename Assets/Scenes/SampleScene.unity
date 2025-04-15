@@ -2004,7 +2004,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &271396461
 Transform:
   m_ObjectHideFlags: 0
@@ -2032,6 +2032,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe05c11bfe594e48addef3d1f16097f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  introCutSceneObj: {fileID: 0}
+  loadingScreenObj: {fileID: 0}
 --- !u!1 &273131268
 GameObject:
   m_ObjectHideFlags: 0
