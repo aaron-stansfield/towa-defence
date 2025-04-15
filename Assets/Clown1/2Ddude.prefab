@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 25
-  moneyOnDeath: 10
+  moneyOnDeath: 5
   moneyOnHit: 1
   slowTime: 5
   slowFX: {fileID: 3976026530189610100}

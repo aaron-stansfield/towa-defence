@@ -84,13 +84,13 @@ public class Tower : MonoBehaviour
         parentObject = transform.parent.gameObject;
         if (gumballer)
         {
-            explosionDamage = 40;
+            explosionDamage = 15;
             bulletHealth = 1;
         }
         else if (arcer)
         {
             changeArcerTarget();
-            explosionDamage = 15;
+            explosionDamage = 5;
             bulletHealth = 1;
         }
 
