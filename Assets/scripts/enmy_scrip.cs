@@ -40,11 +40,18 @@ public class enmy_scrip : MonoBehaviour
         agent = this.GetComponent<NavMeshAgent>();
         agent.SetDestination(goal.transform.position);
 
-        switch(dudetype)
+        
+        //hammerTowerScript = GameObject.FindGameObjectWithTag("hammer").GetComponent<hammerScript>();
+
+        givenSpeed = this.GetComponent<NavMeshAgent>().speed;
+    }
+
+    private void Awake()
+    {
+        switch (dudetype)
         {
             case "Fast":
                 health = gameManager.fastEnemyHealth; break;
-
 
             case "Normal":
                 health = gameManager.normalEnemyHealth; break;
@@ -53,12 +60,8 @@ public class enmy_scrip : MonoBehaviour
                 health = gameManager.tankEnemyHealth; break;
 
         }
-        
-        //hammerTowerScript = GameObject.FindGameObjectWithTag("hammer").GetComponent<hammerScript>();
 
-        givenSpeed = this.GetComponent<NavMeshAgent>().speed;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -170,12 +173,12 @@ public class enmy_scrip : MonoBehaviour
             Color color;
             UnityEngine.ColorUtility.TryParseHtmlString("#FF82C8", out color);
             AnimCanvas.GetComponent<SpriteRenderer>().color = color;
-            //slowFX.gameObject.SetActive(true);
+            slowFX.gameObject.SetActive(true);
             yield return new WaitForSeconds(slowTime);
             this.GetComponent<NavMeshAgent>().speed = this.GetComponent<NavMeshAgent>().speed * 2;
             AnimCanvas.GetComponent<SpriteRenderer>().color = Color.white;
             isSlowed = false;
-            //slowFX.gameObject.SetActive(false);
+            slowFX.gameObject.SetActive(false);
         }
     }
 

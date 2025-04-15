@@ -48,6 +48,8 @@ public class game_managie : MonoBehaviour
 
     public GameObject[] hurtSprites;
 
+    public GameObject introAnim;
+
     //01/04/25
     public GameObject clownCar;
     public Transform startWaypoint;
@@ -96,6 +98,7 @@ public class game_managie : MonoBehaviour
         TowerCostBase.text = baseTowerCost.ToString();
         TowerCostArcer.text = arcerTowerCost.ToString();
         TowerCostWacker.text = wackerTowerCost.ToString();
+        StartCoroutine(introAnimation());
     }
 
     private void OnLevelWasLoaded(int level)
@@ -115,6 +118,13 @@ public class game_managie : MonoBehaviour
         }
 
         
+    }
+
+    IEnumerator introAnimation()
+    {
+        introAnim.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.2f);
+        introAnim.GetComponent<Animator>().SetTrigger("Start");
     }
 
     void FixedUpdate()

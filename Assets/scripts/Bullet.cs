@@ -22,16 +22,24 @@ public class Bullet : MonoBehaviour
     public Vector3 angle;
     public Mesh hotdogMesh;
     public int bulletDamage;
+    public GameObject explosionFX;
     // Start is called before the first frame update
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
         StartCoroutine(BulletLifeTime());
-        
+        if (isExplosion)
+        {
+            this.GetComponent<MeshRenderer>().enabled = false;
+            explosionFX.SetActive(true);
+            explosionFX.transform.GetChild(0).GetComponent<Animator>().SetTrigger("Start");
+        }
     }
+
 
     private void Update()
     {
+
         if (!parabolic)
         {
             this.rb.velocity = new Vector3(this.rb.velocity.x, 0, this.rb.velocity.z);
@@ -65,20 +73,16 @@ public class Bullet : MonoBehaviour
             other.gameObject.GetComponent<enmy_scrip>().damaged(bulletDamage); // Ensure bulletDamage is passed here.
             health--;
             //Debug.Log($"Bullet damage set to: {bulletDamage}");
-            if (chanceExplosive && !isExplosion)
+            if (chanceExplosive && !isExplosion && chance == 0)
             {
-               if (chance == 0)
-               {
-                    Transform explosion = Instantiate(bigBullet.transform);
-                    explosion.gameObject.transform.localScale = new Vector3(0, 0, 0);
-                    explosion.GetComponent<Rigidbody>().useGravity = false;
-                    explosion.GetComponent<SphereCollider>().radius = 0.7f;
-                    explosion.GetComponent<Bullet>().isExplosion = true;
-                    explosion.GetComponent<Bullet>().health = explosionDamage;
-                    explosion.GetComponent<Bullet>().bulletLifeTime = 0.3f;
-                
-               }
-               
+
+                Transform explosion = Instantiate(bigBullet.transform);
+                //explosion.gameObject.transform.localScale = new Vector3(1, 1, 1);
+                explosion.GetComponent<Rigidbody>().useGravity = false;
+                explosion.GetComponent<SphereCollider>().radius = 0.7f;
+                explosion.GetComponent<Bullet>().isExplosion = true;
+                explosion.GetComponent<Bullet>().health = explosionDamage;
+                explosion.GetComponent<Bullet>().bulletLifeTime = 0.3f;
             }
             health--;
         }

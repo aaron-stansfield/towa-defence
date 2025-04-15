@@ -6,7 +6,7 @@ TextureImporter:
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -37,13 +37,13 @@ TextureImporter:
     filterMode: 1
     aniso: 1
     mipBias: 0
-    wrapU: 0
-    wrapV: 0
+    wrapU: 1
+    wrapV: 1
     wrapW: 0
-  nPOTScale: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -52,9 +52,9 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
-  alphaIsTransparency: 0
+  alphaIsTransparency: 1
   spriteTessellationDetail: -1
-  textureType: 0
+  textureType: 8
   textureShape: 1
   singleChannelComponent: 0
   flipbookRows: 1
@@ -108,18 +108,194 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: gumballexplosion_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1292
+        width: 1238
+        height: 1159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c833cbca421f41a4fb8c0a9866477408
+      internalID: 500185821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gumballexplosion_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 1313
+        y: 1374
+        width: 1172
+        height: 1044
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 830d89565eba9e24a863087239d4c3ad
+      internalID: 1563924452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gumballexplosion_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 2590
+        y: 1322
+        width: 1218
+        height: 1217
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da687341a4db437479f79f67da8844da
+      internalID: -827489571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gumballexplosion_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 3847
+        y: 1305
+        width: 1261
+        height: 1211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f3f5af3691d69944ac5ccedb56a8554
+      internalID: -1290926515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gumballexplosion_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 5124
+        y: 1305
+        width: 1261
+        height: 1211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04788971020018046a71c99caccf6adc
+      internalID: 1461438788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gumballexplosion_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 6404
+        y: 1299
+        width: 1261
+        height: 1244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c4494c172f18d540a7e6350a57fc171
+      internalID: -948374165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gumballexplosion_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 7690
+        y: 1303
+        width: 1254
+        height: 1244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61a4da9886d1afb4ba7a42c79ca1a169
+      internalID: -55192296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gumballexplosion_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 0
+        width: 1254
+        height: 1244
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f16c51115ba5cf469eef49f86c8ea90
+      internalID: -1583919469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      gumballexplosion_spritesheet_0: 500185821
+      gumballexplosion_spritesheet_1: 1563924452
+      gumballexplosion_spritesheet_2: -827489571
+      gumballexplosion_spritesheet_3: -1290926515
+      gumballexplosion_spritesheet_4: 1461438788
+      gumballexplosion_spritesheet_5: -948374165
+      gumballexplosion_spritesheet_6: -55192296
+      gumballexplosion_spritesheet_7: -1583919469
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
