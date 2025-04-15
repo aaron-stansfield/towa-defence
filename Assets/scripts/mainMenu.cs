@@ -5,11 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class mainMenu : MonoBehaviour
 {
+
     public void playGame()
     {
         // Gets the scene currently being used and finds the next scene
         // Then sets that to the active scene
-        
+        StartCoroutine(beginGame());
+        //SceneManager.LoadScene(1);
+    }
+
+    IEnumerator beginGame()
+    {
+        this.GetComponent<Animator>().SetTrigger("Start");
+        yield return new WaitForSeconds(1);
         SceneManager.LoadScene(1);
     }
 
