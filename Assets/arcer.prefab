@@ -389,7 +389,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tier 1 - cost 100\n increase fire rate, lower damage\n"
+  m_text: "Tier 2 - cost 200\n Increase fire rate, lower damage\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d24d8cd264653048a25c22bef5d383a, type: 2}
   m_sharedMaterial: {fileID: -7574904314541005323, guid: 3d24d8cd264653048a25c22bef5d383a, type: 2}
@@ -848,6 +848,8 @@ MonoBehaviour:
   slowOnHit: 0
   gumballer: 0
   hotDogProjectileMesh: {fileID: 6521660093582238644, guid: a466a9dbe22dd9a42a2689782de9453b, type: 3}
+  Tier2UpgradeMesh: {fileID: 0}
+  Tier3UpgradeMesh: {fileID: 0}
   fireModeText: {fileID: 1319404841053781717}
   upgrade1Text: {fileID: 1037574858065203098}
   upgrade2Text: {fileID: 0}

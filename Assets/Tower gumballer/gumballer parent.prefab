@@ -1673,7 +1673,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tier 1 - cost 50\n increase fire rate\n"
+  m_text: "Tier 2 - cost 100\n Increase fire rate\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d24d8cd264653048a25c22bef5d383a, type: 2}
   m_sharedMaterial: {fileID: -7574904314541005323, guid: 3d24d8cd264653048a25c22bef5d383a, type: 2}

@@ -215,7 +215,7 @@ public class hammerScript : MonoBehaviour
 
     public void Upgrade1()
     {
-        if (upgrade1Tier == 0 && manager.money >= 100)
+        if (upgrade1Tier == 0 && manager.money >= 300)
         {
             manager.money -= 100;
             attackRange += 2;           //can change for balance
@@ -224,26 +224,26 @@ public class hammerScript : MonoBehaviour
             Tier1Model.SetActive(false);
             Tier2Model.SetActive(true);
             upgrade1Tier++;
-            upgrade1Text.text = "Tier 2 - cost 250\n further increases range";
+            upgrade1Text.text = "Tier 3 - cost 500\n further increases range";
         }
-        else if (upgrade1Tier == 1 && manager.money >= 250)
+        else if (upgrade1Tier == 1 && manager.money >= 500)
         {
-            manager.money -= 250;
+            manager.money -= 500;
             attackRange += 2;
             highlightRing.transform.localScale = new Vector3(highlightRing.transform.localScale.x + (highlightRing.transform.localScale.x / 6), 0.37f, highlightRing.transform.localScale.z + (highlightRing.transform.localScale.z / 6));
             upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
             upgrade1Tier++;
-            upgrade1Text.text = "Tier 3 - cost 400 \n Add knockback";
+            upgrade1Text.text = "Final upgrade - cost 1000 \n Add knockback";
         }
-        else if (upgrade1Tier == 2 && manager.money >= 400)
+        else if (upgrade1Tier == 2 && manager.money >= 1000)
         {
-            manager.money -= 400;
+            manager.money -= 1000;
             attackKnockBack = true;
             upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
             Tier2Model.SetActive(false);
             Tier3Model.SetActive(true);
             upgrade1Tier++;
-            upgrade1Text.text = "fully upgraded \n :)";
+            upgrade1Text.text = "Fully upgraded";
         }
 
     }

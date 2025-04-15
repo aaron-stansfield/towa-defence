@@ -204,10 +204,8 @@ public class enmy_scrip : MonoBehaviour
     {
         isStunned = true;
         agent.SetDestination(startPoint.transform.position);
-        agent.speed = givenSpeed * 2;
         yield return new WaitForSeconds(1);
         agent.SetDestination(goal.transform.position);
-        agent.speed = givenSpeed / 2;
         isStunned = false;
         
         

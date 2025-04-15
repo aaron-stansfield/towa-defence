@@ -84,7 +84,7 @@ public class Tower : MonoBehaviour
         parentObject = transform.parent.gameObject;
         if (gumballer)
         {
-            explosionDamage = 15;
+            explosionDamage = 40;
             bulletHealth = 1;
         }
         else if (arcer)
@@ -353,34 +353,34 @@ void FireProjectile(Vector3 interceptPoint)
         if (gumballer)
         {
             // upgrades for the gumballer
-            if (upgrade1Tier == 0 && manager.money >= 50)
+            if (upgrade1Tier == 0 && manager.money >= 100)
             {
-                manager.money -= 50;
+                manager.money -= 100;
                 fireRate = fireRate / 1.5f;
                 this.GetComponent<MeshRenderer>().enabled = false;
                 Tier2UpgradeMesh.gameObject.SetActive(true);
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
-                upgrade1Text.text = "Tier 2 - cost 100 \n Even faster fire rate";
+                upgrade1Text.text = "Tier 3 - cost 300 \n Even faster fire rate";
             }
-            else if (upgrade1Tier == 1 && manager.money >= 100)
+            else if (upgrade1Tier == 1 && manager.money >= 300)
             {
-                manager.money -= 100;
+                manager.money -= 300;
                 fireRate = fireRate / 1.3f;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 bulletHealth++;
                 upgrade1Tier++;
-                upgrade1Text.text = "Tier 3 - cost 200 \n Explosive rounds";
+                upgrade1Text.text = "Final upgrade - cost 700 \n Explosive rounds";
             }
-            else if (upgrade1Tier == 2 && manager.money >= 200)
+            else if (upgrade1Tier == 2 && manager.money >= 700)
             {
-                manager.money -= 200;
+                manager.money -= 700;
                 explosionUpgrade = true;
                 Tier2UpgradeMesh.SetActive(false);
                 Tier3UpgradeMesh.SetActive(true);
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
-                upgrade1Text.text = "Fully upgraded \n :)";
+                upgrade1Text.text = "Fully upgraded!";
             }
             
         }
@@ -388,31 +388,31 @@ void FireProjectile(Vector3 interceptPoint)
         else if(arcer)
         {
             // upgrades for the dogger
-            if (upgrade1Tier == 0 && manager.money >= 100)
+            if (upgrade1Tier == 0 && manager.money >= 200)
             {
-                manager.money -= 100;
+                manager.money -= 200;
                 fireRate = fireRate / 1.5f;
                 explosionDamage = 10;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
-                upgrade1Text.text = "Tier 2 - cost 250\n further increases firerate";
+                upgrade1Text.text = "Tier 3 - cost 400\n further increases firerate";
             }
-            else if(upgrade1Tier == 1 && manager.money >= 150)      //money can change
+            else if(upgrade1Tier == 1 && manager.money >= 400)      //money can change
             {
-                manager.money -= 150;
+                manager.money -= 400;
                 fireRate = fireRate / 1.5f;
                 upgrade1Tier++;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
-                upgrade1Text.text = "Tier 2 - cost 300\n Sause lasts longer";
+                upgrade1Text.text = "Final upgrade - cost 600\n Sauce lasts longer";
                 print(upgrade1Tier);
             }
-            else if (upgrade1Tier == 2 && manager.money >= 200)
+            else if (upgrade1Tier == 2 && manager.money >= 600)
             {
-                manager.money -= 200;
+                manager.money -= 600;
                 explosionUpgrade = true;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
-                upgrade1Text.text = "fully upgraded \n :)";
+                upgrade1Text.text = "Fully upgraded!";
                 
             }
         }
