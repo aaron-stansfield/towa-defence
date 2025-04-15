@@ -856,7 +856,7 @@ MonoBehaviour:
   upgrade3Text: {fileID: 0}
   shooterPart: {fileID: 0}
   attackRadius: 134.7
-  projectileSpeed: 73.6
+  projectileSpeed: 2.88
   fireRate: 3
   Bullet: {fileID: 8032492240239803107, guid: 9db8052a3f2ed6c4da8d51d6f5c01963, type: 3}
   BSpawn: {fileID: 2276943037582974931}

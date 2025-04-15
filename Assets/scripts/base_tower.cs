@@ -246,96 +246,58 @@ public class Tower : MonoBehaviour
             return target.position /*+ targetVelocity * interceptTime*/;
         }
 
-void FireProjectile(Vector3 interceptPoint)
-{
-    // Calculate the direction from the current position to the target position, normalized to get a unit vector
+    void FireProjectile(Vector3 interceptPoint)
+    {
+        // Calculate the direction from the current position to the target position, normalized to get a unit vector
         Vector3 direction = (target.transform.position - transform.position).normalized;
-
-        //// Set various properties of the bullet based on the current settings
-        //bulletScript.explosionDamage = explosionDamage;
-        //bulletScript.health = bulletHealth;
-        //bulletScript.slows = slowOnHit;
-        //bulletScript.extraSlowChance = extraSlowChance;
         Transform projectile = Instantiate(Bullet.transform, BSpawn.transform.position, Quaternion.identity);
         Bullet bulletScript = projectile.GetComponent<Bullet>();
-        // Check if the tower is a "gumballer"
-        if (gumballer)
-    {
-
-        direction = (target.transform.position - transform.position).normalized;
-        
+        // Set various properties of the bullet based on the current settings
         bulletScript.explosionDamage = explosionDamage;
         bulletScript.health = bulletHealth;
         bulletScript.slows = slowOnHit;
         bulletScript.extraSlowChance = extraSlowChance;
-        bulletScript.bulletDamage = 5 ;
-       
+
+
+        direction = (target.transform.position - transform.position).normalized;
+        bulletScript = projectile.GetComponent<Bullet>();
+        bulletScript.bulletDamage = bulletDamage;
+
+        // Set the velocity of the projectile's Rigidbody to move it towards the target
+        projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
+
+        // Check if the tower is a "gumballer"
         if (gumballer)
         {
+            bulletScript.bulletDamage = 5;
             projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
             bulletScript.chanceExplosive = explosionUpgrade;
-
             bulletScript.bulletLifeTime = 2.4f;
         }
-        else if(arcer)
+        else if (arcer)
         {
 
             projectile.GetComponent<MeshFilter>().mesh = hotDogProjectileMesh;
             bulletScript.sauceLifeSpan = sauceLifeSpan;
-            bulletScript.slows = slowOnHit;
-            bulletScript.extraSlowChance = extraSlowChance;
             projectile.GetComponent<Rigidbody>().useGravity = true;
             bulletScript.explosive = true;
             bulletScript.parabolic = true;
             bulletScript.bulletLifeTime = 10f;
-            projectile.transform.rotation = this.transform.rotation;
+            //projectile.transform.rotation = this.transform.rotation;
             bulletScript.angle = target.position - this.transform.position;
             Vector3 force = (this.transform.position - target.transform.position).normalized;
             // from 5 - 90 to 3 - 16.5
             float targetDistance = Vector3.Distance(this.transform.position, target.transform.position);
             Debug.Log("losing my mind");
-            launchSpeed = Remap(targetDistance, 5, 90, 5, 16.5f);
-            launchSpeed = launchSpeed * 1.05f;
+            Debug.Log(targetDistance);
+            launchSpeed = (Remap(targetDistance, 7.5f, 90.2f, 2, 14.5f)) * 1.24f;
+            //launchSpeed = launchSpeed * 1.05f;
             projectile.GetComponent<Rigidbody>().AddForce(new Vector3(-force.x, 1.5f, -force.z) * launchSpeed, ForceMode.Impulse);
-            }
 
-        // Set the velocity of the projectile's Rigidbody to move it towards the target
-        projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
-        
-        // Set the explosive chance upgrade for the bullet
-        bulletScript.chanceExplosive = explosionUpgrade;
+        }
+
+
     }
-    // Check if the tower is an "arcer"
-    else if(arcer)
-    {
-        // Set additional properties specific to "arcer" projectiles
-        bulletScript.sauceLifeSpan = sauceLifeSpan;
-        bulletScript.slows = slowOnHit;
-        bulletScript.extraSlowChance = extraSlowChance;
-        projectile.GetComponent<Rigidbody>().useGravity = true;
-        bulletScript.explosive = true;
-        bulletScript.parabolic = true;
-        bulletScript.bulletLifeTime = 10f;
-
-        // Calculate the force direction for the projectile
-        Vector3 force = (this.transform.position - target.transform.position).normalized;
-        
-        // Calculate the distance to the target
-        float targetDistance = Vector3.Distance(this.transform.position, target.transform.position);
-        
-        // Debug log to check the flow of execution
-        Debug.Log("losing my mind");
-        
-        // Remap the target distance to an appropriate launch speed
-        launchSpeed = Remap(targetDistance, 5, 90, 5, 16.5f);
-        
-        // Adjust the launch speed slightly
-        launchSpeed = launchSpeed * 1.13f;
-
-        // Apply force to the projectile's Rigidbody to launch it in a parabolic trajectory
-        projectile.GetComponent<Rigidbody>().AddForce(new Vector3(-force.x, 1.5f, -force.z) * launchSpeed, ForceMode.Impulse);
-    }
-}
 
 
     float Remap(float value, float from1, float to1, float from2, float to2)
