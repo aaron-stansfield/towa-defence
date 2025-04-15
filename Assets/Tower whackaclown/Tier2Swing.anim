@@ -1821,7 +1821,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: wackerFX/Shockwave1outer
+    path: wackerHammerObj
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1833,7 +1833,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: wackerFX/Shockwave1outer
+    path: wackerHammerObj
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1845,7 +1845,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: wackerFX/Shockwave1outer
+    path: wackerHammerObj
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1893,7 +1893,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: wackerHammerObj
+    path: wackerFX/Shockwave1outer
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1905,7 +1905,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: wackerHammerObj
+    path: wackerFX/Shockwave1outer
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -1917,7 +1917,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: wackerHammerObj
+    path: wackerFX/Shockwave1outer
     classID: 4
     script: {fileID: 0}
     flags: 0

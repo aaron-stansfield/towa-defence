@@ -760,7 +760,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 848, y: 440.51157}
+  m_AnchoredPosition: {x: 195.2002, y: 21.111664}
   m_SizeDelta: {x: 673, y: 495}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &92789667
@@ -1839,12 +1839,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1604046719}
+  - {fileID: 2011172873}
   - {fileID: 521182596}
   - {fileID: 313163899}
   - {fileID: 1765076448}
   - {fileID: 1491612733}
   - {fileID: 1924580600}
-  - {fileID: 2011172873}
   - {fileID: 1618600183}
   m_Father: {fileID: 1390078180}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2927,7 +2927,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402492148}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0.000055369}
   m_LocalScale: {x: 1.8565528, y: 1.8565528, z: 1.8565528}
   m_ConstrainProportionsScale: 1
@@ -2936,7 +2936,7 @@ RectTransform:
   - {fileID: 677592529}
   - {fileID: 1062672120}
   m_Father: {fileID: 59510835}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -346, y: -31.1}
@@ -2961,7 +2961,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -4434,7 +4434,7 @@ MonoBehaviour:
   arcerTowerCost: 150
   wackerTowerCost: 250
   anyUpgradeMenuOpen: 0
-  money: 100
+  money: 1000
   deathCount: 0
   towerPurchaseButtons: {fileID: 2009597526}
   moneyText: {fileID: 1491612734}
@@ -5867,14 +5867,14 @@ RectTransform:
   m_GameObject: {fileID: 820759525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.62365, y: 1, z: 1}
+  m_LocalScale: {x: 0.52334917, y: 0.69930935, z: 0.69930935}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1375855865}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.1, y: 64.6}
+  m_AnchoredPosition: {x: -0.6, y: 50.5}
   m_SizeDelta: {x: 270.9, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &820759527
@@ -5897,17 +5897,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hot Dawg
+  m_text: 'Hot Dawg:
 
-    cost: 150
-
-
-    ranged tower, place a target and the tower
-    will shoot there, leaving a puddle of juice that will slow any enemies walking
-    over it'
+    ranged tower, place a target and the tower will shoot there,
+    leaving a puddle of juice that will slow any enemies in range'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3d24d8cd264653048a25c22bef5d383a, type: 2}
+  m_sharedMaterial: {fileID: -7574904314541005323, guid: 3d24d8cd264653048a25c22bef5d383a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5931,8 +5927,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 19
-  m_fontSizeBase: 19
+  m_fontSize: 14.7
+  m_fontSizeBase: 14.7
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -5941,9 +5937,9 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_characterSpacing: 15.4
+  m_wordSpacing: -3.97
+  m_lineSpacing: 103.6
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -6767,7 +6763,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 982219622}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -0.0000011847}
   m_LocalScale: {x: 1.8565528, y: 1.8565528, z: 1.8565528}
   m_ConstrainProportionsScale: 0
@@ -6776,7 +6772,7 @@ RectTransform:
   - {fileID: 255338842}
   - {fileID: 8904178}
   m_Father: {fileID: 59510835}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 400, y: -31.8}
@@ -6801,7 +6797,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -9160,17 +9156,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334127640}
-  m_LocalRotation: {x: -0.0064970693, y: 0.006498604, z: 0.707077, w: -0.7070769}
-  m_LocalPosition: {x: 0, y: 0, z: -1.9}
+  m_LocalRotation: {x: 0.0000012218949, y: 0.009189332, z: 0.00000072037784, w: -0.9999578}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 0.036006074, y: 0.10822202, z: 0.31525883}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3613440}
   m_Father: {fileID: 2011172873}
-  m_LocalEulerAnglesHint: {x: 0, y: -1.053, z: 270}
+  m_LocalEulerAnglesHint: {x: 0, y: -1.053, z: 360}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -102.7, y: 85.4}
+  m_AnchoredPosition: {x: 77, y: -114}
   m_SizeDelta: {x: 2434, y: 1369}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1334127642
@@ -9939,8 +9935,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370457255}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.1402, y: 2.1402, z: 2.1402}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 3.103076, y: 2.1402, z: 2.1402}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2055793100}
@@ -9948,7 +9944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -15.2000065, y: -298.58752}
+  m_AnchoredPosition: {x: -426, y: 151}
   m_SizeDelta: {x: 20.200012, y: 37.424942}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1370457257
@@ -9971,8 +9967,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 1f01d03c37f39344fbc85d09de46f054, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10016,7 +10012,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373351375}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: 1.8565528, y: 1.8565528, z: 1.8565528}
   m_ConstrainProportionsScale: 0
@@ -10025,7 +10021,7 @@ RectTransform:
   - {fileID: 947152660}
   - {fileID: 1589987296}
   m_Father: {fileID: 59510835}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 32, y: -31.9}
@@ -10050,7 +10046,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -10163,8 +10159,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375855864}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000034264416}
-  m_LocalScale: {x: 3.8060575, y: 2.7944593, z: 2.7944546}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.0774903, y: 2.1523485, z: 2.1523447}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 820759526}
@@ -10172,7 +10168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 3, y: -388.07806}
+  m_AnchoredPosition: {x: -423, y: -54}
   m_SizeDelta: {x: 20.200012, y: 37.424927}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1375855866
@@ -10195,8 +10191,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 1f01d03c37f39344fbc85d09de46f054, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -10823,14 +10819,14 @@ RectTransform:
   m_GameObject: {fileID: 1536992739}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.62365, y: 1, z: 1}
+  m_LocalScale: {x: 0.52776325, y: 0.7325437, z: 0.7325437}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2025379186}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.1, y: 64.6}
+  m_AnchoredPosition: {x: -3.1, y: 54.1}
   m_SizeDelta: {x: 270.9, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1536992741
@@ -10853,18 +10849,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hammer Time
+  m_text: 'Hammer Time:
 
-    cost: 250
-
-
-    melee tower, shmacks the ground periodically,
-    dealing low damage and stunning
-
-    all enemies in range'
+    melee tower, shmacks the ground periodically, dealing
+    low damage and stunning all enemies in range'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3d24d8cd264653048a25c22bef5d383a, type: 2}
+  m_sharedMaterial: {fileID: -7574904314541005323, guid: 3d24d8cd264653048a25c22bef5d383a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10888,8 +10879,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 21
-  m_fontSizeBase: 21
+  m_fontSize: 14.9
+  m_fontSizeBase: 14.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10898,9 +10889,9 @@ MonoBehaviour:
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_characterSpacing: 1.43
+  m_wordSpacing: 46.4
+  m_lineSpacing: 129.56
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -11221,7 +11212,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604046718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.8004699}
+  m_LocalPosition: {x: 0, y: 0, z: -0.7937927}
   m_LocalScale: {x: 3.3209026, y: 3.3209026, z: 3.3209026}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11229,7 +11220,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 886, y: 263.3}
+  m_AnchoredPosition: {x: 671.91003, y: 447.12}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604046720
@@ -11401,7 +11392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -390, y: -189}
+  m_AnchoredPosition: {x: 565, y: 408}
   m_SizeDelta: {x: 100, y: 151.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1625234298
@@ -13956,17 +13947,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009597526}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.546834, y: 0.8291918, z: 0.6843731}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 3.2325134, y: 0.8291918, z: 0.6843731}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 59510835}
   m_Father: {fileID: 1618600183}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 676.8, y: 441.4}
+  m_AnchoredPosition: {x: 194.5, y: -139.8}
   m_SizeDelta: {x: 131.2, y: 144.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2009597528
@@ -14051,7 +14042,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011172872}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -3.00666}
+  m_LocalPosition: {x: 0, y: 0, z: -3}
   m_LocalScale: {x: 0.60805154, y: 0.60805154, z: 0.60805154}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14060,7 +14051,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 768.0899, y: 264.18}
+  m_AnchoredPosition: {x: 554, y: 448}
   m_SizeDelta: {x: 160, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2011172874
@@ -14183,8 +14174,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2025379185}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.000032411128}
-  m_LocalScale: {x: 3.6759288, y: 2.6989176, z: 2.6989124}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 3.092532, y: 2.155961, z: 2.2705753}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1536992740}
@@ -14192,7 +14183,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -19, y: -374.23444}
+  m_AnchoredPosition: {x: -429, y: -251}
   m_SizeDelta: {x: 20.200012, y: 37.424927}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2025379187
@@ -14215,8 +14206,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 1f01d03c37f39344fbc85d09de46f054, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -14260,14 +14251,14 @@ RectTransform:
   m_GameObject: {fileID: 2055793099}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.62365, y: 1, z: 1}
+  m_LocalScale: {x: 0.563025, y: 0.90279, z: 0.90279}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1370457256}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.1, y: 64.6}
+  m_AnchoredPosition: {x: 1.1, y: 44.5}
   m_SizeDelta: {x: 270.9, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2055793101
@@ -14292,14 +14283,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Gumballer
 
-    cost: 80
-
-
-    basic tower, shoots one projectile with
-    a medium fire rate'
+    basic tower, shoots one projectile with a medium fire rate'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3d24d8cd264653048a25c22bef5d383a, type: 2}
+  m_sharedMaterial: {fileID: -7574904314541005323, guid: 3d24d8cd264653048a25c22bef5d383a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -14323,8 +14310,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25.48
-  m_fontSizeBase: 25.48
+  m_fontSize: 15.52
+  m_fontSizeBase: 15.52
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14334,8 +14321,8 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_wordSpacing: 10.5
+  m_lineSpacing: 186.73
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0

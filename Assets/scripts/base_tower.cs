@@ -34,6 +34,8 @@ public class Tower : MonoBehaviour
     [SerializeField] bool gumballer;
     private float sauceLifeSpan = 1f;
     public Mesh hotDogProjectileMesh;
+    public GameObject Tier2UpgradeMesh;
+    public GameObject Tier3UpgradeMesh;
 
 
     public TextMeshProUGUI fireModeText;
@@ -75,7 +77,10 @@ public class Tower : MonoBehaviour
         mouseColliderObject = transform.GetChild(0).gameObject;
         //upgradeMenu = transform.GetChild(1).gameObject;
         turret = this.gameObject;
-        upgradeMenu.gameObject.SetActive(false);
+        upgradeMenu.gameObject.SetActive(true);
+        highlightRing.SetActive(true);
+        isActive = true;
+        manager.anyUpgradeMenuOpen = true;
         parentObject = transform.parent.gameObject;
         if (gumballer)
         {
@@ -244,27 +249,21 @@ public class Tower : MonoBehaviour
 void FireProjectile(Vector3 interceptPoint)
 {
     // Calculate the direction from the current position to the target position, normalized to get a unit vector
-    Vector3 direction = (target.transform.position - transform.position).normalized;
+        Vector3 direction = (target.transform.position - transform.position).normalized;
 
-    // Instantiate a new projectile (Bullet) at the current position with no rotation
-    Transform projectile = Instantiate(Bullet.transform, transform.position, Quaternion.identity);
-
-    // Get the Bullet script component attached to the projectile
-    Bullet bulletScript = projectile.GetComponent<Bullet>();
-
-    // Set various properties of the bullet based on the current settings
-    bulletScript.explosionDamage = explosionDamage;
-    bulletScript.health = bulletHealth;
-    bulletScript.slows = slowOnHit;
-    bulletScript.extraSlowChance = extraSlowChance;
-   
-    // Check if the tower is a "gumballer"
-    if (gumballer)
+        //// Set various properties of the bullet based on the current settings
+        //bulletScript.explosionDamage = explosionDamage;
+        //bulletScript.health = bulletHealth;
+        //bulletScript.slows = slowOnHit;
+        //bulletScript.extraSlowChance = extraSlowChance;
+        Transform projectile = Instantiate(Bullet.transform, BSpawn.transform.position, Quaternion.identity);
+        Bullet bulletScript = projectile.GetComponent<Bullet>();
+        // Check if the tower is a "gumballer"
+        if (gumballer)
     {
 
         direction = (target.transform.position - transform.position).normalized;
-        projectile = Instantiate(Bullet.transform, BSpawn.transform.position, Quaternion.identity);
-        bulletScript = projectile.GetComponent<Bullet>();
+        
         bulletScript.explosionDamage = explosionDamage;
         bulletScript.health = bulletHealth;
         bulletScript.slows = slowOnHit;
@@ -358,6 +357,8 @@ void FireProjectile(Vector3 interceptPoint)
             {
                 manager.money -= 50;
                 fireRate = fireRate / 1.5f;
+                this.GetComponent<MeshRenderer>().enabled = false;
+                Tier2UpgradeMesh.gameObject.SetActive(true);
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "Tier 2 - cost 100 \n Even faster fire rate";
@@ -375,6 +376,8 @@ void FireProjectile(Vector3 interceptPoint)
             {
                 manager.money -= 200;
                 explosionUpgrade = true;
+                Tier2UpgradeMesh.SetActive(false);
+                Tier3UpgradeMesh.SetActive(true);
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "Fully upgraded \n :)";

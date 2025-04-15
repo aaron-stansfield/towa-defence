@@ -25,6 +25,7 @@ public class hammerScript : MonoBehaviour
     [SerializeField] int enemyCounter;
     public GameObject Tier1Model;
     public GameObject Tier2Model;
+    public GameObject Tier3Model;
 
     //upgrade
     private int upgrade1Tier = 0;
@@ -42,6 +43,11 @@ public class hammerScript : MonoBehaviour
         manager = GameObject.Find("game managie").GetComponent<game_managie>();
         cameraScript = Camera.main.GetComponent<cameraScript>();
         attackRange = 10;
+        print("clicked/touched!");
+        upgradeMenu.gameObject.SetActive(true);
+        highlightRing.SetActive(true);
+        isActive = true;
+        manager.anyUpgradeMenuOpen = true;
     }
 
 
@@ -111,8 +117,14 @@ public class hammerScript : MonoBehaviour
                 Tier1Model.GetComponent<Animator>().SetTrigger("Hit");
                 break;
 
-            case > 0:
+            case 1 :
                 Tier2Model.GetComponent<Animator>().SetTrigger("Hit");
+                break;
+            case 2 :
+                Tier2Model.GetComponent<Animator>().SetTrigger("Hit");
+                break;
+            case >= 2:
+                Tier3Model.GetComponent<Animator>().SetTrigger("Hit");
                 break;
         }
         
@@ -207,6 +219,7 @@ public class hammerScript : MonoBehaviour
         {
             manager.money -= 100;
             attackRange += 2;           //can change for balance
+            highlightRing.transform.localScale = new Vector3(highlightRing.transform.localScale.x + (highlightRing.transform.localScale.x / 5), 0.37f,highlightRing.transform.localScale.z + (highlightRing.transform.localScale.z / 5));
             upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
             Tier1Model.SetActive(false);
             Tier2Model.SetActive(true);
@@ -217,6 +230,7 @@ public class hammerScript : MonoBehaviour
         {
             manager.money -= 250;
             attackRange += 2;
+            highlightRing.transform.localScale = new Vector3(highlightRing.transform.localScale.x + (highlightRing.transform.localScale.x / 6), 0.37f, highlightRing.transform.localScale.z + (highlightRing.transform.localScale.z / 6));
             upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
             upgrade1Tier++;
             upgrade1Text.text = "Tier 3 - cost 400 \n Add knockback";
@@ -226,6 +240,8 @@ public class hammerScript : MonoBehaviour
             manager.money -= 400;
             attackKnockBack = true;
             upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
+            Tier2Model.SetActive(false);
+            Tier3Model.SetActive(true);
             upgrade1Tier++;
             upgrade1Text.text = "fully upgraded \n :)";
         }
