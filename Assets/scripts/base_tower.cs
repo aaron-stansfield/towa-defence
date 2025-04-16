@@ -265,7 +265,7 @@ public class Tower : MonoBehaviour
 
         // Set the velocity of the projectile's Rigidbody to move it towards the target
         projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
-
+        this.GetComponent<AudioSource>().Play();
         // Check if the tower is a "gumballer"
         if (gumballer)
         {
@@ -273,10 +273,11 @@ public class Tower : MonoBehaviour
             projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
             bulletScript.chanceExplosive = explosionUpgrade;
             bulletScript.bulletLifeTime = 2.4f;
+            
         }
         else if (arcer)
         {
-
+            
             projectile.GetComponent<MeshFilter>().mesh = hotDogProjectileMesh;
             bulletScript.sauceLifeSpan = sauceLifeSpan;
             projectile.GetComponent<Rigidbody>().useGravity = true;
