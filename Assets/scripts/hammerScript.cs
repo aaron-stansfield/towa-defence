@@ -217,7 +217,7 @@ public class hammerScript : MonoBehaviour
     {
         if (upgrade1Tier == 0 && manager.money >= 300)
         {
-            manager.money -= 100;
+            manager.money -= 300;
             attackRange += 2;           //can change for balance
             highlightRing.transform.localScale = new Vector3(highlightRing.transform.localScale.x + (highlightRing.transform.localScale.x / 5), 0.37f,highlightRing.transform.localScale.z + (highlightRing.transform.localScale.z / 5));
             upgradeAnim.GetComponent<Animator>().SetTrigger("Start");

@@ -354,7 +354,6 @@ public class Tower : MonoBehaviour
             {
                 manager.money -= 200;
                 fireRate = fireRate / 1.5f;
-                explosionDamage = 10;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "Tier 3 - cost 400\n further increases firerate";
