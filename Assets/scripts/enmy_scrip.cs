@@ -48,14 +48,11 @@ public class enmy_scrip : MonoBehaviour
         //hammerTowerScript = GameObject.FindGameObjectWithTag("hammer").GetComponent<hammerScript>();
 
         givenSpeed = this.GetComponent<NavMeshAgent>().speed;
-    }
 
-    private void Awake()
-    {
         switch (dudetype)
         {
             case "Fast":
-                health = gameManager.fastEnemyHealth; 
+                health = gameManager.fastEnemyHealth;
                 damageTodoToBase = 2;
                 break;
 
@@ -70,6 +67,11 @@ public class enmy_scrip : MonoBehaviour
                 break;
 
         }
+    }
+
+    private void Awake()
+    {
+
 
     }
     // Update is called once per frame
@@ -106,6 +108,7 @@ public class enmy_scrip : MonoBehaviour
     {
         if (other.CompareTag("goal"))
         {
+            Debug.Log("gaming" + damageTodoToBase);
             gameManager.Damage(damageTodoToBase);
             
             gameManager.deathCount++;

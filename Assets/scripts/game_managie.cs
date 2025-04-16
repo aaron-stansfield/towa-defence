@@ -367,6 +367,7 @@ public class game_managie : MonoBehaviour
 
     public void Damage(int damageAmount)
     {
+        Debug.Log(damageAmount);
         int amount = int.Parse(healthText.text);
         amount -= damageAmount;
         healthText.text = amount.ToString();
