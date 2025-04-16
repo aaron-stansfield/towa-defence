@@ -361,6 +361,9 @@ public class Tower : MonoBehaviour
                 this.GetComponent<MeshRenderer>().enabled = false;
                 Tier2UpgradeMesh.gameObject.SetActive(true);
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
