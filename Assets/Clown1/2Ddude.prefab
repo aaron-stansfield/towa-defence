@@ -111,6 +111,11 @@ MonoBehaviour:
   isStunned: 0
   dudetype: 
   damageTodoToBase: 0
+  joeyDeaths:
+  - {fileID: 8300000, guid: d0fc88dfae1685e4db291d4e5bcce22d, type: 3}
+  - {fileID: 8300000, guid: e36488a60a368854e8c131c89ef90cb6, type: 3}
+  - {fileID: 8300000, guid: e322f56f59225c94c846c486a15baaf1, type: 3}
+  spikeDeaths: []
 --- !u!195 &5769725439821876568
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -143,10 +148,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3b9acb0443051694dbd03d88d6951851, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.217
+  m_Pitch: 1.17
   Loop: 0
   Mute: 0
   Spatialize: 0

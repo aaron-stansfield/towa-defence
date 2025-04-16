@@ -355,6 +355,12 @@ public class Tower : MonoBehaviour
             {
                 manager.money -= 200;
                 fireRate = fireRate / 1.5f;
+<<<<<<< Updated upstream
+=======
+                explosionDamage = 10;
+                this.GetComponent<MeshRenderer>().enabled = false;
+                Tier2UpgradeMesh.gameObject.SetActive(true);
+>>>>>>> Stashed changes
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "Tier 3 - cost 400\n further increases firerate";
@@ -372,6 +378,8 @@ public class Tower : MonoBehaviour
             {
                 manager.money -= 600;
                 explosionUpgrade = true;
+                Tier2UpgradeMesh.SetActive(false);
+                Tier3UpgradeMesh.SetActive(true);
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "Fully upgraded!";

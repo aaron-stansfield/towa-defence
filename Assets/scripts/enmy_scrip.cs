@@ -27,6 +27,9 @@ public class enmy_scrip : MonoBehaviour
     private bool isSlowed;
     public string dudetype;
     public int damageTodoToBase;
+    public AudioClip[] joeyDeaths;
+    public AudioClip[] spikeDeaths;
+
 
     // Start is called before the first frame update
     public void Start()
@@ -134,14 +137,24 @@ public class enmy_scrip : MonoBehaviour
 
     IEnumerator delayedDeath()
     {
+        int deathFXIndex = Random.Range(0, 2);
         isDead = true;
-        
+        if (dudetype == "Normal")
+        {
+            this.GetComponent<AudioSource>().clip = joeyDeaths[deathFXIndex];
+        }
+        else if (dudetype == "Fast")
+        {
+            this.GetComponent<AudioSource>().clip = spikeDeaths[deathFXIndex];
+        }
+        this.GetComponent<AudioSource>().Play();
         this.gameObject.tag = "null";
         this.gameObject.layer = 0;
         Destroy(this.GetComponent<Rigidbody>());
         Destroy(this.GetComponent<CapsuleCollider>());
         Destroy(this.GetComponent<NavMeshAgent>());
-        this.GetComponent<AudioSource>().Play();
+        
+        
         //this.GetComponent<NavMeshAgent>().IsDestroyed();
         AnimCanvas.GetComponent<Animator>().SetTrigger("Dead");
         yield return new WaitForSeconds(0.6f);
