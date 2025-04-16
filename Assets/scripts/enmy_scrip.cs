@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class enmy_scrip : MonoBehaviour
-{
+{   
     //for hammer tower
     hammerScript hammerTowerScript;
 
@@ -26,6 +26,7 @@ public class enmy_scrip : MonoBehaviour
     public bool isStunned;
     private bool isSlowed;
     public string dudetype;
+    public int damageTodoToBase;
 
     // Start is called before the first frame update
     public void Start()
@@ -51,13 +52,19 @@ public class enmy_scrip : MonoBehaviour
         switch (dudetype)
         {
             case "Fast":
-                health = gameManager.fastEnemyHealth; break;
+                health = gameManager.fastEnemyHealth; 
+                damageTodoToBase = 2;
+                break;
 
             case "Normal":
-                health = gameManager.normalEnemyHealth; break;
+                health = gameManager.normalEnemyHealth;
+                damageTodoToBase = 1;
+                break;
 
             case "Tank":
-                health = gameManager.tankEnemyHealth; break;
+                health = gameManager.tankEnemyHealth;
+                damageTodoToBase = 5;
+                break;
 
         }
 
@@ -96,7 +103,7 @@ public class enmy_scrip : MonoBehaviour
     {
         if (other.CompareTag("goal"))
         {
-            gameManager.Damage();
+            gameManager.Damage(damageTodoToBase);
             
             gameManager.deathCount++;
             //gameManager.money += moneyOnDeath;
@@ -134,7 +141,7 @@ public class enmy_scrip : MonoBehaviour
         Destroy(this.GetComponent<Rigidbody>());
         Destroy(this.GetComponent<CapsuleCollider>());
         Destroy(this.GetComponent<NavMeshAgent>());
-        
+        this.GetComponent<AudioSource>().Play();
         //this.GetComponent<NavMeshAgent>().IsDestroyed();
         AnimCanvas.GetComponent<Animator>().SetTrigger("Dead");
         yield return new WaitForSeconds(0.6f);

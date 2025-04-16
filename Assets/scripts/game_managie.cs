@@ -365,10 +365,10 @@ public class game_managie : MonoBehaviour
         TogglePause(false);
     }
 
-    public void Damage()
+    public void Damage(int damageAmount)
     {
         int amount = int.Parse(healthText.text);
-        amount -= 1;
+        amount -= damageAmount;
         healthText.text = amount.ToString();
         StartCoroutine(DamageAnimation());
         if (amount <= 0)
