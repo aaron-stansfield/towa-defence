@@ -360,6 +360,9 @@ public class Tower : MonoBehaviour
                 explosionDamage = 10;
                 this.GetComponent<MeshRenderer>().enabled = false;
                 Tier2UpgradeMesh.gameObject.SetActive(true);
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
