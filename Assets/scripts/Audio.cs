@@ -18,21 +18,18 @@ public class Audio : MonoBehaviour
       
     }
 
-    public void PlayAudio()
+    public void OnClick()
     {
-        if (audio != null)
+        AudioPlay();
+    }
+
+    public void AudioPlay()
+    {
+       if (audio != null)
         {
             audio.Play();
         }
-        else
-        {
-            Debug.LogError("no audio source here");
-        }
+    
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
