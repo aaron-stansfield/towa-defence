@@ -7,6 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 using static UnityEngine.EventSystems.EventTrigger;
 using static UnityEngine.GraphicsBuffer;
 
@@ -32,8 +33,10 @@ public class Tower : MonoBehaviour
     [SerializeField] bool gumballer;
     private float sauceLifeSpan = 1f;
     public Mesh hotDogProjectileMesh;
+    public GameObject Tier1UpgradeMesh;
     public GameObject Tier2UpgradeMesh;
     public GameObject Tier3UpgradeMesh;
+    public Transform HotDogSwivel;
 
 
     public TextMeshProUGUI fireModeText;
@@ -248,6 +251,9 @@ public class Tower : MonoBehaviour
     {
         // Calculate the direction from the current position to the target position, normalized to get a unit vector
         Vector3 direction = (target.transform.position - transform.position).normalized;
+        float targetDistance = Vector3.Distance(this.transform.position, target.transform.position);
+            float hotDogAngle = (Remap(targetDistance, 15, 30, 20, 12));
+            HotDogSwivel.transform.localRotation = Quaternion.Euler(new Vector3(hotDogAngle, 0, 0));
         Transform projectile = Instantiate(Bullet.transform, BSpawn.transform.position, Quaternion.identity);
         Bullet bulletScript = projectile.GetComponent<Bullet>();
         // Set various properties of the bullet based on the current settings
@@ -275,7 +281,9 @@ public class Tower : MonoBehaviour
         }
         else if (arcer)
         {
+
             
+
             projectile.GetComponent<MeshFilter>().mesh = hotDogProjectileMesh;
             bulletScript.sauceLifeSpan = sauceLifeSpan;
             projectile.GetComponent<Rigidbody>().useGravity = true;
@@ -286,13 +294,15 @@ public class Tower : MonoBehaviour
             bulletScript.angle = target.position - this.transform.position;
             Vector3 force = (this.transform.position - target.transform.position).normalized;
             // from 5 - 90 to 3 - 16.5
-            float targetDistance = Vector3.Distance(this.transform.position, target.transform.position);
+            
             Debug.Log("losing my mind");
             Debug.Log(targetDistance);
             launchSpeed = (Remap(targetDistance, 7.5f, 90.2f, 2, 14.5f)) * 1.24f;
             //launchSpeed = launchSpeed * 1.05f;
             projectile.GetComponent<Rigidbody>().AddForce(new Vector3(-force.x, 1.5f, -force.z) * launchSpeed, ForceMode.Impulse);
 
+
+            
         }
 
 
@@ -355,9 +365,11 @@ public class Tower : MonoBehaviour
                 fireRate = fireRate / 1.5f;
 
                 explosionDamage = 10;
-                this.GetComponent<MeshRenderer>().enabled = false;
+                
+                Tier1UpgradeMesh.SetActive(false);
                 Tier2UpgradeMesh.gameObject.SetActive(true);
-
+                HotDogSwivel = Tier2UpgradeMesh.transform.GetChild(0);
+                BSpawn = HotDogSwivel.transform.GetChild(0).gameObject;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "Tier 3 - cost 400\n further increases firerate";
@@ -377,6 +389,8 @@ public class Tower : MonoBehaviour
                 explosionUpgrade = true;
                 Tier2UpgradeMesh.SetActive(false);
                 Tier3UpgradeMesh.SetActive(true);
+                HotDogSwivel = Tier3UpgradeMesh.transform.GetChild(0);
+                BSpawn = HotDogSwivel.transform.GetChild(0).gameObject;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
                 upgrade1Text.text = "Fully upgraded!";
