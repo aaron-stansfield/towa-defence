@@ -324,26 +324,17 @@ public class Tower : MonoBehaviour
         if (gumballer)
         {
             // upgrades for the gumballer
-            if (upgrade1Tier == 0 && manager.money >= 100)
+            if (upgrade1Tier == 0 && manager.money >= 300)
             {
-                manager.money -= 100;
-                fireRate = fireRate / 1.5f;
+                manager.money -= 300;
+                fireRate = fireRate / 1.3f;
                 this.GetComponent<MeshRenderer>().enabled = false;
                 Tier2UpgradeMesh.gameObject.SetActive(true);
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
-                upgrade1Text.text = "Tier 3 - cost 300 \n Even faster fire rate";
+                upgrade1Text.text = "Tier 3 - cost 700 \n Explosive rounds";
             }
-            else if (upgrade1Tier == 1 && manager.money >= 300)
-            {
-                manager.money -= 300;
-                fireRate = fireRate / 1.3f;
-                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
-                bulletHealth++;
-                upgrade1Tier++;
-                upgrade1Text.text = "Final upgrade - cost 700 \n Explosive rounds";
-            }
-            else if (upgrade1Tier == 2 && manager.money >= 700)
+            else if (upgrade1Tier == 1 && manager.money >= 700)
             {
                 manager.money -= 700;
                 explosionUpgrade = true;
@@ -353,6 +344,16 @@ public class Tower : MonoBehaviour
                 upgrade1Tier++;
                 upgrade1Text.text = "Fully upgraded!";
             }
+            //else if (upgrade1Tier == 1 && manager.money >= 300)
+            //{
+                //manager.money -= 300;
+                //fireRate = fireRate / 1.3f;
+                //upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
+                //bulletHealth++;
+                //upgrade1Tier++;
+                //upgrade1Text.text = "Final upgrade - cost 700 \n Explosive rounds";
+            //}
+            
             
         }
 
@@ -364,7 +365,7 @@ public class Tower : MonoBehaviour
                 manager.money -= 200;
                 fireRate = fireRate / 1.5f;
 
-                explosionDamage = 10;
+                //explosionDamage = 10;             why? should be gone
                 
                 Tier1UpgradeMesh.SetActive(false);
                 Tier2UpgradeMesh.gameObject.SetActive(true);
@@ -372,21 +373,13 @@ public class Tower : MonoBehaviour
                 BSpawn = HotDogSwivel.transform.GetChild(0).gameObject;
                 upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
                 upgrade1Tier++;
-                upgrade1Text.text = "Tier 3 - cost 400\n further increases firerate";
+                upgrade1Text.text = "Final upgrade - cost 400\n Sauce lasts longer";
             }
             else if(upgrade1Tier == 1 && manager.money >= 400)      //money can change
             {
                 manager.money -= 400;
-                fireRate = fireRate / 1.5f;
-                upgrade1Tier++;
-                upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
-                upgrade1Text.text = "Final upgrade - cost 600\n Sauce lasts longer";
-                print(upgrade1Tier);
-            }
-            else if (upgrade1Tier == 2 && manager.money >= 600)
-            {
-                manager.money -= 600;
                 explosionUpgrade = true;
+                sauceLifeSpan = 9; //to make sause last longer
                 Tier2UpgradeMesh.SetActive(false);
                 Tier3UpgradeMesh.SetActive(true);
                 HotDogSwivel = Tier3UpgradeMesh.transform.GetChild(0);
@@ -396,6 +389,16 @@ public class Tower : MonoBehaviour
                 upgrade1Text.text = "Fully upgraded!";
                 
             }
+            //else if (upgrade1Tier == 2 && manager.money >= 600)               old teir 2
+            //{
+                //manager.money -= 400;
+                //fireRate = fireRate / 1.5f;
+                //upgrade1Tier++;
+                //upgradeAnim.GetComponent<Animator>().SetTrigger("Start");
+                //upgrade1Text.text = "Final upgrade - cost 600\n Sauce lasts longer";
+                //print(upgrade1Tier);
+                
+            //}
         }
         
     }
@@ -417,8 +420,30 @@ public class Tower : MonoBehaviour
         }
         fireModeText.text = currentTargetState.ToString();
     }
-    public void close()
-    {
+    public void sell()             //sell                   need to find the range thing
+    {   
+        if(arcer)
+        {
+            if(upgrade1Tier == 0)   {manager.money += 50;}  //base hotdog
+            if(upgrade1Tier == 1)   {manager.money += 350;}  //teir 1 hotdog
+            if(upgrade1Tier == 0)   {manager.money += 550;}  //teir 2 hotdog
+
+            Destroy(this.gameObject);
+        }
+
+        if(gumballer)
+        {
+            if(upgrade1Tier == 0)   {manager.money += 50;}  //base gumball
+            if(upgrade1Tier == 1)   {manager.money += 350;}  //teir 1 gumball
+            if(upgrade1Tier == 0)   {manager.money += 550;}  //teir 2 gumball
+
+            Destroy(this.gameObject);
+        }
+              
+    }
+
+    public void close()             //close
+    {   
         isActive = false;
         manager.anyUpgradeMenuOpen = false;
         upgradeMenu.gameObject.SetActive(false);

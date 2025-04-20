@@ -8,17 +8,17 @@ public class sauceScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(lifeSpan());         //way better
     }
 
     private void Awake()
     {
         
     }
-    // Update is called once per frame
+     //Update is called once per frame
     void Update()
     {
-        StartCoroutine(lifeSpan());
+        //StartCoroutine(lifeSpan());
     }
 
     private void OnTriggerStay(Collider other)

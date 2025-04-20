@@ -2858,7 +2858,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Tier 2 - cost 200\n Increase fire rate, lower damage\n"
+  m_text: "Tier 2 - cost 200\n Increase fire rate\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3d24d8cd264653048a25c22bef5d383a, type: 2}
   m_sharedMaterial: {fileID: -7574904314541005323, guid: 3d24d8cd264653048a25c22bef5d383a, type: 2}
@@ -6108,7 +6108,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9048594798595543377}
         m_TargetAssemblyTypeName: Tower, Assembly-CSharp
-        m_MethodName: close
+        m_MethodName: sell
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7902,7 +7902,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'exit menu
+  m_text: 'Sell
 
 '
   m_isRightToLeft: 0
@@ -7931,7 +7931,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24.65
+  m_fontSize: 27.9
   m_fontSizeBase: 20.05
   m_fontWeight: 400
   m_enableAutoSizing: 1
