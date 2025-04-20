@@ -59,6 +59,9 @@ public class Tower : MonoBehaviour
     public List<GameObject> enemysInRange;
     public GameObject upgradeAnim;
 
+    //audio efect
+    public AudioSource shotFiredA;
+
     public targetState currentTargetState;
     public enum targetState
     {
@@ -93,6 +96,10 @@ public class Tower : MonoBehaviour
             changeArcerTarget();
             explosionDamage = 5;
             bulletHealth = 1;
+        }
+        if (shotFiredA == null)
+        {
+            shotFiredA = GetComponent<AudioSource>(); //audio stuff
         }
 
         
@@ -159,6 +166,8 @@ public class Tower : MonoBehaviour
             {
 
                 target = getFirstEnemy(enemysInRange, false).transform;
+                PlayAudio();
+
 
 
             }
@@ -166,11 +175,13 @@ public class Tower : MonoBehaviour
             {
 
                 target = getFirstEnemy(enemysInRange, true).transform;
+                PlayAudio();
 
             }
             else if (currentTargetState == targetState.user_set)
             {
                 target = arcerTargetObj.transform;
+                PlayAudio();  //audio play when fire
             }
             else
             {
@@ -499,6 +510,17 @@ public class Tower : MonoBehaviour
 
         return firstEnemy;
     }   
+
+
+
+    //play audio
+     public void PlayAudio()
+    {
+        if (shotFiredA != null)
+        {
+            shotFiredA.Play();
+        }
+    }
 
     //public float GetPathRemainingDistance(NavMeshAgent navMeshAgent)
     //{
