@@ -91,6 +91,7 @@ public class mainMenu : MonoBehaviour
     public void Menu()
     {
         // Loads main menu scene
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
         //somthing here about changing the pause to false to stop bug from menu
     }
