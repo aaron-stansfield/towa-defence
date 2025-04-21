@@ -61,6 +61,10 @@ public class game_managie : MonoBehaviour
     private enum CarState { Idle, MovingToDropOff, Waiting, MovingToFinish, Resetting }
     private CarState currentCarState = CarState.Idle; // Start the car in an idle state
 
+    //21/04/25
+    public AudioSource exhaustAudioSource;
+
+
 
 
     public List<WaveConfig> waves = new List<WaveConfig>
@@ -454,36 +458,37 @@ public class game_managie : MonoBehaviour
 
     IEnumerator CarSequence()
     {
-        //if (currentCarState != CarState.Idle)
-        //{
-        //    Debug.LogWarning("CarSequence started while the car was not idle. Aborting.");
-        //    yield break; // Prevent starting if the car is not idle
-        //}
-
         currentCarState = CarState.MovingToDropOff;
 
-        // Move the car to the drop-off point
+        // Start exhaust sound while driving to drop-off
+        PlayExhaustSound(1.2f);
         yield return MoveCarTo(dropOffWaypoint);
-        currentCarState = CarState.Waiting;
 
+        // Car is waiting – keep sound but lower pitch
+        currentCarState = CarState.Waiting;
+        PlayExhaustSound(0.8f);
         Debug.Log("Car parked at the drop-off. Waiting for the wave to end.");
 
-        // Wait until the wave is marked as complete
         yield return new WaitUntil(() => clownsSpawned);
 
         Debug.Log("Wave complete. Car will now move to the finish line.");
         currentCarState = CarState.MovingToFinish;
 
-        // Move the car to the finish line
+        // Increase pitch again while driving
+        PlayExhaustSound(1.3f);
         yield return MoveCarTo(finishWaypoint);
 
-        // Reset the car for the next wave
+        // Stop sound when idle
+        StopExhaustSound();
+
+        // Reset the car
         clownCar.transform.position = startWaypoint.position;
-        clownCar.transform.rotation = Quaternion.Euler(0f, 0f, 0f); // Reset orientation
+        clownCar.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
         currentCarState = CarState.Idle;
 
         Debug.Log("Car reset to the start for the next round.");
     }
+
     IEnumerator MoveCarTo(Transform targetWaypoint)
     {
         while (Vector3.Distance(clownCar.transform.position, targetWaypoint.position) > 0.1f)
@@ -564,6 +569,38 @@ public class game_managie : MonoBehaviour
 
         Debug.Log("Car reset to normal state.");
     }
+
+    void PlayExhaustSound(float pitch = 1.0f)
+    {
+        if (exhaustAudioSource == null)
+        {
+            Debug.LogWarning("No exhaust audio source assigned!");
+            return;
+        }
+
+        Debug.Log("Playing exhaust sound with pitch: " + pitch);
+
+        if (!exhaustAudioSource.isPlaying)
+        {
+            exhaustAudioSource.pitch = pitch;
+            exhaustAudioSource.loop = true;
+            exhaustAudioSource.Play();
+        }
+        else
+        {
+            exhaustAudioSource.pitch = pitch;
+        }
+    }
+
+
+    void StopExhaustSound()
+    {
+        if (exhaustAudioSource != null && exhaustAudioSource.isPlaying)
+        {
+            exhaustAudioSource.Stop();
+        }
+    }
+
 
 
     public void ResumeGame()
