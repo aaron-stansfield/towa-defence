@@ -69,9 +69,9 @@ public class cameraScript : MonoBehaviour
                     if (Input.GetMouseButtonUp(0) && !isPointerOverUIObject() && !movingArcerTarget)
                     {
                         GameObject newTower = Instantiate(towerToPlace);
-                        if (newTower.transform.GetChild(0).GetComponent<Tower>().gumballer)
+                        if (newTower.transform.GetChild(0).GetComponent<Tower>() == null)
                         {
-                            manager.money -= manager.baseTowerCost;
+                            manager.money -= manager.wackerTowerCost;
                         }
                         else if (newTower.transform.GetChild(0).GetComponent<Tower>().arcer)
                         {
@@ -79,7 +79,7 @@ public class cameraScript : MonoBehaviour
                         }
                         else 
                         {
-                            manager.money -= manager.wackerTowerCost;
+                            manager.money -= manager.baseTowerCost;
                         }
                         
                         //manager.baseTowerCost += Mathf.RoundToInt(manager.baseTowerCost / 0.8f);

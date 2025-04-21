@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class game_managie : MonoBehaviour
@@ -454,7 +455,10 @@ public class game_managie : MonoBehaviour
 
     //CAR STUFFF!!!!!!!!!!!!
 
-
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
     IEnumerator CarSequence()
     {

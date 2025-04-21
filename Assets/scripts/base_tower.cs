@@ -168,7 +168,7 @@ public class Tower : MonoBehaviour
             {
 
                 target = getFirstEnemy(enemysInRange, false).transform;
-                PlayAudio();
+                
 
 
 
@@ -177,13 +177,13 @@ public class Tower : MonoBehaviour
             {
 
                 target = getFirstEnemy(enemysInRange, true).transform;
-                PlayAudio();
+                
 
             }
             else if (currentTargetState == targetState.user_set)
             {
                 target = arcerTargetObj.transform;
-                PlayAudio();  //audio play when fire
+                
             }
             else
             {
@@ -270,7 +270,7 @@ public class Tower : MonoBehaviour
         }
         // Calculate the direction from the current position to the target position, normalized to get a unit vector
         Vector3 direction = (target.transform.position - transform.position).normalized;
-        
+        PlayAudio();  //audio play when fire
         Transform projectile = Instantiate(Bullet.transform, BSpawn.transform.position, Quaternion.identity);
         Bullet bulletScript = projectile.GetComponent<Bullet>();
         // Set various properties of the bullet based on the current settings

@@ -97,6 +97,8 @@ public class enmy_scrip : MonoBehaviour
             moveEnmy();
         }
 
+        
+
     }
     public void moveEnmy()
     {
@@ -156,8 +158,9 @@ public class enmy_scrip : MonoBehaviour
         Destroy(this.GetComponent<Rigidbody>());
         Destroy(this.GetComponent<CapsuleCollider>());
         Destroy(this.GetComponent<NavMeshAgent>());
-        
-        
+        this.transform.position = new Vector3(this.transform.position.x, 5.64f, this.transform.position.z);
+
+
         //this.GetComponent<NavMeshAgent>().IsDestroyed();
         AnimCanvas.GetComponent<Animator>().SetTrigger("Dead");
         yield return new WaitForSeconds(0.6f);
