@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.004706788, g: 0.04678881, b: 0.119240694, a: 1}
+  m_IndirectSpecularColor: {r: 0.0038583942, g: 0.04678879, b: 0.11882617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4730,7 +4730,7 @@ MonoBehaviour:
   arcerTowerCost: 150
   wackerTowerCost: 250
   anyUpgradeMenuOpen: 0
-  money: 100000
+  money: 100
   deathCount: 0
   towerPurchaseButtons: {fileID: 2009597526}
   moneyText: {fileID: 1491612734}
@@ -14594,7 +14594,7 @@ Animator:
   m_GameObject: {fileID: 1957178136}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e37f9f8d4f2f9ad4fb09f7df687e66db, type: 2}
+  m_Controller: {fileID: 9100000, guid: a4291a5b36928484794cf1b8d6ecf2d4, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

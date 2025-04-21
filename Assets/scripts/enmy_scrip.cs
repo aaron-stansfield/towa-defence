@@ -140,7 +140,7 @@ public class enmy_scrip : MonoBehaviour
 
     IEnumerator delayedDeath()
     {
-        int deathFXIndex = Random.Range(0, 2);
+        int deathFXIndex = Random.Range(0, 3);
         isDead = true;
         if (dudetype == "Normal")
         {

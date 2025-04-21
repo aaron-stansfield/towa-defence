@@ -30,13 +30,15 @@ public class Tower : MonoBehaviour
     public bool slowOnHit;
     private bool extraSlowChance;
     private int explosionDamage;
-    [SerializeField] bool gumballer;
+    public bool gumballer;
     private float sauceLifeSpan = 1f;
     public Mesh hotDogProjectileMesh;
     public GameObject Tier1UpgradeMesh;
     public GameObject Tier2UpgradeMesh;
     public GameObject Tier3UpgradeMesh;
     public Transform HotDogSwivel;
+    private float hotDogAngle;
+    private float targetDistance;
 
 
     public TextMeshProUGUI fireModeText;
@@ -260,11 +262,15 @@ public class Tower : MonoBehaviour
 
     void FireProjectile(Vector3 interceptPoint)
     {
+        if (arcer)
+        {
+            targetDistance = Vector3.Distance(this.transform.position, target.transform.position);
+            hotDogAngle = (Remap(targetDistance, 15, 30, 20, 12));
+            HotDogSwivel.transform.localRotation = Quaternion.Euler(new Vector3(hotDogAngle, 0, 0));
+        }
         // Calculate the direction from the current position to the target position, normalized to get a unit vector
         Vector3 direction = (target.transform.position - transform.position).normalized;
-        float targetDistance = Vector3.Distance(this.transform.position, target.transform.position);
-            float hotDogAngle = (Remap(targetDistance, 15, 30, 20, 12));
-            HotDogSwivel.transform.localRotation = Quaternion.Euler(new Vector3(hotDogAngle, 0, 0));
+        
         Transform projectile = Instantiate(Bullet.transform, BSpawn.transform.position, Quaternion.identity);
         Bullet bulletScript = projectile.GetComponent<Bullet>();
         // Set various properties of the bullet based on the current settings
@@ -280,7 +286,7 @@ public class Tower : MonoBehaviour
 
         // Set the velocity of the projectile's Rigidbody to move it towards the target
         projectile.GetComponent<Rigidbody>().velocity = direction * projectileSpeed;
-        this.GetComponent<AudioSource>().Play();
+        
         // Check if the tower is a "gumballer"
         if (gumballer)
         {
@@ -437,18 +443,18 @@ public class Tower : MonoBehaviour
         {
             if(upgrade1Tier == 0)   {manager.money += 50;}  //base hotdog
             if(upgrade1Tier == 1)   {manager.money += 350;}  //teir 1 hotdog
-            if(upgrade1Tier == 0)   {manager.money += 550;}  //teir 2 hotdog
+            if(upgrade1Tier == 2)   {manager.money += 550;}  //teir 2 hotdog
 
-            Destroy(this.gameObject);
+            Destroy(this.transform.parent.gameObject);
         }
 
         if(gumballer)
         {
             if(upgrade1Tier == 0)   {manager.money += 50;}  //base gumball
             if(upgrade1Tier == 1)   {manager.money += 350;}  //teir 1 gumball
-            if(upgrade1Tier == 0)   {manager.money += 550;}  //teir 2 gumball
+            if(upgrade1Tier == 2)   {manager.money += 550;}  //teir 2 gumball
 
-            Destroy(this.gameObject);
+            Destroy(this.transform.parent.gameObject);
         }
               
     }

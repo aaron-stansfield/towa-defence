@@ -50,7 +50,16 @@ public class hammerScript : MonoBehaviour
         manager.anyUpgradeMenuOpen = true;
     }
 
+    public void sell()             //sell                   need to find the range thing
+    {
 
+        if (upgrade1Tier == 0) { manager.money += 50; }  //base hotdog
+        if (upgrade1Tier == 1) { manager.money += 350; }  //teir 1 hotdog
+        if (upgrade1Tier == 2) { manager.money += 550; }  //teir 2 hotdog
+
+        Destroy(this.transform.parent.gameObject);
+
+    }
     private void Update()
     {
 

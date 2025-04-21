@@ -15,10 +15,17 @@ public class mainMenu : MonoBehaviour
 
     public void Awake()
     {
-        StartCoroutine(loadingScreenOnStart());
-        StartCoroutine(cutSceneTimer());
+       
     }
 
+    public void Start()
+    {
+        if (!end || !end2)
+        {
+            StartCoroutine(loadingScreenOnStart());
+            StartCoroutine(cutSceneTimer());
+        }
+    }
 
 
     private void Update()
@@ -48,7 +55,7 @@ public class mainMenu : MonoBehaviour
     IEnumerator loadingScreenOnStart()
     {
         this.GetComponent<Animator>().SetTrigger("startLoad");
-        yield return new WaitForSeconds(3.2f);
+        yield return new WaitForSeconds(3f);
         this.GetComponent<Animator>().StopPlayback();
         introCutSceneObj.GetComponent<VideoPlayer>().Play();
         //this.GetComponent<Animator>().SetTrigger("fadeIn");

@@ -68,9 +68,20 @@ public class cameraScript : MonoBehaviour
                     towerGhost.gameObject.SetActive(true);
                     if (Input.GetMouseButtonUp(0) && !isPointerOverUIObject() && !movingArcerTarget)
                     {
-
                         GameObject newTower = Instantiate(towerToPlace);
-                        manager.money -= manager.baseTowerCost;
+                        if (newTower.transform.GetChild(0).GetComponent<Tower>().gumballer)
+                        {
+                            manager.money -= manager.baseTowerCost;
+                        }
+                        else if (newTower.transform.GetChild(0).GetComponent<Tower>().arcer)
+                        {
+                            manager.money -= manager.arcerTowerCost;
+                        }
+                        else 
+                        {
+                            manager.money -= manager.wackerTowerCost;
+                        }
+                        
                         //manager.baseTowerCost += Mathf.RoundToInt(manager.baseTowerCost / 0.8f);
                         newTower.transform.position = hit.point;
                         Destroy(towerGhost);
